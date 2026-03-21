@@ -1,16 +1,4 @@
 Datum,Zeit,Titel,Beschreibung,Typ,Ort
-2026-03-24,18:00,Bitcoin Einsteigerkurs test,Was ist Bitcoin? Grundlagen für Neueinsteiger verständlich erklärt.,Kurs,Bitcoin Metropole
-2026-03-26,18:00,Bitcoin Einsteigerkurs,Wallets einrichten und erste Sats empfangen.,Kurs,Bitcoin Metropole
-2026-03-28,19:00,Community Meetup,Offener Treff für alle Bitcoiner und Interessierte aus dem Allgäu.,Meetup,Bitcoin Metropole
-2026-03-31,18:00,Bitcoin Einsteigerkurs,Lightning Network — schnelle und günstige Zahlungen mit Bitcoin.,Kurs,Bitcoin Metropole
-2026-04-02,18:00,Bitcoin Einsteigerkurs,Sicherheit und Selbstverwahrung — Not your keys not your coins.,Kurs,Bitcoin Metropole
-2026-04-05,15:00,Workshop: Cold Storage,Hardware Wallets einrichten und sicher aufbewahren.,Workshop,Bitcoin Metropole
-2026-04-08,18:00,Bitcoin Einsteigerkurs,Bitcoin kaufen ohne KYC — Vexl und andere P2P-Methoden.,Kurs,Bitcoin Metropole
-2026-04-10,18:00,Bitcoin Einsteigerkurs,Austrian Economics — warum hartes Geld wichtig ist.,Kurs,Bitcoin Metropole
-2026-04-12,19:00,Bitcoin Kunst & Kultur,Ausstellung und Gespräch mit MX12 ART — Bitcoin trifft Kunst.,Kultur,Bitcoin Metropole
-2026-04-15,18:00,Bitcoin Einsteigerkurs,Node betreiben — warum und wie du das Netzwerk unterstützt.,Kurs,Bitcoin Metropole
-2026-04-17,18:00,Bitcoin Einsteigerkurs,Multisig und erweiterte Sicherheitskonzepte.,Kurs,Bitcoin Metropole
-2026-04-19,19:00,Community Meetup,Monatliches Treffen — Austausch und Networking.,Meetup,Bitcoin Metropole
-2026-04-22,18:00,Bitcoin Einsteigerkurs,Bitcoin und Steuern — was du in Deutschland wissen musst.,Kurs,Bitcoin Metropole
-2026-04-24,18:00,Bitcoin Einsteigerkurs,Nostr und dezentrale Kommunikation.,Kurs,Bitcoin Metropole
-2026-04-26,15:00,Workshop: Vexl Trading,P2P Bitcoin kaufen und verkaufen — praktische Übung.,Workshop,Bitcoin Metropole
+2026-03-26,19:00,Bitcoin Einsteigerkurs, Workshop, Was ist Bitcoin? Grundlagen für Neueinsteiger verständlich erklärt.,Kurs,Bitcoin Metropole
+2026-03-27,19:00,Vortrag über Quantenphysik, Referent: Dr. Lukas Neumeier.,Kurs,Bitcoin Metropole
+2026-04-15,19:00,Vortrag über Institutionelle Adoption (ETFs, Firmen, Staaten), Referent: Alex Von Frankenberg.,Kurs,Bitcoin Metropole
