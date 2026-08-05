@@ -98,7 +98,8 @@ function renderEvents(data, filter) {
     let html = '';
 
     filtered.forEach(event => {
-        const date = new Date(event.Datum);
+        const [year, monthIndex, dateDay] = event.Datum.split('-').map(Number);
+        const date = new Date(year, monthIndex - 1, dateDay);
         const day = date.getDate();
         const month = months[date.getMonth()];
         const weekday = weekdays[date.getDay()];

@@ -543,17 +543,17 @@ a:hover {
     letter-spacing: 0.05em;
 }
 
-.badge-Kurs {
+.badge-Kurse {
     background: rgba(247, 147, 26, 0.15);
     color: var(--color-accent);
 }
 
-.badge-Workshop {
+.badge-Workshops {
     background: rgba(16, 185, 129, 0.15);
     color: var(--color-success);
 }
 
-.badge-Meetup {
+.badge-Meetups {
     background: rgba(168, 85, 247, 0.15);
     color: var(--color-purple);
 }
