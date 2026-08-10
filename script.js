@@ -199,7 +199,7 @@ const observer = new IntersectionObserver((entries) => {
     });
 }, observerOptions);
 
-document.querySelectorAll('.angebot-card, .stat-item, .mitmachen-card, .galerie-item').forEach(el => {
+document.querySelectorAll('.angebot-card, .stat-item, .mitmachen-card, .galerie-item, .partner-logo').forEach(el => {
     el.style.opacity = '0';
     el.style.transform = 'translateY(20px)';
     el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
