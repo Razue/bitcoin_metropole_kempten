@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,6 +8,7 @@
     <meta property="og:title" content="Bitcoin Metropole Kempten">
     <meta property="og:description" content="Der Community-Hub für Bitcoin im Allgäu. Kurse, Workshops, Meetups.">
     <meta property="og:type" content="website">
+    <meta property="og:image" content="images/metropole_01.webp">
     <title>Bitcoin Metropole Kempten</title>
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -40,6 +41,7 @@
     <!-- Hero Section -->
     <header class="hero">
         <div class="hero-bg"></div>
+        <img src="images/metropole_11.webp" alt="Bitcoin Metropole" class="hero-bg-img" loading="lazy">
         <div class="hero-content">
             <img src="images/bitcoin_metropole_kempten_logo.webp" alt="Bitcoin Metropole Kempten" class="hero-logo-img">
             <h1 class="hero-title">Bitcoin Metropole Kempten</h1>
@@ -69,25 +71,33 @@
                 <div class="about-text">
                     <p class="lead">Die Bitcoin Metropole Kempten ist ein offener Treffpunkt für Wissensaustausch, Bildung und kulturelle Projekte rund um Bitcoin.</p>
                     <p>Am 13. März 2026 eröffnet, wird der Community-Hub in der Rathausstraße 2 (1. Stock) vom Allgäuer Bitcoin-Künstler <strong>MX12 ART</strong> betrieben und von der lokalen Bitcoin-Community getragen.</p>
-                    <p>Von Einsteigerkursen über technische Workshops bis hin zu Kunst und Kultur — die Bitcoin Metropole bietet für jeden etwas. Der Raum wird als communitygetriebenes Projekt geführt — Unterstützung und Mitwirkung sind jederzeit willkommen.</p>
+                    <p>Von Einsteigerkursen über technische Workshops bis hin zu Kunst und Kultur — die Bitcoin Metropole bietet für jeden etwas. Der Raum wird als communitygetriebenes Projekt geführt — Unterstützung und Mitwirkung sind jederweil willkommen.</p>
                 </div>
-                <div class="about-stats">
-                    <div class="stat-item">
-                        <span class="stat-number">2x</span>
-                        <span class="stat-label">Kurse pro Woche</span>
+                <div class="about-image">
+                    <img src="images/metropole_10.webp" alt="Bitcoin Metropole Innenraum" class="about-space-img">
+                    <div class="about-gallery-mini">
+                        <img src="images/metropole_thumb_04.webp" alt="Bitcoin Metropole Community" loading="lazy">
+                        <img src="images/metropole_thumb_07.webp" alt="Bitcoin Metropole Raum" loading="lazy">
+                        <img src="images/metropole_thumb_16.webp" alt="Bitcoin Metropole Events" loading="lazy">
                     </div>
-                    <div class="stat-item">
-                        <span class="stat-number">&#9889;</span>
-                        <span class="stat-label">Workshops</span>
-                    </div>
-                    <div class="stat-item">
-                        <span class="stat-number">&#127912;</span>
-                        <span class="stat-label">Bitcoin-Kunst</span>
-                    </div>
-                    <div class="stat-item">
-                        <span class="stat-number">&#9734;</span>
-                        <span class="stat-label">Community</span>
-                    </div>
+                </div>
+            </div>
+            <div class="about-stats">
+                <div class="stat-item">
+                    <span class="stat-number">2x</span>
+                    <span class="stat-label">Kurse pro Woche</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">&#9889;</span>
+                    <span class="stat-label">Workshops</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">&#127912;</span>
+                    <span class="stat-label">Bitcoin-Kunst</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">&#9734;</span>
+                    <span class="stat-label">Community</span>
                 </div>
             </div>
         </div>
@@ -100,22 +110,34 @@
             <div class="angebot-grid">
                 <div class="angebot-card">
                     <div class="angebot-icon">&#128218;</div>
+                    <div class="angebot-card-img">
+                        <img src="images/metropole_thumb_05.webp" alt="Einsteigerkurse" loading="lazy">
+                    </div>
                     <h3>Einsteigerkurse</h3>
                     <p>Zweimal wöchentlich bieten wir Bitcoin-Einsteigerkurse an. Von den Grundlagen bis zur Selbstverwahrung — verständlich erklärt.</p>
                 </div>
                 <div class="angebot-card">
                     <div class="angebot-icon">&#128736;</div>
+                    <div class="angebot-card-img">
+                        <img src="images/metropole_thumb_06.webp" alt="Workshops" loading="lazy">
+                    </div>
                     <h3>Workshops</h3>
                     <p>Praxisnahe Workshops zu Cold Storage, Node Setup, Vexl Trading und mehr. Hands-on lernen und ausprobieren.</p>
                 </div>
                 <div class="angebot-card">
                     <div class="angebot-icon">&#129309;</div>
+                    <div class="angebot-card-img">
+                        <img src="images/metropole_thumb_09.webp" alt="Meetups" loading="lazy">
+                    </div>
                     <h3>Meetups</h3>
                     <p>Regelmäßige Community-Treffen zum Netzwerken und Austauschen. Offene Runde für alle Bitcoiner und Neugierige.</p>
                 </div>
                 <div class="angebot-card">
                     <div class="angebot-icon">&#127912;</div>
-                    <h3>Kunst & Kultur</h3>
+                    <div class="angebot-card-img">
+                        <img src="images/metropole_thumb_13.webp" alt="Bitcoin-Kunst" loading="lazy">
+                    </div>
+                    <h3>Kunst &amp; Kultur</h3>
                     <p>Bitcoin-Kunst von MX12 ART, Ausstellungen und kulturelle Veranstaltungen. Wo Bitcoin auf Kreativität trifft.</p>
                 </div>
             </div>
@@ -140,45 +162,119 @@
         </div>
     </section>
 
-    <!-- Galerie Section -->
-<section id="galerie" class="section galerie-section">
-    <div class="container">
-        <h2 class="section-title">Galerie</h2>
-        <p class="section-subtitle">Eindrücke aus der Bitcoin Metropole</p>
-
-        <div class="galerie-grid">
-            <div class="galerie-item galerie-item-large">
-                <img src="images/bitcoin_metropole_kempten_1.webp" alt="Bitcoin Metropole Kempten" loading="lazy">
-            </div>
-
-            <div class="galerie-item">
-                <img src="images/bitcoin_metropole_kempten_2.webp" alt="Bitcoin Metropole Kempten" loading="lazy">
-            </div>
-
-            <div class="galerie-item">
-                <img src="images/bitcoin_metropole_kempten_3.webp" alt="Bitcoin Metropole Kempten" loading="lazy">
-            </div>
-
-            <div class="galerie-item">
-                <img src="images/bitcoin_metropole_kempten_4.webp" alt="Bitcoin Metropole Kempten" loading="lazy">
-            </div>
-
-            <div class="galerie-item">
-                <img src="images/bitcoin_metropole_kempten_5.webp" alt="Bitcoin Metropole Kempten" loading="lazy">
-            </div>
-
-            <div class="galerie-item">
-                <img src="images/bitcoin_metropole_kempten_6.webp" alt="Bitcoin Metropole Kempten" loading="lazy">
-            </div>
-
-            <div class="galerie-item">
-                <img src="images/bitcoin_metropole_kempten_7.webp" alt="Bitcoin Metropole Kempten" loading="lazy">
+    <!-- Space Photos Section -->
+    <section id="space-photos" class="section space-photos-section">
+        <div class="container">
+            <h2 class="section-title">Bitcoin Metropole im Raum</h2>
+            <p class="section-subtitle">Eindrücke vom aktuellen Stand der Bitcoin Metropole</p>
+            <div class="space-photos-grid">
+                <div class="space-photo-item">
+                    <img src="images/metropole_01.webp" alt="Bitcoin Metropole Raum" loading="lazy">
+                    <div class="photo-caption">Hauptraum</div>
+                </div>
+                <div class="space-photo-item">
+                    <img src="images/metropole_02.webp" alt="Bitcoin Metropole Vortrag" loading="lazy">
+                    <div class="photo-caption">Vortrag & Diskussion</div>
+                </div>
+                <div class="space-photo-item">
+                    <img src="images/metropole_03.webp" alt="Bitcoin Metropole Community" loading="lazy">
+                    <div class="photo-caption">Community-Treffen</div>
+                </div>
+                <div class="space-photo-item">
+                    <img src="images/metropole_08.webp" alt="Bitcoin Metropole Workshop" loading="lazy">
+                    <div class="photo-caption">Hands-on Workshop</div>
+                </div>
+                <div class="space-photo-item">
+                    <img src="images/metropole_12.webp" alt="Bitcoin Metropole Kurse" loading="lazy">
+                    <div class="photo-caption">Einsteigerkurs</div>
+                </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
 
-<!-- Location Section -->
+    <!-- Galerie Section -->
+    <section id="galerie" class="section galerie-section">
+        <div class="container">
+            <h2 class="section-title">Galerie</h2>
+            <p class="section-subtitle">Eindrücke aus der Bitcoin Metropole</p>
+
+            <div class="galerie-grid">
+                <div class="galerie-item galerie-item-large">
+                    <img src="images/metropole_04.webp" alt="Bitcoin Metropole Kempten" loading="lazy">
+                </div>
+
+                <div class="galerie-item">
+                    <img src="images/metropole_14.webp" alt="Bitcoin Metropole Community" loading="lazy">
+                </div>
+
+                <div class="galerie-item">
+                    <img src="images/metropole_15.webp" alt="Bitcoin Metropole Workshop" loading="lazy">
+                </div>
+
+                <div class="galerie-item">
+                    <img src="images/metropole_thumb_01.webp" alt="Bitcoin Metropole Raum" loading="lazy">
+                </div>
+
+                <div class="galerie-item">
+                    <img src="images/metropole_thumb_02.webp" alt="Bitcoin Metropole Vortrag" loading="lazy">
+                </div>
+
+                <div class="galerie-item">
+                    <img src="images/metropole_06.webp" alt="Bitcoin Metropole Meetups" loading="lazy">
+                </div>
+
+                <div class="galerie-item">
+                    <img src="images/metropole_thumb_03.webp" alt="Bitcoin Metropole Kunst" loading="lazy">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Art Section -->
+    <section id="art" class="section art-section">
+        <div class="container">
+            <h2 class="section-title">Bitcoin-Kunst & Kultur</h2>
+            <p class="section-subtitle">MX12 ART — Bitcoin-Kunst von Allgäu</p>
+            <div class="art-grid">
+                <div class="art-item">
+                    <img src="images/metropole_07.webp" alt="Bitcoin Kunst MX12" loading="lazy">
+                </div>
+                <div class="art-item">
+                    <img src="images/metropole_09.webp" alt="Bitcoin Kunst Ausstellung" loading="lazy">
+                </div>
+                <div class="art-item">
+                    <img src="images/metropole_13.webp" alt="Bitcoin Hardware" loading="lazy">
+                </div>
+                <div class="art-item">
+                    <img src="images/metropole_16.webp" alt="Bitcoin ATM" loading="lazy">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Hardware / Tools Section -->
+    <section id="hardware" class="section hardware-section">
+        <div class="container">
+            <h2 class="section-title">Hardware & Tools</h2>
+            <p class="section-subtitle">Bitcoin infrastructure at Bitcoin Metropole</p>
+            <div class="hardware-grid">
+                <div class="hardware-item">
+                    <img src="images/metropole_17.webp" alt="Bitcoin Node" loading="lazy">
+                    <div class="hardware-caption">Full Node & Lightning</div>
+                </div>
+                <div class="hardware-item">
+                    <img src="images/metropole_thumb_08.webp" alt="Bitcoin Tools" loading="lazy">
+                    <div class="hardware-caption">Hardware Wallet & Tools</div>
+                </div>
+                <div class="hardware-item">
+                    <img src="images/metropole_thumb_14.webp" alt="Bitcoin Infrastructure" loading="lazy">
+                    <div class="hardware-caption">Infrastructure</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Location Section -->
     <section id="location" class="section location-section">
         <div class="container">
             <h2 class="section-title">Location</h2>
@@ -204,6 +300,7 @@
                     <p>Facebook: <a href="https://www.facebook.com/share/g/17JGAwmy97/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer">Join group</a></p>
                 </div>
                 <div class="location-map">
+                    <img src="images/metropole_thumb_10.webp" alt="Bitcoin Metropole Karte" class="location-map-img">
                     <iframe
                         src="https://www.openstreetmap.org/export/embed.html?bbox=10.3100%2C47.7210%2C10.3250%2C47.7300&layer=mapnik&marker=47.7267%2C10.3155"
                         width="100%"
@@ -229,12 +326,31 @@
                 </div>
                 <div class="mitmachen-card">
                     <h3>Community unterstützen</h3>
-                    <p>Der Raum lebt von der Community. Jede Hilfe zählt — ob als Referent, Helfer oder einfach durch Dabeisein.</p>
+                    <p>Der Raum lebt von der Community. Jede Hilfe zählt — als Referent, Helfer oder einfach durch Dabeisein.</p>
                 </div>
                 <div class="mitmachen-card highlight-card">
                     <h3>Spenden</h3>
                     <p>Unterstütze die Bitcoin Metropole über Geyserfund und hilf mit, den Raum zu finanzieren.</p>
                     <a href="https://geyser.fund/project/einundzwanzig/goals/1118?hero=mx12art" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Jetzt unterstützen</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Community Section -->
+    <section id="community" class="section community-section">
+        <div class="container">
+            <h2 class="section-title">Community</h2>
+            <p class="section-subtitle">Die Bitcoin Metropole in Bewegung</p>
+            <div class="community-grid">
+                <div class="community-item">
+                    <img src="images/metropole_thumb_12.webp" alt="Bitcoin Meetup" loading="lazy">
+                </div>
+                <div class="community-item">
+                    <img src="images/metropole_thumb_15.webp" alt="Bitcoin Community" loading="lazy">
+                </div>
+                <div class="community-item">
+                    <img src="images/metropole_thumb_17.webp" alt="Bitcoin Workshop" loading="lazy">
                 </div>
             </div>
         </div>
