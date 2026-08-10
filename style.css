@@ -9,6 +9,12 @@
     --color-text-muted: #888888;
     --color-accent: #f7931a;
     --color-accent-glow: rgba(247, 147, 26, 0.15);
+    --color-success: #10b981;
+    --color-success-glow: rgba(16, 185, 129, 0.15);
+    --color-purple: #a855f7;
+    --color-purple-glow: rgba(168, 85, 247, 0.15);
+    --color-pink: #ec4899;
+    --color-pink-glow: rgba(236, 72, 153, 0.15);
     --color-border: rgba(247, 147, 26, 0.1);
     --color-border-light: rgba(255, 255, 255, 0.05);
     --border-radius: 12px;
@@ -468,9 +474,13 @@ button {
 }
 
 .event-card {
+    display: grid;
+    grid-template-columns: 100px 1fr auto;
+    gap: 24px;
+    align-items: center;
     background: var(--color-bg-card);
-    border-radius: var(--border-radius);
     padding: 24px;
+    border-radius: var(--border-radius-lg);
     border: 1px solid var(--color-border-light);
     transition: var(--transition);
 }
@@ -478,39 +488,100 @@ button {
 .event-card:hover {
     border-color: var(--color-accent);
     transform: translateY(-2px);
-}
-
-.event-title {
-    font-size: 1.1rem;
-    font-weight: 600;
-    margin-bottom: 8px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
 }
 
 .event-date {
-    color: var(--color-accent);
-    font-size: 0.9rem;
-    font-weight: 500;
-    margin-bottom: 12px;
+    text-align: center;
 }
 
-.event-desc {
+.event-day {
+    display: block;
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--color-accent);
+    line-height: 1;
+}
+
+.event-month {
+    display: block;
+    font-size: 0.75rem;
+    color: var(--color-text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.event-weekday {
+    display: block;
+    font-size: 0.85rem;
+    color: var(--color-text-secondary);
+    margin-top: 4px;
+}
+
+.event-info h3 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: var(--color-text);
+}
+
+.event-info p {
     color: var(--color-text-secondary);
     font-size: 0.9rem;
 }
 
 .event-meta {
     display: flex;
-    gap: 12px;
-    margin-top: 16px;
-    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 8px;
 }
 
-.event-category {
-    font-size: 0.8rem;
-    padding: 4px 12px;
-    border-radius: 12px;
-    background: var(--color-bg);
+.event-time {
+    font-size: 0.9rem;
+    font-weight: 600;
     color: var(--color-text-secondary);
+}
+
+.event-type-badge {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 100px;
+    font-size: 0.65rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    white-space: nowrap;
+}
+
+.badge-Kurse {
+    background: rgba(247, 147, 26, 0.15);
+    color: var(--color-accent);
+    box-shadow: 0 0 10px rgba(247, 147, 26, 0.3);
+}
+
+.badge-Workshops {
+    background: rgba(16, 185, 129, 0.15);
+    color: var(--color-success);
+    box-shadow: 0 0 10px rgba(16, 185, 129, 0.3);
+}
+
+.badge-Meetups {
+    background: rgba(168, 85, 247, 0.15);
+    color: var(--color-purple);
+    box-shadow: 0 0 10px rgba(168, 85, 247, 0.3);
+}
+
+.badge-Kultur {
+    background: rgba(236, 72, 153, 0.15);
+    color: var(--color-pink);
+    box-shadow: 0 0 10px rgba(236, 72, 153, 0.3);
+}
+
+.events-empty {
+    text-align: center;
+    padding: 60px 20px;
+    color: var(--color-text-muted);
 }
 
 /* ===== Galerie Section ===== */
@@ -748,6 +819,22 @@ button {
 
     .events-list {
         grid-template-columns: 1fr;
+    }
+
+    .event-card {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+
+    .event-date {
+        display: flex;
+        gap: 8px;
+        justify-content: center;
+        align-items: baseline;
+    }
+
+    .event-meta {
+        justify-content: center;
     }
 
     .about-stats {
