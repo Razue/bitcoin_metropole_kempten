@@ -876,6 +876,20 @@ a:hover {
     background: var(--color-bg);
 }
 
+.mitmachen-hero-img {
+    text-align: center;
+    margin: 40px auto 60px;
+    max-width: 600px;
+}
+
+.mitmachen-hero-img img {
+    width: 100%;
+    height: auto;
+    border-radius: var(--border-radius-lg);
+    border: 1px solid var(--color-border);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+}
+
 .mitmachen-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
