@@ -82,9 +82,22 @@ button {
 .nav-container {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
     max-width: var(--max-width);
     margin: 0 auto;
+    position: relative;
+}
+
+.nav-container .logo {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.nav-links {
+    display: flex;
+    gap: 32px;
+    margin-left: auto;
 }
 
 .logo-img {
@@ -381,6 +394,30 @@ button {
 .angebot-icon {
     font-size: 2.5rem;
     margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 80px;
+    height: 80px;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 50%;
+    background: var(--color-bg);
+    color: var(--color-accent);
+    box-shadow: 0 0 20px rgba(247, 147, 26, 0.3),
+                inset 0 0 10px rgba(247, 147, 26, 0.1);
+    animation: glow 2s ease-in-out infinite alternate;
+}
+
+@keyframes glow {
+    0% {
+        box-shadow: 0 0 20px rgba(247, 147, 26, 0.3),
+                    inset 0 0 10px rgba(247, 147, 26, 0.1);
+    }
+    100% {
+        box-shadow: 0 0 30px rgba(247, 147, 26, 0.5),
+                    inset 0 0 15px rgba(247, 147, 26, 0.2);
+    }
 }
 
 .angebot-card h3 {
@@ -482,46 +519,34 @@ button {
 }
 
 .galerie-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 12px;
+    column-gap: 12px;
+    row-gap: 12px;
     max-width: 1400px;
     margin: 0 auto;
+    column-count: 4;
+    column-fill: balance;
 }
 
 .galerie-item {
     overflow: hidden;
     border-radius: var(--border-radius);
     position: relative;
-    aspect-ratio: 1 / 1;
+    margin-bottom: 12px;
+    display: block;
+    width: 100%;
+    break-inside: avoid;
 }
 
 .galerie-item img {
     width: 100%;
-    height: 100%;
-    object-fit: cover;
+    height: auto;
+    display: block;
     transition: transform 0.5s ease;
     cursor: zoom-in;
 }
 
 .galerie-item:hover img {
     transform: scale(1.05);
-}
-
-.galerie-item-large {
-    grid-column: span 2;
-    grid-row: span 2;
-    aspect-ratio: 1 / 1;
-}
-
-.galerie-item-tall {
-    grid-row: span 2;
-    aspect-ratio: 1 / 1;
-}
-
-.galerie-item-wide {
-    grid-column: span 2;
-    aspect-ratio: 16 / 9;
 }
 
 /* ===== Location Section ===== */
@@ -713,9 +738,12 @@ button {
     }
 
     .angebot-grid,
-    .mitmachen-grid,
-    .galerie-grid {
+    .mitmachen-grid {
         grid-template-columns: 1fr;
+    }
+
+    .galerie-grid {
+        column-count: 2;
     }
 
     .events-list {
@@ -729,23 +757,11 @@ button {
     .location-grid {
         grid-template-columns: 1fr;
     }
-
-    .galerie-grid {
-        grid-template-columns: 2fr 1fr;
-    }
-
-    .galerie-item-large,
-    .galerie-item-tall,
-    .galerie-item-wide {
-        grid-column: auto;
-        grid-row: auto;
-        aspect-ratio: 1 / 1;
-    }
 }
 
 @media (max-width: 480px) {
     .galerie-grid {
-        grid-template-columns: 1fr;
+        column-count: 1;
     }
 
     .footer-grid {
