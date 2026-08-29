@@ -634,20 +634,32 @@ button {
 .logo-marquee-track {
     display: flex;
     align-items: center;
-    justify-content: center;
-    gap: 80px;
     animation: marquee 40s linear infinite;
-    width: fit-content;
-    margin: 0 auto;
+    width: max-content;
+}
+
+.logo-marquee-group {
+    display: flex;
+    align-items: center;
+    gap: 80px;
+    padding-right: 80px;
+    flex-shrink: 0;
 }
 
 .logo-marquee-wrapper:hover .logo-marquee-track {
     animation-play-state: paused;
 }
 
+@media (prefers-reduced-motion: reduce) {
+    .logo-marquee-track {
+        animation: none;
+        transform: none;
+    }
+}
+
 @keyframes marquee {
     0% { transform: translateX(0); }
-    100% { transform: translateX(calc(-50%)); }
+    100% { transform: translateX(calc(-100% / 3)); }
 }
 
 .partner-logo {
@@ -887,8 +899,12 @@ button {
         grid-template-columns: 1fr;
     }
 
-    .logo-marquee-track {
+    .logo-marquee-group {
         gap: 40px;
+        padding-right: 40px;
+    }
+
+    .logo-marquee-track {
         animation-duration: 30s;
     }
 
