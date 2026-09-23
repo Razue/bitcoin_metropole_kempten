@@ -1135,3 +1135,77 @@ button {
         }
     }
 }
+
+/* ===== Event-Sticker ===== */
+.event-sticker {
+    position: relative;
+    background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+    padding: 24px 20px 20px;
+    margin: 0 16px 32px;
+    border-radius: 6px;
+    text-align: center;
+    transform: rotate(-1.5deg);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.45), 0 2px 8px rgba(247,147,26,0.15);
+    border: 1px solid rgba(247,147,26,0.2);
+    overflow: hidden;
+}
+.event-sticker::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #f7931a, #ff6a00, #f7931a);
+}
+.event-sticker-inner {
+    position: relative;
+    z-index: 1;
+}
+.event-sticker-logo {
+    width: 110px;
+    height: auto;
+    display: block;
+    margin: 0 auto 12px;
+    filter: drop-shadow(0 2px 8px rgba(247,147,26,0.4));
+}
+.event-sticker-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: #f7931a;
+    letter-spacing: 0.06em;
+    margin: 0 0 6px;
+    text-transform: uppercase;
+    line-height: 1.1;
+}
+.event-sticker-date {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1.15rem;
+    font-weight: 500;
+    color: #ffffff;
+    margin: 0 0 4px;
+    letter-spacing: 0.04em;
+}
+.event-sticker-location {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.9rem;
+    color: #b0b0b0;
+    margin: 0;
+    letter-spacing: 0.03em;
+}
+
+@media (max-width: 480px) {
+    .event-sticker {
+        margin: 0 10px 24px;
+        padding: 18px 14px 16px;
+        transform: rotate(-0.8deg);
+    }
+    .event-sticker-logo {
+        width: 80px;
+    }
+    .event-sticker-title {
+        font-size: 1.6rem;
+    }
+    .event-sticker-date {
+        font-size: 0.95rem;
+    }
+}
