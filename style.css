@@ -945,20 +945,17 @@ button {
     }
 
     .herbst-header {
-        margin-bottom: 20px;
+        text-align: center;
+        margin-bottom: 16px;
     }
 
-    .herbst-badge {
-        display: inline-block;
-        background: var(--color-accent);
-        color: #000;
-        font-size: 0.7rem;
-        font-weight: 700;
-        padding: 4px 12px;
-        border-radius: 100px;
-        text-transform: uppercase;
-        letter-spacing: 0.05em;
-        margin-bottom: 12px;
+    .herbst-logo-watermark {
+        width: 80px;
+        height: 80px;
+        opacity: 0.75;
+        display: block;
+        margin: 0 auto 8px;
+        filter: drop-shadow(0 2px 8px rgba(247,147,26,0.4));
     }
 
     .herbst-title {
@@ -1124,6 +1121,11 @@ button {
 
         .herbst-title {
             font-size: 1.4rem;
+        }
+
+        .herbst-logo-watermark {
+            width: 70px;
+            height: 70px;
         }
 
         .herbst-available {
