@@ -1141,7 +1141,7 @@ button {
     position: relative;
     background: linear-gradient(135deg, #1a0a00 0%, #2d1500 40%, #1a0a00 100%);
     padding: 20px 16px 14px;
-    margin: 8px 0 8px;
+    margin: 24px 0 8px;
     border-radius: 3px;
     text-align: center;
     transform: rotate(-3.5deg);
@@ -1178,11 +1178,21 @@ button {
 .event-sticker-logo {
     width: 72px;
     height: 72px;
-    display: block;
     flex-shrink: 0;
+    background-image: url('images/herbstblatt-logo.webp');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: #f7931a;
+    -webkit-mask-image: url('images/herbstblatt-logo.webp');
+    mask-image: url('images/herbstblatt-logo.webp');
+    -webkit-mask-size: contain;
+    mask-size: contain;
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    -webkit-mask-position: center;
+    mask-position: center;
     filter: drop-shadow(0 3px 10px rgba(247,147,26,0.6));
-    background: none;
-    mix-blend-mode: multiply;
 }
 .event-sticker-text {
     display: flex;
@@ -1224,7 +1234,7 @@ button {
         padding: 14px 10px 10px;
         transform: rotate(-2deg);
         border-radius: 2px;
-        margin-top: 4px;
+        margin-top: 12px;
         margin-bottom: 4px;
     }
     .event-sticker-inner {
