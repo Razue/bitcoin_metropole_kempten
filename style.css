@@ -1140,17 +1140,17 @@ button {
 .event-sticker {
     position: relative;
     background: linear-gradient(135deg, #1a0a00 0%, #2d1500 40%, #1a0a00 100%);
-    padding: 14px 16px 12px;
-    margin: 0 0 0;
-    border-radius: 4px;
+    padding: 20px 16px 14px;
+    margin: 8px 0 8px;
+    border-radius: 3px;
     text-align: center;
-    transform: rotate(-2.5deg);
-    box-shadow: 0 4px 20px rgba(0,0,0,0.5), 0 0 0 1px rgba(247,147,26,0.25), 0 0 40px rgba(247,147,26,0.08);
-    border: 1px solid rgba(247,147,26,0.25);
-    overflow: hidden;
-    width: calc(100% + 32px);
-    margin-left: -16px;
-    margin-right: -16px;
+    transform: rotate(-3.5deg);
+    box-shadow: 3px 4px 16px rgba(0,0,0,0.6), 0 0 0 1px rgba(247,147,26,0.3), 0 0 48px rgba(247,147,26,0.1);
+    border: 1px solid rgba(247,147,26,0.3);
+    overflow: visible;
+    width: calc(100% + 40px);
+    margin-left: -20px;
+    margin-right: -20px;
 }
 .event-sticker::before {
     content: '';
@@ -1164,7 +1164,7 @@ button {
     position: absolute;
     bottom: 0; left: 0; right: 0;
     height: 2px;
-    background: linear-gradient(90deg, transparent, rgba(247,147,26,0.4), transparent);
+    background: linear-gradient(90deg, transparent, rgba(247,147,26,0.5), transparent);
 }
 .event-sticker-inner {
     position: relative;
@@ -1172,15 +1172,15 @@ button {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 14px;
+    gap: 16px;
     flex-wrap: wrap;
 }
 .event-sticker-logo {
-    width: 56px;
-    height: 56px;
+    width: 72px;
+    height: 72px;
     display: block;
     flex-shrink: 0;
-    filter: drop-shadow(0 2px 6px rgba(247,147,26,0.5));
+    filter: drop-shadow(0 3px 10px rgba(247,147,26,0.6));
     background: none;
     mix-blend-mode: multiply;
 }
@@ -1188,52 +1188,55 @@ button {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 2px;
+    gap: 3px;
 }
 .event-sticker-title {
     font-family: 'Space Grotesk', sans-serif;
-    font-size: 1.5rem;
+    font-size: 1.7rem;
     font-weight: 700;
     color: #f7931a;
-    letter-spacing: 0.08em;
+    letter-spacing: 0.1em;
     margin: 0;
     text-transform: uppercase;
     line-height: 1;
 }
 .event-sticker-date {
     font-family: 'Space Grotesk', sans-serif;
-    font-size: 0.9rem;
+    font-size: 0.95rem;
     font-weight: 500;
     color: #ffffff;
     margin: 0;
-    letter-spacing: 0.05em;
+    letter-spacing: 0.06em;
 }
 .event-sticker-location {
     font-family: 'Space Grotesk', sans-serif;
-    font-size: 0.75rem;
+    font-size: 0.8rem;
     color: #b0b0b0;
     margin: 0;
-    letter-spacing: 0.04em;
+    letter-spacing: 0.05em;
 }
 
 @media (max-width: 480px) {
     .event-sticker {
-        width: calc(100% + 20px);
-        margin-left: -10px;
-        margin-right: -10px;
-        padding: 10px 12px 8px;
-        transform: rotate(-1.5deg);
-        border-radius: 3px;
+        width: calc(100% + 24px);
+        margin-left: -12px;
+        margin-right: -12px;
+        padding: 14px 10px 10px;
+        transform: rotate(-2deg);
+        border-radius: 2px;
+        margin-top: 4px;
+        margin-bottom: 4px;
     }
     .event-sticker-inner {
-        gap: 8px;
+        gap: 10px;
     }
     .event-sticker-logo {
-        width: 40px;
-        height: 40px;
+        width: 48px;
+        height: 48px;
     }
     .event-sticker-title {
-        font-size: 1.15rem;
+        font-size: 1.2rem;
+        letter-spacing: 0.08em;
     }
     .event-sticker-date {
         font-size: 0.8rem;
