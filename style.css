@@ -161,11 +161,12 @@ button {
 /* ===== Hero Section ===== */
 .hero {
     position: relative;
-    min-height: 100vh;
+    min-height: 50vh;
     display: flex;
     align-items: center;
     justify-content: center;
-    padding-top: 80px;
+    padding-top: 40px;
+    padding-bottom: 40px;
     text-align: center;
 }
 
