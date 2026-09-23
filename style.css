@@ -951,13 +951,22 @@ button {
     position: absolute;
     top: 50%;
     left: 50%;
-    width: 300px;
-    height: 300px;
+    width: 350px;
+    height: 350px;
     transform: translate(-50%, -50%);
     background-image: url('images/herbstblatt-logo.webp');
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
+    background-color: #f7931a;
+    -webkit-mask-image: url('images/herbstblatt-logo.webp');
+    mask-image: url('images/herbstblatt-logo.webp');
+    -webkit-mask-size: contain;
+    mask-size: contain;
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    -webkit-mask-position: center;
+    mask-position: center;
     opacity: 0.05;
     pointer-events: none;
     z-index: 0;
@@ -1147,8 +1156,8 @@ button {
 .event-sticker {
     position: relative;
     background: linear-gradient(135deg, #1a0a00 0%, #2d1500 40%, #1a0a00 100%);
-    padding: 20px 16px 14px;
-    margin: 24px 0 8px;
+    padding: 22px 16px 16px;
+    margin: 48px 0 8px;
     border-radius: 3px;
     text-align: center;
     transform: rotate(-3.5deg);
@@ -1158,6 +1167,7 @@ button {
     width: calc(100% + 40px);
     margin-left: -20px;
     margin-right: -20px;
+    z-index: 10;
 }
 .event-sticker::before {
     content: '';
@@ -1238,11 +1248,12 @@ button {
         width: calc(100% + 24px);
         margin-left: -12px;
         margin-right: -12px;
-        padding: 18px 10px 14px;
+        padding: 20px 10px 14px;
         transform: rotate(-2deg);
         border-radius: 2px;
-        margin-top: 32px;
+        margin-top: 48px;
         margin-bottom: 8px;
+        z-index: 10;
     }
     .event-sticker-inner {
         gap: 10px;
@@ -1266,7 +1277,7 @@ button {
 /* ===== Event-Info ===== */
 .event-info {
     background: transparent;
-    padding: 40px 20px;
+    padding: 60px 20px 40px;
     margin: 0;
     border: none;
     box-shadow: none;
