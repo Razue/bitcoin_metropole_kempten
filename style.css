@@ -926,4 +926,212 @@ button {
     .hero-title {
         font-size: 1.7rem;
     }
+
+    /* ===== Bitcoin Herbst 2026 Ticket-Block ===== */
+    .bitcoin-herbst-section {
+        background: var(--color-bg-secondary);
+        border-top: 1px solid var(--color-border-light);
+        border-bottom: 1px solid var(--color-border-light);
+    }
+
+    .bitcoin-herbst-card {
+        max-width: 480px;
+        margin: 0 auto;
+        background: var(--color-bg-card);
+        border: 1px solid var(--color-border);
+        border-radius: var(--border-radius-lg);
+        padding: 32px 24px;
+        text-align: center;
+    }
+
+    .herbst-header {
+        margin-bottom: 20px;
+    }
+
+    .herbst-badge {
+        display: inline-block;
+        background: var(--color-accent);
+        color: #000;
+        font-size: 0.7rem;
+        font-weight: 700;
+        padding: 4px 12px;
+        border-radius: 100px;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        margin-bottom: 12px;
+    }
+
+    .herbst-title {
+        font-size: 1.8rem;
+        font-weight: 700;
+        margin-bottom: 8px;
+        letter-spacing: -0.01em;
+    }
+
+    .herbst-date {
+        color: var(--color-text-secondary);
+        font-size: 1rem;
+        margin-bottom: 20px;
+    }
+
+    .herbst-availability {
+        margin-bottom: 16px;
+    }
+
+    .herbst-available {
+        font-size: 2.5rem;
+        font-weight: 700;
+        color: var(--color-accent);
+    }
+
+    .herbst-available-label {
+        display: block;
+        color: var(--color-text-secondary);
+        font-size: 0.9rem;
+    }
+
+    /* .herbst-total merged below */
+
+    .herbst-price {
+        margin-bottom: 24px;
+    }
+
+    .herbst-price-amount {
+        font-size: 2rem;
+        font-weight: 700;
+        color: var(--color-text);
+    }
+
+    .herbst-price-unit {
+        font-size: 1rem;
+        color: var(--color-text-secondary);
+        margin-left: 4px;
+    }
+
+    .herbst-price-div {
+        color: var(--color-text-muted);
+        font-size: 0.9rem;
+        margin-left: 8px;
+    }
+
+    .herbst-form {
+        text-align: left;
+    }
+
+    .herbst-form-group {
+        margin-bottom: 16px;
+    }
+
+    .herbst-form-group label {
+        display: block;
+        font-size: 0.85rem;
+        font-weight: 500;
+        color: var(--color-text-secondary);
+        margin-bottom: 6px;
+    }
+
+    .herbst-form-group input,
+    .herbst-form-group select {
+        width: 100%;
+        padding: 12px 16px;
+        background: var(--color-bg);
+        border: 1px solid var(--color-border-light);
+        border-radius: var(--border-radius);
+        color: var(--color-text);
+        font-family: inherit;
+        font-size: 1rem;
+        transition: var(--transition);
+    }
+
+    .herbst-form-group input:focus,
+    .herbst-form-group select:focus {
+        outline: none;
+        border-color: var(--color-accent);
+        box-shadow: 0 0 0 3px var(--color-accent-glow);
+    }
+
+    .herbst-error {
+        display: block;
+        color: #ef4444;
+        font-size: 0.8rem;
+        margin-top: 4px;
+        min-height: 1.2em;
+    }
+
+    .herbst-total {
+        margin-bottom: 20px;
+        font-size: 1rem;
+        color: var(--color-text-secondary);
+    }
+
+    .herbst-total strong {
+        color: var(--color-accent);
+        font-size: 1.1rem;
+    }
+
+    .btn-herst {
+        width: 100%;
+        padding: 16px 32px;
+        font-size: 1.1rem;
+        font-weight: 600;
+    }
+
+    .herbst-status {
+        margin-top: 16px;
+        font-size: 0.9rem;
+        min-height: 1.4em;
+    }
+
+    .herbst-status.success {
+        color: var(--color-success);
+    }
+
+    .herbst-status.error {
+        color: #ef4444;
+    }
+
+    .herbst-status.info {
+        color: var(--color-accent);
+    }
+
+    .herbst-footer {
+        margin-top: 24px;
+        padding-top: 20px;
+        border-top: 1px solid var(--color-border-light);
+    }
+
+    .herbst-footer p {
+        color: var(--color-text-muted);
+        font-size: 0.8rem;
+        margin-bottom: 4px;
+    }
+
+    /* Sold-out Zustand */
+    .herbst-sold-out .herbst-available {
+        color: #ef4444;
+    }
+
+    .herbst-sold-out .btn-herst {
+        opacity: 0.5;
+        cursor: not-allowed;
+    }
+
+    /* Responsive */
+    @media (max-width: 480px) {
+        .bitcoin-herbst-card {
+            padding: 24px 16px;
+        }
+
+        .herbst-title {
+            font-size: 1.4rem;
+        }
+
+        .herbst-available {
+            font-size: 2rem;
+        }
+
+        .herbst-price-amount {
+            font-size: 1.6rem;
+        }
+    }
 }

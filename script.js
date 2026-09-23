@@ -214,3 +214,138 @@ document.head.insertAdjacentHTML('beforeend', `
         }
     </style>
 `);
+
+// ===== Bitcoin Herbst 2026 Ticket-Modul =====
+(function() {
+    const API = 'https://tickets.lernbitcoin.com';
+    const form = document.getElementById('herbst-ticket-form');
+    const cta = document.getElementById('herbst-cta');
+    const status = document.getElementById('herbst-status');
+    const availableCount = document.getElementById('herbst-available-count');
+    const totalDisplay = document.getElementById('herbst-total');
+    const quantitySelect = document.getElementById('herbst-quantity');
+    const pricePerTicket = 100000;
+
+    // Verfügbarkeit laden
+    async function loadAvailability() {
+        try {
+            const res = await fetch(API + '/api/tickets/available');
+            if (!res.ok) return;
+            const data = await res.json();
+            const count = data.available || 0;
+            availableCount.textContent = count;
+            if (count === 0) {
+                document.getElementById('herbst-availability').classList.add('herbst-sold-out');
+                cta.disabled = true;
+                cta.textContent = 'Ausverkauft';
+            }
+        } catch (_) {
+            // API nicht erreichbar – keine Fehlermeldung anzeigen
+        }
+    }
+
+    // Gesamtpreis aktualisieren
+    function updateTotal() {
+        const qty = parseInt(quantitySelect.value) || 1;
+        const total = qty * pricePerTicket;
+        totalDisplay.innerHTML = 'Gesamt: <strong>' + total.toLocaleString() + ' sats</strong>';
+    }
+
+    // Validierung
+    function validate(name, email, quantity) {
+        const errors = { name: '', email: '', quantity: '' };
+        let valid = true;
+
+        if (!name || name.trim().length === 0) {
+            errors.name = 'Name erforderlich';
+            valid = false;
+        }
+        if (!email || !email.includes('@') || !email.includes('.')) {
+            errors.email = 'Gültige E-Mail erforderlich';
+            valid = false;
+        }
+        if (!Number.isInteger(quantity) || quantity < 1 || quantity > 5) {
+            errors.quantity = '1–5 Tickets';
+            valid = false;
+        }
+        return { valid, errors };
+    }
+
+    // Fehler anzeigen
+    function showErrors(errors) {
+        document.getElementById('herbst-error-name').textContent = errors.name;
+        document.getElementById('herbst-error-email').textContent = errors.email;
+        document.getElementById('herbst-error-quantity').textContent = errors.quantity;
+    }
+
+    function clearErrors() {
+        showErrors({ name: '', email: '', quantity: '' });
+    }
+
+    // Status anzeigen
+    function setStatus(msg, type) {
+        status.textContent = msg;
+        status.className = 'herbst-status ' + type;
+    }
+
+    // Formular absenden
+    async function handleSubmit(e) {
+        e.preventDefault();
+        clearErrors();
+
+        const name = document.getElementById('herbst-name').value;
+        const email = document.getElementById('herbst-email').value;
+        const quantity = parseInt(quantitySelect.value) || 1;
+
+        // Client-seitige Validierung
+        const { valid, errors } = validate(name, email, quantity);
+        if (!valid) {
+            showErrors(errors);
+            return;
+        }
+
+        // Double-Submit verhindern
+        cta.disabled = true;
+        cta.textContent = 'Wird gesichert...';
+        setStatus('Ticket wird gesichert…', 'info');
+
+        try {
+            const res = await fetch(API + '/api/tickets/create', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ name: name.trim(), email: email.trim().toLowerCase(), quantity })
+            });
+
+            const data = await res.json();
+
+            if (!res.ok) {
+                if (data.error === 'sold_out') {
+                    setStatus('Leider ausverkauft.', 'error');
+                    availableCount.textContent = '0';
+                    cta.disabled = true;
+                    cta.textContent = 'Ausverkauft';
+                } else {
+                    setStatus(data.message || 'Fehler beim Sichern.', 'error');
+                }
+                cta.disabled = false;
+                cta.textContent = 'Ticket sichern';
+                return;
+            }
+
+            // Erfolgreich → BTCPay Checkout
+            setStatus('Weiter zu BTCPay…', 'success');
+            window.location.href = data.payUrl;
+        } catch (_) {
+            setStatus('Verbindung fehlgeschlagen. Bitte erneut versuchen.', 'error');
+            cta.disabled = false;
+            cta.textContent = 'Ticket sichern';
+        }
+    }
+
+    // Events
+    form.addEventListener('submit', handleSubmit);
+    quantitySelect.addEventListener('change', updateTotal);
+
+    // Initial laden
+    loadAvailability();
+})();
