@@ -934,28 +934,37 @@ button {
         border-bottom: 1px solid var(--color-border-light);
     }
 
-    .bitcoin-herbst-card {
-        max-width: 480px;
-        margin: 0 auto;
-        background: var(--color-bg-card);
-        border: 1px solid var(--color-border);
-        border-radius: var(--border-radius-lg);
-        padding: 32px 24px;
-        text-align: center;
-    }
+.bitcoin-herbst-card {
+    position: relative;
+    overflow: hidden;
+    max-width: 480px;
+    margin: 0 auto;
+    background: var(--color-bg-card);
+    border: 1px solid var(--color-border);
+    border-radius: var(--border-radius-lg);
+    padding: 32px 24px;
+    text-align: center;
+}
+.bitcoin-herbst-card::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 300px;
+    height: 300px;
+    transform: translate(-50%, -50%);
+    background-image: url('images/herbstblatt-logo.webp');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    opacity: 0.05;
+    pointer-events: none;
+    z-index: 0;
+}
 
     .herbst-header {
         text-align: center;
         margin-bottom: 16px;
-    }
-
-    .herbst-logo-watermark {
-        width: 80px;
-        height: 80px;
-        opacity: 0.75;
-        display: block;
-        margin: 0 auto 8px;
-        filter: drop-shadow(0 2px 8px rgba(247,147,26,0.4));
     }
 
     .herbst-title {
@@ -1123,11 +1132,6 @@ button {
             font-size: 1.4rem;
         }
 
-        .herbst-logo-watermark {
-            width: 70px;
-            height: 70px;
-        }
-
         .herbst-available {
             font-size: 2rem;
         }
@@ -1233,10 +1237,10 @@ button {
         width: calc(100% + 24px);
         margin-left: -12px;
         margin-right: -12px;
-        padding: 16px 10px 12px;
+        padding: 18px 10px 14px;
         transform: rotate(-2deg);
         border-radius: 2px;
-        margin-top: 20px;
+        margin-top: 32px;
         margin-bottom: 8px;
     }
     .event-sticker-inner {
@@ -1261,16 +1265,11 @@ button {
 /* ===== Event-Info ===== */
 .event-info {
     background: transparent;
-    padding: 0;
-    margin: 0 0 32px;
+    padding: 40px 20px;
+    margin: 0;
     border: none;
     box-shadow: none;
     text-align: center;
-}
-.event-info-inner {
-    max-width: 520px;
-    margin: 0 auto;
-    padding: 0 20px;
 }
 .event-info-headline {
     font-family: 'Space Grotesk', sans-serif;
@@ -1289,27 +1288,9 @@ button {
     letter-spacing: 0.06em;
     text-transform: uppercase;
     color: rgba(255,255,255,0.65);
-    margin: 0 0 16px;
+    margin: 0;
     display: block;
     line-height: 1.8;
-}
-.event-info-footer {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    font-family: 'Space Grotesk', sans-serif;
-    font-size: 0.7rem;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: rgba(255,255,255,0.45);
-}
-.event-info-date,
-.event-info-places {
-    color: rgba(255,255,255,0.55);
-}
-.event-info-sep {
-    color: rgba(247,147,26,0.35);
 }
 
 @media (max-width: 768px) {

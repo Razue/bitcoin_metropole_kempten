@@ -257,11 +257,13 @@ document.head.insertAdjacentHTML('beforeend', `
         let valid = true;
 
         if (!name || name.trim().length === 0) {
-            errors.name = 'Name erforderlich';
+            errors.name = 'Name oder Pseudonym erforderlich';
             valid = false;
         }
-        if (!email || !email.includes('@') || !email.includes('.')) {
-            errors.email = 'Gültige E-Mail erforderlich';
+        if (email && (email.includes('@') && email.includes('.'))) {
+            // email valid, no error
+        } else if (email) {
+            errors.email = 'Gültige E-Mail';
             valid = false;
         }
         if (!Number.isInteger(quantity) || quantity < 1 || quantity > 5) {
