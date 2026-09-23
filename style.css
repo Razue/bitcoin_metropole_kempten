@@ -1266,129 +1266,79 @@ button {
     text-align: center;
 }
 .event-info-inner {
-    max-width: 640px;
+    max-width: 600px;
     margin: 0 auto;
     padding: 0 16px;
 }
 .event-info-headline {
     font-family: 'Space Grotesk', sans-serif;
+    font-size: clamp(1.2rem, 3vw, 1.6rem);
+    font-weight: 200;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: #f7931a;
+    margin: 0 0 12px;
+}
+.event-info-items {
+    font-family: 'Space Grotesk', sans-serif;
     font-size: 0.75rem;
-    font-weight: 400;
-    color: #f7931a;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    margin: 0 0 28px;
-    padding: 0;
-    line-height: 1;
-}
-.event-info-grid {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    gap: 0;
-    margin: 0 0 28px;
-    padding: 0;
-    list-style: none;
-}
-.event-info-item {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 4px;
-    padding: 0;
-}
-.event-info-num {
-    font-family: 'Space Grotesk', sans-serif;
-    font-size: 2.2rem;
     font-weight: 300;
-    color: #f7931a;
-    letter-spacing: -0.02em;
-    line-height: 1;
-    margin: 0;
-    opacity: 0.85;
-}
-.event-info-label {
-    font-family: 'Space Grotesk', sans-serif;
-    font-size: 0.65rem;
-    font-weight: 600;
-    color: #ffffff;
-    letter-spacing: 0.14em;
+    letter-spacing: 0.08em;
     text-transform: uppercase;
-    margin: 0;
-    line-height: 1;
-}
-.event-info-desc {
-    font-family: 'Space Grotesk', sans-serif;
-    font-size: 0.6rem;
-    color: #888;
-    letter-spacing: 0.02em;
-    margin: 0;
-    line-height: 1.3;
-    text-align: center;
-    max-width: 100px;
+    color: rgba(255,255,255,0.7);
+    margin: 0 0 16px;
+    display: block;
+    line-height: 1.6;
 }
 .event-info-footer {
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 8px;
-    padding-top: 16px;
-    border-top: 1px solid rgba(247,147,26,0.15);
-}
-.event-info-date {
     font-family: 'Space Grotesk', sans-serif;
     font-size: 0.7rem;
-    font-weight: 500;
-    color: #b0b0b0;
-    letter-spacing: 0.08em;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.5);
+}
+.event-info-date,
+.event-info-places {
+    color: rgba(255,255,255,0.6);
 }
 .event-info-sep {
-    color: rgba(247,147,26,0.3);
-    font-size: 0.7rem;
-}
-.event-info-places {
-    font-family: 'Space Grotesk', sans-serif;
-    font-size: 0.7rem;
-    font-weight: 500;
-    color: #b0b0b0;
-    letter-spacing: 0.08em;
+    color: rgba(247,147,26,0.4);
 }
 
 @media (max-width: 768px) {
-    .event-info-grid {
-        grid-template-columns: repeat(3, 1fr);
-        gap: 16px 0;
+    .event-info-headline {
+        font-size: 1rem;
+        letter-spacing: 0.12em;
+        margin-bottom: 8px;
     }
-    .event-info-num {
-        font-size: 1.6rem;
+    .event-info-items {
+        font-size: 0.6rem;
+        letter-spacing: 0.06em;
+        margin-bottom: 12px;
     }
-    .event-info-desc {
-        max-width: 80px;
-        font-size: 0.55rem;
+    .event-info-footer {
+        font-size: 0.6rem;
+        gap: 6px;
     }
 }
 
 @media (max-width: 480px) {
-    .event-info-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 12px 0;
-    }
-    .event-info-num {
-        font-size: 1.4rem;
-    }
-    .event-info-label {
-        font-size: 0.55rem;
-        letter-spacing: 0.1em;
-    }
-    .event-info-desc {
-        display: none;
-    }
     .event-info-headline {
-        font-size: 0.65rem;
-        letter-spacing: 0.14em;
-        margin-bottom: 20px;
+        font-size: 0.9rem;
+        letter-spacing: 0.1em;
+        margin-bottom: 6px;
+    }
+    .event-info-items {
+        font-size: 0.55rem;
+        letter-spacing: 0.05em;
+        margin-bottom: 10px;
     }
     .event-info-footer {
-        gap: 6px;
-        padding-top: 12px;
+        font-size: 0.55rem;
+        gap: 4px;
     }
 }
