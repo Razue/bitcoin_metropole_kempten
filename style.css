@@ -1139,73 +1139,106 @@ button {
 /* ===== Event-Sticker ===== */
 .event-sticker {
     position: relative;
-    background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
-    padding: 24px 20px 20px;
-    margin: 0 16px 32px;
-    border-radius: 6px;
+    background: linear-gradient(135deg, #1a0a00 0%, #2d1500 40%, #1a0a00 100%);
+    padding: 14px 16px 12px;
+    margin: 0 0 0;
+    border-radius: 4px;
     text-align: center;
-    transform: rotate(-1.5deg);
-    box-shadow: 0 8px 32px rgba(0,0,0,0.45), 0 2px 8px rgba(247,147,26,0.15);
-    border: 1px solid rgba(247,147,26,0.2);
+    transform: rotate(-2.5deg);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.5), 0 0 0 1px rgba(247,147,26,0.25), 0 0 40px rgba(247,147,26,0.08);
+    border: 1px solid rgba(247,147,26,0.25);
     overflow: hidden;
+    width: calc(100% + 32px);
+    margin-left: -16px;
+    margin-right: -16px;
 }
 .event-sticker::before {
     content: '';
     position: absolute;
     top: 0; left: 0; right: 0;
-    height: 4px;
+    height: 3px;
     background: linear-gradient(90deg, #f7931a, #ff6a00, #f7931a);
+}
+.event-sticker::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, rgba(247,147,26,0.4), transparent);
 }
 .event-sticker-inner {
     position: relative;
     z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    flex-wrap: wrap;
 }
 .event-sticker-logo {
-    width: 110px;
-    height: auto;
+    width: 56px;
+    height: 56px;
     display: block;
-    margin: 0 auto 12px;
-    filter: drop-shadow(0 2px 8px rgba(247,147,26,0.4));
+    flex-shrink: 0;
+    filter: drop-shadow(0 2px 6px rgba(247,147,26,0.5));
+    background: none;
+    mix-blend-mode: multiply;
+}
+.event-sticker-text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
 }
 .event-sticker-title {
     font-family: 'Space Grotesk', sans-serif;
-    font-size: 2.2rem;
+    font-size: 1.5rem;
     font-weight: 700;
     color: #f7931a;
-    letter-spacing: 0.06em;
-    margin: 0 0 6px;
+    letter-spacing: 0.08em;
+    margin: 0;
     text-transform: uppercase;
-    line-height: 1.1;
+    line-height: 1;
 }
 .event-sticker-date {
     font-family: 'Space Grotesk', sans-serif;
-    font-size: 1.15rem;
+    font-size: 0.9rem;
     font-weight: 500;
     color: #ffffff;
-    margin: 0 0 4px;
-    letter-spacing: 0.04em;
+    margin: 0;
+    letter-spacing: 0.05em;
 }
 .event-sticker-location {
     font-family: 'Space Grotesk', sans-serif;
-    font-size: 0.9rem;
+    font-size: 0.75rem;
     color: #b0b0b0;
     margin: 0;
-    letter-spacing: 0.03em;
+    letter-spacing: 0.04em;
 }
 
 @media (max-width: 480px) {
     .event-sticker {
-        margin: 0 10px 24px;
-        padding: 18px 14px 16px;
-        transform: rotate(-0.8deg);
+        width: calc(100% + 20px);
+        margin-left: -10px;
+        margin-right: -10px;
+        padding: 10px 12px 8px;
+        transform: rotate(-1.5deg);
+        border-radius: 3px;
+    }
+    .event-sticker-inner {
+        gap: 8px;
     }
     .event-sticker-logo {
-        width: 80px;
+        width: 40px;
+        height: 40px;
     }
     .event-sticker-title {
-        font-size: 1.6rem;
+        font-size: 1.15rem;
     }
     .event-sticker-date {
-        font-size: 0.95rem;
+        font-size: 0.8rem;
+    }
+    .event-sticker-location {
+        font-size: 0.65rem;
     }
 }

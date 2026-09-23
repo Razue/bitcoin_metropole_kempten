@@ -43,9 +43,79 @@
     <section class="event-sticker" aria-label="Bitcoin Herbst 2026">
         <div class="event-sticker-inner">
             <img src="images/herbstblatt-logo.webp" alt="Bitcoin Herbst 2026 Logo" class="event-sticker-logo">
-            <h2 class="event-sticker-title">BITCOIN HERST</h2>
-            <p class="event-sticker-date">20.–21. NOVEMBER 2026</p>
-            <p class="event-sticker-location">Kempten · Bitcoin Metropole</p>
+            <div class="event-sticker-text">
+                <h2 class="event-sticker-title">BITCOIN HERBST</h2>
+                <p class="event-sticker-date">20.–21. NOVEMBER 2026</p>
+                <p class="event-sticker-location">Kempten · Bitcoin Metropole</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Bitcoin Herbst 2026 Ticket-Block -->
+    <section id="bitcoin-herbst" class="bitcoin-herbst-section">
+        <div class="container">
+            <div class="bitcoin-herbst-card">
+                <div class="herbst-header">
+                    <span class="herbst-badge">🔥 Event</span>
+                    <h2 class="herbst-title">Bitcoin Herbst 2026</h2>
+                    <p class="herbst-date">20.–21. November 2026 · Kempten</p>
+                </div>
+
+                <div class="herbst-availability" id="herbst-availability">
+                    <span class="herbst-available" id="herbst-available-count">50</span>
+                    <span class="herbst-available-label">Plätze verfügbar</span>
+                    <span class="herbst-total">von 50</span>
+                </div>
+
+                <div class="herbst-price">
+                    <span class="herbst-price-amount">100.000</span>
+                    <span class="herbst-price-unit">sats</span>
+                    <span class="herbst-price-div">/ Ticket</span>
+                </div>
+
+                <form id="herbst-ticket-form" class="herbst-form" novalidate>
+                    <div class="herbst-form-group">
+                        <label for="herbst-name">Name</label>
+                        <input type="text" id="herbst-name" name="name" required
+                               placeholder="Max Mustermann" autocomplete="name" maxlength="100">
+                        <span class="herbst-error" id="herbst-error-name" role="alert"></span>
+                    </div>
+
+                    <div class="herbst-form-group">
+                        <label for="herbst-email">E-Mail</label>
+                        <input type="email" id="herbst-email" name="email" required
+                               placeholder="max@example.com" autocomplete="email" maxlength="200">
+                        <span class="herbst-error" id="herbst-error-email" role="alert"></span>
+                    </div>
+
+                    <div class="herbst-form-group">
+                        <label for="herbst-quantity">Anzahl Tickets</label>
+                        <select id="herbst-quantity" name="quantity">
+                            <option value="1">1 Ticket</option>
+                            <option value="2">2 Tickets</option>
+                            <option value="3">3 Tickets</option>
+                            <option value="4">4 Tickets</option>
+                            <option value="5">5 Tickets</option>
+                        </select>
+                        <span class="herbst-error" id="herbst-error-quantity" role="alert"></span>
+                    </div>
+
+                    <div class="herbst-total" id="herbst-total">
+                        Gesamt: <strong>100.000 sats</strong>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary btn-herst" id="herbst-cta">
+                        Ticket sichern
+                    </button>
+
+                    <div class="herbst-status" id="herbst-status" role="status" aria-live="polite"></div>
+                </form>
+
+                <div class="herbst-footer">
+                    <p>Bezahlung via BTCPay · Bitcoin & Lightning</p>
+                    <p>Keine Daten werden öffentlich angezeigt</p>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -53,7 +123,6 @@
     <header class="hero">
         <div class="hero-bg"></div>
         <div class="hero-content">
-            <img src="images/bitcoin_metropole_kempten_logo.webp" alt="Bitcoin Metropole Kempten" class="hero-logo-img">
             <h1 class="hero-title">Bitcoin Metropole Kempten</h1>
             <p class="hero-date">Seit 13. März 2026</p>
             <p class="hero-subtitle">Der Community-Hub für Bitcoin im Allgäu</p>
@@ -148,74 +217,6 @@
             </div>
             <div class="events-list" id="events-container">
                 <p style="text-align: center; color: var(--color-text-muted);">Events werden geladen...</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Bitcoin Herbst 2026 Ticket-Block -->
-    <section id="bitcoin-herbst" class="bitcoin-herbst-section">
-        <div class="container">
-            <div class="bitcoin-herbst-card">
-                <div class="herbst-header">
-                    <span class="herbst-badge">🔥 Event</span>
-                    <h2 class="herbst-title">Bitcoin Herbst 2026</h2>
-                    <p class="herbst-date">20.–21. November 2026 · Kempten</p>
-                </div>
-
-                <div class="herbst-availability" id="herbst-availability">
-                    <span class="herbst-available" id="herbst-available-count">50</span>
-                    <span class="herbst-available-label">Plätze verfügbar</span>
-                    <span class="herbst-total">von 50</span>
-                </div>
-
-                <div class="herbst-price">
-                    <span class="herbst-price-amount">100.000</span>
-                    <span class="herbst-price-unit">sats</span>
-                    <span class="herbst-price-div">/ Ticket</span>
-                </div>
-
-                <form id="herbst-ticket-form" class="herbst-form" novalidate>
-                    <div class="herbst-form-group">
-                        <label for="herbst-name">Name</label>
-                        <input type="text" id="herbst-name" name="name" required
-                               placeholder="Max Mustermann" autocomplete="name" maxlength="100">
-                        <span class="herbst-error" id="herbst-error-name" role="alert"></span>
-                    </div>
-
-                    <div class="herbst-form-group">
-                        <label for="herbst-email">E-Mail</label>
-                        <input type="email" id="herbst-email" name="email" required
-                               placeholder="max@example.com" autocomplete="email" maxlength="200">
-                        <span class="herbst-error" id="herbst-error-email" role="alert"></span>
-                    </div>
-
-                    <div class="herbst-form-group">
-                        <label for="herbst-quantity">Anzahl Tickets</label>
-                        <select id="herbst-quantity" name="quantity">
-                            <option value="1">1 Ticket</option>
-                            <option value="2">2 Tickets</option>
-                            <option value="3">3 Tickets</option>
-                            <option value="4">4 Tickets</option>
-                            <option value="5">5 Tickets</option>
-                        </select>
-                        <span class="herbst-error" id="herbst-error-quantity" role="alert"></span>
-                    </div>
-
-                    <div class="herbst-total" id="herbst-total">
-                        Gesamt: <strong>100.000 sats</strong>
-                    </div>
-
-                    <button type="submit" class="btn btn-primary btn-herst" id="herbst-cta">
-                        Ticket sichern
-                    </button>
-
-                    <div class="herbst-status" id="herbst-status" role="status" aria-live="polite"></div>
-                </form>
-
-                <div class="herbst-footer">
-                    <p>Bezahlung via BTCPay · Bitcoin & Lightning</p>
-                    <p>Keine Daten werden öffentlich angezeigt</p>
-                </div>
             </div>
         </div>
     </section>
