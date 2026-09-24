@@ -926,6 +926,10 @@ button {
     .hero-title {
         font-size: 1.7rem;
     }
+
+    .speaker-grid {
+        grid-template-columns: 1fr;
+    }
 }
 
 /* =====================================================
@@ -1145,6 +1149,35 @@ button {
 .herbst-sold-out .btn-herbst {
     opacity: 0.5;
     cursor: not-allowed;
+}
+
+/* --- Speaker Section --- */
+.speaker-section {
+    background: var(--color-bg);
+    padding: 60px 0;
+}
+
+.speaker-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    max-width: 800px;
+    margin: 32px auto 0;
+}
+
+.speaker-card {
+    background: var(--color-bg-card);
+    border: 1px solid var(--color-border-light);
+    border-radius: var(--border-radius);
+    padding: 24px 16px;
+    text-align: center;
+}
+
+.speaker-name {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--color-text);
+    margin: 0;
 }
 
 /* --- Event-Sticker --- */
