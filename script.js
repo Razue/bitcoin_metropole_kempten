@@ -336,7 +336,8 @@ document.head.insertAdjacentHTML('beforeend', `
 
             // Erfolgreich → BTCPay Checkout
             setStatus('Weiter zu BTCPay…', 'success');
-            window.location.href = data.payUrl;
+            const payUrl = data.payUrl || ('https://btcpay.mx12.art/invoice?id=' + data.invoiceId);
+            window.location.href = payUrl;
         } catch (_) {
             setStatus('Verbindung fehlgeschlagen. Bitte erneut versuchen.', 'error');
             cta.disabled = false;
