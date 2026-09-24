@@ -1442,6 +1442,150 @@ button {
     color: #000;
 }
 
+
+/* ===== Founding Partner ===== */
+.founding-partner {
+    position: relative;
+    background: var(--color-bg);
+    padding: 100px 24px 110px;
+    text-align: center;
+    overflow: hidden;
+}
+
+.founding-partner-bg {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-image: url('images/bitcoin-herbst-leaf-transparent.webp');
+    background-size: 600px;
+    background-repeat: no-repeat;
+    background-position: center;
+    opacity: 0.04;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.founding-partner-content {
+    position: relative;
+    z-index: 1;
+    max-width: 640px;
+    margin: 0 auto;
+}
+
+.founding-partner-label {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--color-accent);
+    margin: 0 0 48px;
+}
+
+.founding-partner-leaf {
+    width: 120px;
+    height: 120px;
+    margin: 0 auto 48px;
+    background-image: url('images/bitcoin-herbst-leaf-transparent.webp');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    opacity: 0.12;
+}
+
+.founding-partner-price {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--color-text);
+    letter-spacing: 0.02em;
+    margin: 0 0 32px;
+    line-height: 1.1;
+}
+
+.founding-partner-statement {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1.15rem;
+    font-weight: 300;
+    color: var(--color-text-secondary);
+    margin: 0 0 36px;
+    line-height: 1.5;
+    letter-spacing: 0.01em;
+}
+
+.founding-partner-exclusive {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--color-text-muted);
+    margin: 0 0 16px;
+}
+
+.founding-partner-benefits {
+    font-size: 0.8rem;
+    color: var(--color-text-muted);
+    margin: 0 0 48px;
+    letter-spacing: 0.06em;
+    line-height: 1.6;
+}
+
+.founding-partner-cta {
+    display: inline-block;
+    padding: 14px 40px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-decoration: none;
+}
+
+@media (max-width: 768px) {
+    .founding-partner {
+        padding: 72px 20px 80px;
+    }
+    .founding-partner-price {
+        font-size: 2rem;
+    }
+    .founding-partner-leaf {
+        width: 80px;
+        height: 80px;
+        margin-bottom: 36px;
+    }
+    .founding-partner-label {
+        margin-bottom: 36px;
+    }
+    .founding-partner-benefits {
+        font-size: 0.7rem;
+        margin-bottom: 36px;
+    }
+    .founding-partner-cta {
+        padding: 12px 32px;
+        font-size: 0.8rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .founding-partner {
+        padding: 56px 16px 64px;
+    }
+    .founding-partner-price {
+        font-size: 1.6rem;
+    }
+    .founding-partner-statement {
+        font-size: 1rem;
+    }
+    .founding-partner-leaf {
+        width: 60px;
+        height: 60px;
+    }
+    .founding-partner-benefits {
+        font-size: 0.65rem;
+        letter-spacing: 0.04em;
+    }
+}
+
+
 .club-footer {
     font-family: 'Space Grotesk', sans-serif;
     font-size: 0.75rem;
