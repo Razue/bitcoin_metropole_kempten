@@ -1188,7 +1188,7 @@ button {
     pointer-events: none;
     z-index: 0;
     opacity: 0.05;
-    background-image: url('images/bitcoin-herbst-leaf-transparent.webp');
+    background-image: url('images/bitcoin-herbst-leaf-transparent.png');
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
