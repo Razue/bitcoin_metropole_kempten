@@ -1155,6 +1155,48 @@ button {
 .speaker-section {
     background: var(--color-bg);
     padding: 60px 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.speaker-section .container {
+    position: relative;
+    z-index: 1;
+}
+
+.watermark {
+    position: absolute;
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.05;
+    background-image: url('images/bitcoin-herbst-leaf-transparent.webp');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.watermarked-left {
+    left: -8%;
+    top: 15%;
+    width: 320px;
+    height: 320px;
+    transform: rotate(-15deg);
+}
+
+.watermarked-right-top {
+    right: -8%;
+    top: 5%;
+    width: 280px;
+    height: 280px;
+    transform: rotate(12deg);
+}
+
+.watermarked-right-bottom {
+    right: 0;
+    bottom: -15%;
+    width: 300px;
+    height: 300px;
+    transform: rotate(20deg);
 }
 
 .speaker-grid {
@@ -1171,6 +1213,24 @@ button {
     border-radius: var(--border-radius);
     padding: 24px 16px;
     text-align: center;
+    position: relative;
+}
+
+.speaker-card--confirmed::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 50px;
+    height: 50px;
+    background-image: url('images/bitcoin-herbst-leaf-transparent.webp');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    opacity: 0.12;
+    pointer-events: none;
+    z-index: 0;
 }
 
 .speaker-name {
@@ -1178,6 +1238,24 @@ button {
     font-weight: 600;
     color: var(--color-text);
     margin: 0;
+}
+
+.speaker-sub {
+    font-size: 0.8rem;
+    color: var(--color-accent);
+    margin: 6px 0 2px;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+}
+
+.speaker-location {
+    font-size: 0.75rem;
+    color: var(--color-text-muted);
+    margin: 0;
+}
+
+.speaker-card:nth-child(n+3) .speaker-name {
+    color: var(--color-text-muted);
 }
 
 /* --- Event-Sticker --- */
