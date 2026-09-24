@@ -967,18 +967,18 @@ button {
     z-index: 0;
 }
 .bitcoin-herbst-card::before {
-    top: 10%;
-    left: -10%;
-    width: 200px;
-    height: 200px;
+    top: 5%;
+    left: 5%;
+    width: 180px;
+    height: 180px;
     opacity: 0.06;
     transform: rotate(-15deg);
 }
 .bitcoin-herbst-card::after {
     bottom: 5%;
-    right: -5%;
-    width: 160px;
-    height: 160px;
+    right: 5%;
+    width: 140px;
+    height: 140px;
     opacity: 0.05;
     transform: rotate(25deg);
 }
