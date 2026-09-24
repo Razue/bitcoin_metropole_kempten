@@ -1228,7 +1228,7 @@ button {
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
-    opacity: 0.12;
+    opacity: 0.25;
     pointer-events: none;
     z-index: 0;
 }
