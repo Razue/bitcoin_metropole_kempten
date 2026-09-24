@@ -1455,7 +1455,7 @@ button {
 .founding-partner-bg {
     position: absolute;
     top: 0; left: 0; right: 0; bottom: 0;
-    background-image: url('images/bitcoin-herbst-leaf-transparent.webp');
+    background-image: url('images/bitcoin-herbst-leaf-transparent.png');
     background-size: 600px;
     background-repeat: no-repeat;
     background-position: center;
@@ -1481,15 +1481,11 @@ button {
     margin: 0 0 48px;
 }
 
-.founding-partner-leaf {
+.founding-partner-logo {
     width: 120px;
     height: 120px;
     margin: 0 auto 48px;
-    background-image: url('images/bitcoin-herbst-leaf-transparent.webp');
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
-    opacity: 0.12;
+    object-fit: contain;
 }
 
 .founding-partner-price {
@@ -1547,7 +1543,7 @@ button {
     .founding-partner-price {
         font-size: 2rem;
     }
-    .founding-partner-leaf {
+    .founding-partner-logo {
         width: 80px;
         height: 80px;
         margin-bottom: 36px;
@@ -1575,7 +1571,7 @@ button {
     .founding-partner-statement {
         font-size: 1rem;
     }
-    .founding-partner-leaf {
+    .founding-partner-logo {
         width: 60px;
         height: 60px;
     }
