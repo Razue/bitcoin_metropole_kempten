@@ -957,10 +957,45 @@ button {
 
 /* --- Ticket Section --- */
 .bitcoin-herbst-section {
-    background: var(--color-bg-secondary);
+    background: var(--color-bg);
     border-top: 1px solid var(--color-border-light);
     border-bottom: 1px solid var(--color-border-light);
     position: relative;
+    overflow: hidden;
+}
+
+.bitcoin-herbst-section::before,
+.bitcoin-herbst-section::after {
+    content: '';
+    position: absolute;
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.05;
+    background-image: url('images/bitcoin-herbst-leaf-transparent.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.bitcoin-herbst-section::before {
+    left: -5%;
+    top: 10%;
+    width: 300px;
+    height: 300px;
+    transform: rotate(-15deg);
+}
+
+.bitcoin-herbst-section::after {
+    right: -5%;
+    top: 10%;
+    width: 300px;
+    height: 300px;
+    transform: rotate(15deg);
+}
+
+.bitcoin-herbst-section .container {
+    position: relative;
+    z-index: 1;
 }
 
 /* --- Ticket Card --- */
@@ -1561,6 +1596,11 @@ button {
    ===================================================== */
 
 @media (max-width: 480px) {
+    .bitcoin-herbst-section::before,
+    .bitcoin-herbst-section::after {
+        display: none;
+    }
+
     .bitcoin-herbst-card {
         padding: 24px 16px;
     }
