@@ -328,9 +328,9 @@ document.head.insertAdjacentHTML('beforeend', `
                     cta.textContent = 'Ausverkauft';
                 } else {
                     setStatus(data.message || 'Fehler beim Sichern.', 'error');
+                    cta.disabled = false;
+                    cta.textContent = 'Ticket sichern';
                 }
-                cta.disabled = false;
-                cta.textContent = 'Ticket sichern';
                 return;
             }
 
