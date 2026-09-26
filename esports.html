@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="21 eSports Pokal – FC Edition der Bitcoin Metropole Kempten am 18. Oktober 2026.">
+    <meta name="theme-color" content="#08090d">
+    <title>21 eSports Pokal · FC Edition · Bitcoin Metropole Kempten</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="esports.css">
+</head>
+<body>
+    <div class="site-noise" aria-hidden="true"></div>
+
+    <header class="site-header">
+        <a class="brand" href="index.html" aria-label="Zur Bitcoin-Metropole-Website">
+            <img src="images/bitcoin_metropole_kempten_logo.webp" alt="Bitcoin Metropole Kempten">
+            <span>BITCOIN METROPOLE<br>KEMPTEN</span>
+        </a>
+        <a class="back-link" href="index.html">← Zur Website</a>
+    </header>
+
+    <main>
+        <section class="hero" aria-labelledby="hero-title">
+            <div class="hero-grid" aria-hidden="true"></div>
+            <div class="hero-orbit orbit-one" aria-hidden="true"></div>
+            <div class="hero-orbit orbit-two" aria-hidden="true"></div>
+
+            <div class="hero-copy">
+                <p class="eyebrow"><span></span> BITCOIN METROPOLE KEMPTEN · 2026</p>
+                <p class="edition">21 eSPORTS POKAL <strong>· FC EDITION</strong></p>
+                <h1 id="hero-title">PLAY FOR<br><em>THE 21.</em></h1>
+                <p class="hero-text">Ein Turniertag für Skill, Spannung und Community. Die FC Edition des 21 eSports Pokals.</p>
+                <div class="hero-actions">
+                    <a class="button button-primary" href="#anmeldung">Platz vormerken <span>↓</span></a>
+                    <a class="button button-quiet" href="#turnier">Turniermodus</a>
+                </div>
+            </div>
+
+            <div class="trophy-stage" aria-label="21 eSports Pokal">
+                <div class="stage-glow" aria-hidden="true"></div>
+                <div class="trophy" aria-hidden="true">
+                    <div class="trophy-handle trophy-handle-left"></div>
+                    <div class="trophy-handle trophy-handle-right"></div>
+                    <div class="trophy-cup"><span>21</span></div>
+                    <div class="trophy-stem"></div>
+                    <div class="trophy-base"></div>
+                </div>
+                <div class="trophy-caption">
+                    <span>SEASON 01</span>
+                    <strong>21 eSPORTS POKAL</strong>
+                </div>
+            </div>
+
+            <div class="event-facts" aria-label="Eventdaten">
+                <div><span>DATUM</span><strong>18.10.2026</strong></div>
+                <div><span>CHECK-IN</span><strong>10:00 UHR</strong></div>
+                <div><span>FELD</span><strong>32 PLÄTZE</strong></div>
+            </div>
+        </section>
+
+        <section class="intro section-shell" aria-labelledby="intro-title">
+            <p class="section-kicker">THE FORMAT</p>
+            <div class="intro-layout">
+                <h2 id="intro-title">EIN POKAL.<br>EIN WEG NACH OBEN.</h2>
+                <p>32 Spielerinnen und Spieler treten in der ersten FC Edition an. Der Weg führt über die Gruppenphase in die K.-o.-Runden – bis zum finalen Match um den <strong>21 eSports Pokal.</strong></p>
+            </div>
+        </section>
+
+        <section class="slots-section section-shell" aria-labelledby="slots-title">
+            <div class="section-head">
+                <div>
+                    <p class="section-kicker">PLAYER POOL</p>
+                    <h2 id="slots-title">32 TURNIERPLÄTZE</h2>
+                </div>
+                <div class="slot-count" aria-label="32 reguläre Turnierplätze"><strong>32</strong><span>REGULAR<br>SLOTS</span></div>
+            </div>
+            <p class="section-note">Die öffentliche Starterliste zeigt später ausschließlich Nicknames. Die Plätze werden mit Start der Registrierung vergeben.</p>
+            <div class="slots-grid" id="player-slots" aria-label="Vorschau der 32 Turnierplätze"></div>
+            <div class="waitlist-preview">
+                <div>
+                    <p class="section-kicker">WAITLIST</p>
+                    <h3>WARTELISTE<br>STEHT BEREIT.</h3>
+                </div>
+                <p>Sobald alle 32 regulären Plätze belegt sind, folgen weitere Anmeldungen der Warteliste. Nachrücken bleibt transparent und organisiert.</p>
+                <div class="waitlist-queue" id="waitlist-slots" aria-label="Vorschau Warteliste"></div>
+            </div>
+        </section>
+
+        <section class="registration-section" id="anmeldung" aria-labelledby="registration-title">
+            <div class="registration-glow" aria-hidden="true"></div>
+            <div class="section-shell registration-layout">
+                <div class="registration-copy">
+                    <p class="section-kicker">REGISTRATION PREVIEW</p>
+                    <h2 id="registration-title">DEIN TAG.<br>DEIN NICK.<br>DEIN RUN.</h2>
+                    <p>Die Anmeldung wird in einer späteren Phase aktiviert. Diese Vorschau sendet und speichert keine Daten.</p>
+                    <div class="privacy-note">
+                        <span aria-hidden="true">↗</span>
+                        <p><strong>Nostr bleibt selbstverwahrt.</strong> Für den Kontakt wird später ausschließlich eine öffentliche Nostr-Adresse wie npub oder NIP-05 verwendet – niemals ein Private Key oder nsec.</p>
+                    </div>
+                </div>
+
+                <form class="registration-card" id="registration-preview" novalidate>
+                    <div class="card-topline"><span>FC · EDITION 01</span><span>PREVIEW ONLY</span></div>
+                    <label for="nickname">Nickname</label>
+                    <input id="nickname" name="nickname" type="text" maxlength="32" placeholder="Dein Spielername" autocomplete="off">
+
+                    <fieldset>
+                        <legend>Kontaktweg</legend>
+                        <div class="contact-choice">
+                            <label><input type="radio" name="contact-method" value="email" checked><span>E-Mail</span></label>
+                            <label><input type="radio" name="contact-method" value="nostr"><span>Nostr</span></label>
+                        </div>
+                    </fieldset>
+
+                    <label for="contact" id="contact-label">E-Mail-Adresse</label>
+                    <input id="contact" name="contact" type="email" maxlength="200" placeholder="name@beispiel.de" autocomplete="off">
+                    <p class="form-hint" id="contact-hint">Kontakt nur für organisatorische Informationen.</p>
+                    <button class="button button-primary preview-button" type="submit">Registrierung folgt <span>→</span></button>
+                    <p class="preview-status" id="preview-status" role="status" aria-live="polite"></p>
+                </form>
+            </div>
+        </section>
+
+        <section class="bracket-section section-shell" id="turnier" aria-labelledby="bracket-title">
+            <div class="section-head bracket-head">
+                <div>
+                    <p class="section-kicker">ROAD TO THE CUP</p>
+                    <h2 id="bracket-title">TURNIERSTRUKTUR</h2>
+                </div>
+                <p>Die konkrete Gruppeneinteilung und Paarungen werden nach Anmeldeschluss veröffentlicht.</p>
+            </div>
+
+            <div class="bracket-flow" aria-label="Gruppen A, B und C führen über die K.-o.-Phase, Halbfinale und Finale zum Pokal">
+                <article class="bracket-stage groups-stage">
+                    <p>01 · GROUPS</p>
+                    <h3>GRUPPEN</h3>
+                    <div class="group-cards">
+                        <div><span>GROUP</span><strong>A</strong></div>
+                        <div><span>GROUP</span><strong>B</strong></div>
+                        <div><span>GROUP</span><strong>C</strong></div>
+                    </div>
+                </article>
+                <div class="flow-arrow" aria-hidden="true">→</div>
+                <article class="bracket-stage knockout-stage">
+                    <p>02 · ELIMINATION</p>
+                    <h3>K.-O.-PHASE</h3>
+                    <div class="match-lines"><span></span><span></span><span></span><span></span></div>
+                </article>
+                <div class="flow-arrow" aria-hidden="true">→</div>
+                <article class="bracket-stage semi-stage">
+                    <p>03 · LAST FOUR</p>
+                    <h3>HALBFINALE</h3>
+                    <div class="match-lines compact"><span></span><span></span></div>
+                </article>
+                <div class="flow-arrow" aria-hidden="true">→</div>
+                <article class="bracket-stage final-stage">
+                    <p>04 · FINAL MATCH</p>
+                    <h3>FINALE</h3>
+                    <div class="mini-cup" aria-hidden="true">21</div>
+                </article>
+            </div>
+            <div class="cup-line"><span></span><strong>21 eSPORTS POKAL</strong><span></span><b aria-label="Pokal">🏆</b></div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="footer-brand"><img src="images/bitcoin_metropole_kempten_logo.webp" alt="Bitcoin Metropole Kempten"><span>21 eSPORTS POKAL · FC EDITION</span></div>
+        <p>Bitcoin Metropole Kempten · 18. Oktober 2026</p>
+        <a href="index.html">bitcoinmetropole.de / zurück zur Website</a>
+    </footer>
+
+    <script src="esports.js"></script>
+</body>
+</html>
