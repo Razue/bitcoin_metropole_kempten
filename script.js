@@ -103,9 +103,13 @@ function renderEvents(data, filter) {
         const day = date.getDate();
         const month = months[date.getMonth()];
         const weekday = weekdays[date.getDay()];
+        const registrationLink = event.Link
+            ? `<a href="${event.Link}" class="event-registration-link">JETZT ANMELDEN</a>`
+            : '';
+        const cardClass = event.Link ? ' event-card--with-cta' : '';
 
         html += `
-            <div class="event-card" data-type="${event.Typ}">
+            <div class="event-card${cardClass}" data-type="${event.Typ}">
                 <div class="event-date">
                     <span class="event-day">${day}</span>
                     <span class="event-month">${month}</span>
@@ -118,6 +122,7 @@ function renderEvents(data, filter) {
                 <div class="event-meta">
                     <span class="event-time">${event.Zeit} Uhr</span>
                     <span class="event-type-badge badge-${event.Typ}">${event.Typ}</span>
+                    ${registrationLink}
                 </div>
             </div>
         `;
