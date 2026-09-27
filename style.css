@@ -557,6 +557,51 @@ button {
     transform: translateY(-1px);
 }
 
+/* Einzelne, CSV-gesteuerte Hervorhebung für den 21 eSports Pokal. */
+.event-card--esports {
+    position: relative;
+    overflow: hidden;
+    border-color: rgba(247, 147, 26, 0.65);
+    background: linear-gradient(135deg, #15110b 0%, #1b1a1a 55%, #182542 100%);
+    box-shadow: 0 0 0 1px rgba(247, 147, 26, 0.16), 0 14px 34px rgba(247, 147, 26, 0.16);
+}
+
+.event-trophy {
+    position: absolute;
+    top: 50%;
+    right: 18px;
+    width: 72px;
+    height: 72px;
+    color: rgba(247, 147, 26, 0.15);
+    transform: translateY(-50%);
+    pointer-events: none;
+}
+
+.event-trophy svg {
+    display: block;
+    width: 100%;
+    height: 100%;
+    fill: currentColor;
+    filter: drop-shadow(0 0 15px rgba(247, 147, 26, 0.2));
+}
+
+.event-card--esports .event-info,
+.event-card--esports .event-meta,
+.event-card--esports .event-date {
+    position: relative;
+    z-index: 1;
+}
+
+.event-card--esports .event-info {
+    position: relative;
+    padding-right: 60px;
+}
+
+.event-card--esports .event-registration-link {
+    background: #ffb13d;
+    box-shadow: 0 0 22px rgba(247, 147, 26, 0.42);
+}
+
 .event-time {
     font-size: 0.9rem;
     font-weight: 600;
