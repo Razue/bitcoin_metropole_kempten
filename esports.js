@@ -12,8 +12,6 @@
     const nicknameInput = document.getElementById('esports-nickname');
     const emailInput = document.getElementById('esports-email');
     const emailSubmit = emailForm ? emailForm.querySelector('button[type="submit"]') : null;
-    const nostrButton = document.getElementById('nostr-registration-preview');
-    const nostrStatus = document.getElementById('nostr-preview-status');
     const apiBase = (document.documentElement.dataset.esportsApiBase || '').trim().replace(/\/$/, '');
 
     const populateBracket = (fields) => {
@@ -90,12 +88,6 @@
             } finally {
                 emailSubmit.disabled = false;
             }
-        });
-    }
-
-    if (nostrButton && nostrStatus) {
-        nostrButton.addEventListener('click', () => {
-            nostrStatus.textContent = 'Signer-/Bunker-Login folgt. Kein npub, nsec oder Private Key wird hier abgefragt.';
         });
     }
 })();

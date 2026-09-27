@@ -33,7 +33,7 @@
                 <p class="hero-text">Ein Turniertag für Skill, Spannung und Community. FC Season 1 des 21 eSports Pokals.</p>
                 <div class="hero-actions" aria-label="Anmeldungsvorschau">
                     <a class="button button-email" href="#anmeldung">MIT E-MAIL<br>ANMELDEN <span>→</span></a>
-                    <a class="button button-nostr" href="#anmeldung">MIT NOSTR<br>ANMELDEN <span>↗</span></a>
+                    <button class="button button-nostr" type="button" disabled>MIT NOSTR<br>ANMELDEN <small>COMING SOON</small></button>
                 </div>
                 <p class="hero-preview-note">Die E-Mail-Anmeldung wird nach dem Start erst mit dem einmaligen Bestätigungslink verbindlich.</p>
             </div>
@@ -192,11 +192,7 @@
                 <div class="registration-copy">
                     <p class="section-kicker">REGISTRATION · PHASE 3</p>
                     <h2 id="registration-title">WÄHLE DEINEN<br>ANMELDEWEG.</h2>
-                    <p>Die E-Mail-Anmeldung wird erst nach Bestätigung über den einmaligen Link verbindlich. Nostr folgt separat.</p>
-                    <div class="privacy-note">
-                        <span aria-hidden="true">₿</span>
-                        <p><strong>Nostr bleibt selbstverwahrt.</strong> Der künftige Nostr-Login erfolgt über einen Signer oder Bunker. Private Keys und nsec werden niemals in diese Website eingegeben oder übertragen.</p>
-                    </div>
+                    <p>Die E-Mail-Anmeldung wird erst nach Bestätigung über den einmaligen Link verbindlich.</p>
                     <div class="admin-note">
                         <strong>ADMIN-HINWEIS</strong>
                         <p>Persönliche und DM-Anmeldungen können später manuell ergänzt werden. Die drei bestätigten Teilnehmer sind als bestehende Auslosung sichtbar; weitere Nicknames werden erst mit dem Backend final verteilt.</p>
@@ -217,9 +213,9 @@
                     <div class="registration-option registration-option--nostr">
                         <span class="option-kicker">KONTAKTWEG 02</span>
                         <strong>MIT NOSTR<br>ANMELDEN</strong>
-                        <p>Später mit echtem Signer- oder Bunker-Login. Ein manuell eingegebenes npub ist kein Identitätsnachweis.</p>
-                        <button type="button" id="nostr-registration-preview">SIGNER / BUNKER LOGIN <span aria-hidden="true">↗</span></button>
-                        <small id="nostr-preview-status" role="status">Kein nsec · kein Private Key</small>
+                        <p>Mit Nostr anmelden – Coming soon.</p>
+                        <button type="button" id="nostr-registration-preview" disabled>MIT NOSTR ANMELDEN · COMING SOON</button>
+                        <small id="nostr-preview-status" role="status">Deaktiviert · kein nsec · kein Private Key</small>
                     </div>
                 </div>
             </div>

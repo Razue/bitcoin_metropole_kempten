@@ -25,7 +25,15 @@ const rateLimitConfig = {
 };
 
 const database = createDatabase(dbPath);
-const app = createApp({ database, registrationEnabled, allowedOrigin, onParticipantConfirmed, rateLimitConfig });
+const app = createApp({
+  database,
+  registrationEnabled,
+  allowedOrigin,
+  onParticipantConfirmed,
+  rateLimitConfig,
+  // Empty by default: admin endpoints fail closed until a deployment supplies ADMIN_SECRET.
+  adminSecret: process.env.ADMIN_SECRET || ''
+});
 
 const server = app.listen(port, host, () => {
   console.log(`eSports registration backend listening on ${host}:${port}`);
