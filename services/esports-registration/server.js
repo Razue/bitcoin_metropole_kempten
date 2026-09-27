@@ -1,0 +1,26 @@
+const path = require('path');
+const { createApp } = require('./app');
+const { createDatabase } = require('./db');
+
+const host = process.env.HOST || '127.0.0.1';
+const port = Number.parseInt(process.env.PORT || '3001', 10);
+const dbPath = process.env.DB_PATH || path.join(__dirname, 'data', 'esports.db');
+const allowedOrigin = process.env.ALLOWED_ORIGIN || 'https://razue.github.io';
+const registrationEnabled = process.env.REGISTRATION_ENABLED === 'true';
+
+const database = createDatabase(dbPath);
+const app = createApp({ database, registrationEnabled, allowedOrigin });
+
+const server = app.listen(port, host, () => {
+  console.log(`eSports registration backend listening on ${host}:${port}`);
+});
+
+function shutdown() {
+  server.close(() => {
+    database.close();
+    process.exit(0);
+  });
+}
+
+process.on('SIGINT', shutdown);
+process.on('SIGTERM', shutdown);
