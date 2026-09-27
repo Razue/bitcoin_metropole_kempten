@@ -121,11 +121,42 @@
                 </div>
             </div>
 
-            <div class="mobile-bracket" aria-label="Mobile Turnierdarstellung für maximal 32 Teilnehmer">
-                <p class="mobile-bracket-intro">Zwei Turnierhälften laufen über vier Runden zum Finale. Freie Positionen bedeuten Freilose.</p>
-                <div class="mobile-path"><span>LINKE HÄLFTE</span><strong>16 <b>→</b> 8 <b>→</b> 4 <b>→</b> 2</strong><small>8 Duelle · 4 Duelle · 2 Duelle · Halbfinale</small></div>
-                <div class="mobile-final"><span>FINALE</span><strong>🏆 21 eSPORTS POKAL</strong><small>Die Sieger beider Hälften treffen hier aufeinander.</small></div>
-                <div class="mobile-path"><span>RECHTE HÄLFTE</span><strong>16 <b>→</b> 8 <b>→</b> 4 <b>→</b> 2</strong><small>8 Duelle · 4 Duelle · 2 Duelle · Halbfinale</small></div>
+            <div class="mobile-bracket" aria-label="Vertikaler Turnierbaum für maximal 32 Teilnehmer">
+                <p class="mobile-bracket-intro">Freie Teilnehmerfelder werden nach dem Random Draw entweder mit Nicknames oder mit einem Freilos belegt.</p>
+
+                <div class="mobile-half mobile-half--top" aria-label="Obere Turnierhälfte zum Finale">
+                    <p class="mobile-half-label">OBERE TURNIERHÄLFTE</p>
+                    <div class="mobile-round mobile-round--r1">
+                        <div class="mobile-match"><span>— Spieler —</span><span>— Spieler —</span></div><div class="mobile-match"><span>— Spieler —</span><span>— Spieler —</span></div><div class="mobile-match"><span>— Spieler —</span><span>— Spieler —</span></div><div class="mobile-match"><span>— Spieler —</span><span>— Spieler —</span></div><div class="mobile-match"><span>— Spieler —</span><span>— Spieler —</span></div><div class="mobile-match"><span>— Spieler —</span><span>— Spieler —</span></div><div class="mobile-match"><span>— Spieler —</span><span>— Spieler —</span></div><div class="mobile-match"><span>— Spieler —</span><span>— Spieler —</span></div>
+                    </div>
+                    <div class="mobile-round mobile-round--r2">
+                        <div class="mobile-match mobile-match--winner"><span>— Gewinner —</span><span>— Gewinner —</span></div><div class="mobile-match mobile-match--winner"><span>— Gewinner —</span><span>— Gewinner —</span></div><div class="mobile-match mobile-match--winner"><span>— Gewinner —</span><span>— Gewinner —</span></div><div class="mobile-match mobile-match--winner"><span>— Gewinner —</span><span>— Gewinner —</span></div>
+                    </div>
+                    <div class="mobile-round mobile-round--r3">
+                        <div class="mobile-match mobile-match--winner"><span>— Gewinner —</span><span>— Gewinner —</span></div><div class="mobile-match mobile-match--winner"><span>— Gewinner —</span><span>— Gewinner —</span></div>
+                    </div>
+                    <div class="mobile-round mobile-round--semi"><div class="mobile-match mobile-match--winner"><span>— Halbfinalist —</span><span>— Halbfinalist —</span></div></div>
+                </div>
+
+                <div class="mobile-final">
+                    <span>🏆 FINALE</span>
+                    <strong>21 eSPORTS POKAL</strong>
+                    <small>Die Sieger beider Turnierhälften treffen hier aufeinander.</small>
+                </div>
+
+                <div class="mobile-half mobile-half--bottom" aria-label="Untere Turnierhälfte zum Finale">
+                    <div class="mobile-round mobile-round--semi"><div class="mobile-match mobile-match--winner"><span>— Halbfinalist —</span><span>— Halbfinalist —</span></div></div>
+                    <div class="mobile-round mobile-round--r3">
+                        <div class="mobile-match mobile-match--winner"><span>— Gewinner —</span><span>— Gewinner —</span></div><div class="mobile-match mobile-match--winner"><span>— Gewinner —</span><span>— Gewinner —</span></div>
+                    </div>
+                    <div class="mobile-round mobile-round--r2">
+                        <div class="mobile-match mobile-match--winner"><span>— Gewinner —</span><span>— Gewinner —</span></div><div class="mobile-match mobile-match--winner"><span>— Gewinner —</span><span>— Gewinner —</span></div><div class="mobile-match mobile-match--winner"><span>— Gewinner —</span><span>— Gewinner —</span></div><div class="mobile-match mobile-match--winner"><span>— Gewinner —</span><span>— Gewinner —</span></div>
+                    </div>
+                    <div class="mobile-round mobile-round--r1">
+                        <div class="mobile-match"><span>— Spieler —</span><span>— Spieler —</span></div><div class="mobile-match"><span>— Spieler —</span><span>— Spieler —</span></div><div class="mobile-match"><span>— Spieler —</span><span>— Spieler —</span></div><div class="mobile-match"><span>— Spieler —</span><span>— Spieler —</span></div><div class="mobile-match"><span>— Spieler —</span><span>— Spieler —</span></div><div class="mobile-match"><span>— Spieler —</span><span>— Spieler —</span></div><div class="mobile-match"><span>— Spieler —</span><span>— Spieler —</span></div><div class="mobile-match"><span>— Spieler —</span><span>— Spieler —</span></div>
+                    </div>
+                    <p class="mobile-half-label">UNTERE TURNIERHÄLFTE</p>
+                </div>
             </div>
         </section>
 
@@ -138,6 +169,12 @@
                 <div class="slot-count" aria-label="Maximal 32 Teilnehmer"><strong>32</strong><span>MAXIMAL<br>TEILNEHMER</span></div>
             </div>
             <p class="section-note">Alle registrierten Teilnehmer gehören zum selben K.-o.-Turnier. Die Anmeldereihenfolge bestimmt keine Baumposition: Nach Anmeldeschluss werden alle Teilnehmer zufällig ausgelost. Die öffentliche Starterliste zeigt später ausschließlich Nicknames.</p>
+            <div class="registration-count" aria-label="Aktueller Anmeldestand"><strong>3 / 32 angemeldet</strong><span>29 Plätze frei</span></div>
+            <section class="confirmed-players" aria-labelledby="confirmed-players-title">
+                <div><p class="section-kicker">AKTUELLER STAND</p><h3 id="confirmed-players-title">ANGEMELDET</h3></div>
+                <ul aria-label="Bestätigte Teilnehmer"><li>FireOverFiat</li><li>MischaTurm</li><li>BitFi</li></ul>
+                <p>Die Turnierpositionen dieser Teilnehmer werden erst beim gemeinsamen Random Draw festgelegt.</p>
+            </section>
             <div class="slots-grid" id="tournament-slots" aria-label="32 mögliche Turnierpositionen"></div>
             <div class="draw-preview">
                 <div>
