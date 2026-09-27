@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="de" data-esports-api-base="">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -35,7 +35,7 @@
                     <a class="button button-email" href="#anmeldung">MIT E-MAIL<br>ANMELDEN <span>→</span></a>
                     <a class="button button-nostr" href="#anmeldung">MIT NOSTR<br>ANMELDEN <span>↗</span></a>
                 </div>
-                <p class="hero-preview-note">Die Anmeldung ist eine Vorschau: keine Datenübertragung und keine Speicherung.</p>
+                <p class="hero-preview-note">Die E-Mail-Anmeldung wird nach dem Start erst mit dem einmaligen Bestätigungslink verbindlich.</p>
             </div>
 
             <div class="trophy-stage" aria-label="21 eSports Pokal">
@@ -192,7 +192,7 @@
                 <div class="registration-copy">
                     <p class="section-kicker">REGISTRATION · PHASE 3</p>
                     <h2 id="registration-title">WÄHLE DEINEN<br>ANMELDEWEG.</h2>
-                    <p>Diese Vorschau erfasst, überträgt und speichert keine Daten. Die verbindliche Registrierung wird separat freigegeben.</p>
+                    <p>Die E-Mail-Anmeldung wird erst nach Bestätigung über den einmaligen Link verbindlich. Nostr folgt separat.</p>
                     <div class="privacy-note">
                         <span aria-hidden="true">₿</span>
                         <p><strong>Nostr bleibt selbstverwahrt.</strong> Der künftige Nostr-Login erfolgt über einen Signer oder Bunker. Private Keys und nsec werden niemals in diese Website eingegeben oder übertragen.</p>
@@ -208,11 +208,11 @@
                         <span class="option-kicker">KONTAKTWEG 01</span>
                         <strong>MIT E-MAIL<br>ANMELDEN</strong>
                         <label for="esports-nickname">Nickname</label>
-                        <input id="esports-nickname" name="nickname" type="text" autocomplete="nickname" maxlength="40" placeholder="Dein Spielername">
+                        <input id="esports-nickname" name="nickname" type="text" autocomplete="nickname" maxlength="32" placeholder="Dein Spielername" required>
                         <label for="esports-email">E-Mail</label>
-                        <input id="esports-email" name="email" type="email" autocomplete="email" maxlength="200" placeholder="name@beispiel.de">
+                        <input id="esports-email" name="email" type="email" autocomplete="email" maxlength="200" placeholder="name@beispiel.de" required>
                         <button type="submit">ANMELDEN <span aria-hidden="true">→</span></button>
-                        <small id="email-preview-status" role="status">Nur Vorschau · keine Übertragung</small>
+                        <small id="email-preview-status" role="status">Bestätige anschließend den Link in deiner E-Mail.</small>
                     </form>
                     <div class="registration-option registration-option--nostr">
                         <span class="option-kicker">KONTAKTWEG 02</span>

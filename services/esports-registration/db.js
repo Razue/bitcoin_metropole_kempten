@@ -18,12 +18,10 @@ const INITIAL_FIXED_PARTICIPANTS = Object.freeze([
   { nickname: 'MischaTurm', bracketPosition: 25 }
 ]);
 
-const SEAT_CONSUMING_STATUSES = new Set([
-  'pending_email',
-  'confirmed',
-  'no_show',
-  'disqualified'
-]);
+// A pending email registration is deliberately NOT a capacity reservation.
+// Only confirmed participants count toward the 32-person limit.
+
+const PENDING_CONFIRMATION_TTL_SECONDS = 30 * 60;
 
 function timestamp() {
   return Math.floor(Date.now() / 1000);
@@ -136,7 +134,18 @@ function createDatabase(dbPath) {
       CREATE INDEX IF NOT EXISTS participants_by_tournament_status
         ON participants(tournament_id, status);
 
-      INSERT OR IGNORE INTO schema_migrations(version, applied_at) VALUES (1, strftime('%s', 'now'));
+      CREATE TABLE IF NOT EXISTS email_confirmations (
+        participant_id TEXT PRIMARY KEY REFERENCES participants(id),
+        token_hash TEXT NOT NULL,
+        expires_at INTEGER NOT NULL,
+        used INTEGER NOT NULL DEFAULT 0 CHECK (used IN (0, 1)),
+        used_at INTEGER
+      );
+
+      CREATE INDEX IF NOT EXISTS email_confirmations_by_token_hash
+        ON email_confirmations(token_hash);
+
+      INSERT OR IGNORE INTO schema_migrations(version, applied_at) VALUES (2, strftime('%s', 'now'));
     `);
   }
 
@@ -218,11 +227,28 @@ function createDatabase(dbPath) {
     });
   }
 
-  function countSeatConsumingParticipants() {
-    const placeholders = Array.from(SEAT_CONSUMING_STATUSES, () => '?').join(', ');
+  function cleanupExpiredPendingRegistrations() {
+    const expiredParticipants = db.prepare(`SELECT p.id FROM participants p
+      JOIN email_confirmations c ON c.participant_id = p.id
+      WHERE p.tournament_id = ?
+        AND p.status = 'pending_email'
+        AND c.used = 0
+        AND c.expires_at < ?`).all(TOURNAMENT.id, timestamp());
+
+    for (const participant of expiredParticipants) {
+      db.prepare('DELETE FROM email_confirmations WHERE participant_id = ?').run(participant.id);
+      db.prepare("DELETE FROM participants WHERE id = ? AND status = 'pending_email'").run(participant.id);
+    }
+    return expiredParticipants.length;
+  }
+
+  function countCapacityParticipants() {
+    return countConfirmedParticipants();
+  }
+
+  function countConfirmedParticipants() {
     const row = db.prepare(`SELECT COUNT(*) AS count FROM participants
-      WHERE tournament_id = ? AND status IN (${placeholders})`)
-      .get(TOURNAMENT.id, ...SEAT_CONSUMING_STATUSES);
+      WHERE tournament_id = ? AND status = 'confirmed'`).get(TOURNAMENT.id);
     return row.count;
   }
 
@@ -234,7 +260,7 @@ function createDatabase(dbPath) {
         return { success: false, reason: 'registration_closed' };
       }
 
-      if (countSeatConsumingParticipants() >= tournament.capacity) {
+      if (countCapacityParticipants() >= tournament.capacity) {
         return { success: false, reason: 'capacity_reached' };
       }
 
@@ -283,13 +309,128 @@ function createDatabase(dbPath) {
     });
   }
 
+  function startEmailRegistration({ nickname, email }) {
+    const normalizedNickname = normalizeNickname(nickname);
+    const normalizedEmail = normalizeEmail(email);
+
+    return withImmediateTransaction(() => {
+      cleanupExpiredPendingRegistrations();
+      const tournament = db.prepare('SELECT registration_status FROM tournaments WHERE id = ?')
+        .get(TOURNAMENT.id);
+      if (!tournament || tournament.registration_status !== 'open') {
+        return { success: false, reason: 'registration_closed' };
+      }
+
+      const now = timestamp();
+      const expiresAt = now + PENDING_CONFIRMATION_TTL_SECONDS;
+      const token = crypto.randomBytes(32).toString('hex');
+      const tokenHash = crypto.createHash('sha256').update(token).digest('hex');
+      const participantId = crypto.randomUUID();
+      const registrationNumber = nextRegistrationNumber();
+
+      db.prepare(`INSERT INTO participants
+        (id, tournament_id, registration_number, nickname, nickname_key, contact_type,
+         email, nostr_pubkey, bracket_position, is_fixed_bracket_position,
+         status, source, created_at, confirmed_at)
+        VALUES (?, ?, ?, ?, ?, 'email', ?, NULL, NULL, 0, 'pending_email', 'online_email', ?, NULL)`)
+        .run(
+          participantId,
+          TOURNAMENT.id,
+          registrationNumber,
+          normalizedNickname.nickname,
+          normalizedNickname.nicknameKey,
+          normalizedEmail,
+          now
+        );
+
+      db.prepare(`INSERT INTO email_confirmations
+        (participant_id, token_hash, expires_at, used, used_at)
+        VALUES (?, ?, ?, 0, NULL)`)
+        .run(participantId, tokenHash, expiresAt);
+
+      return {
+        success: true,
+        participantId,
+        registrationNumber,
+        nickname: normalizedNickname.nickname,
+        email: normalizedEmail,
+        confirmationToken: token,
+        expiresAt
+      };
+    });
+  }
+
+  function confirmEmailRegistrationByToken(token) {
+    if (typeof token !== 'string' || token.length === 0) {
+      return { success: false, reason: 'invalid_token' };
+    }
+
+    const tokenHash = crypto.createHash('sha256').update(token).digest('hex');
+
+    return withImmediateTransaction(() => {
+      const confirmation = db.prepare(`SELECT participant_id, expires_at, used
+        FROM email_confirmations
+        WHERE token_hash = ?`).get(tokenHash);
+
+      if (!confirmation) {
+        return { success: false, reason: 'invalid_token' };
+      }
+
+      if (confirmation.used === 1) {
+        return { success: false, reason: 'token_already_used' };
+      }
+
+      if (confirmation.expires_at < timestamp()) {
+        db.prepare('DELETE FROM email_confirmations WHERE participant_id = ?').run(confirmation.participant_id);
+        db.prepare("DELETE FROM participants WHERE id = ? AND status = 'pending_email'")
+          .run(confirmation.participant_id);
+        return { success: false, reason: 'token_expired' };
+      }
+
+      const tournament = db.prepare('SELECT capacity FROM tournaments WHERE id = ?').get(TOURNAMENT.id);
+      if (!tournament || countCapacityParticipants() >= tournament.capacity) {
+        // Keep the pending record and unused token intact: a later capacity change may permit retry.
+        return { success: false, reason: 'capacity_reached' };
+      }
+
+      const updateParticipant = db.prepare(`UPDATE participants SET status = 'confirmed', confirmed_at = ?
+        WHERE id = ? AND status = 'pending_email'`)
+        .run(timestamp(), confirmation.participant_id);
+      if (updateParticipant.changes !== 1) {
+        return { success: false, reason: 'token_already_used' };
+      }
+
+      const updateToken = db.prepare(`UPDATE email_confirmations SET used = 1, used_at = ?
+        WHERE participant_id = ? AND used = 0`)
+        .run(timestamp(), confirmation.participant_id);
+      if (updateToken.changes !== 1) {
+        throw new Error('confirmation_token_state_inconsistent');
+      }
+
+      const participant = db.prepare(`SELECT nickname, registration_number, email
+        FROM participants WHERE id = ?`).get(confirmation.participant_id);
+
+      return {
+        success: true,
+        participant: {
+          id: confirmation.participant_id,
+          nickname: participant.nickname,
+          registrationNumber: participant.registration_number,
+          email: participant.email,
+          status: 'confirmed',
+          bracketPosition: null
+        }
+      };
+    });
+  }
+
   function getPublicTournament() {
     const tournament = db.prepare(`SELECT id, name, organizer, event_date, start_time, capacity,
       registration_status, bracket_status FROM tournaments WHERE id = ?`).get(TOURNAMENT.id);
     if (!tournament) throw new Error('tournament_missing');
 
     const participants = db.prepare(`SELECT nickname, registration_number, bracket_position, status
-      FROM participants WHERE tournament_id = ?
+      FROM participants WHERE tournament_id = ? AND status = 'confirmed'
       ORDER BY registration_number ASC`).all(TOURNAMENT.id).map((participant) => ({
       nickname: participant.nickname,
       registrationNumber: participant.registration_number,
@@ -297,7 +438,7 @@ function createDatabase(dbPath) {
       status: participant.status
     }));
 
-    const confirmedParticipantCount = countSeatConsumingParticipants();
+    const confirmedParticipantCount = countConfirmedParticipants();
     return {
       tournament: {
         id: tournament.id,
@@ -324,16 +465,43 @@ function createDatabase(dbPath) {
   migrate();
   seedInitialParticipants();
 
+  function _expireConfirmationForTest(token) {
+    const tokenHash = crypto.createHash('sha256').update(token).digest('hex');
+    db.prepare(`UPDATE email_confirmations
+      SET expires_at = ?
+      WHERE token_hash = ?`)
+      .run(timestamp() - 1, tokenHash);
+  }
+
+  function _allForTest() {
+    return db.prepare(`SELECT id, tournament_id, registration_number, nickname,
+      contact_type, email, nostr_pubkey, bracket_position, status, source, created_at
+      FROM participants WHERE tournament_id = ?
+      ORDER BY registration_number ASC`).all(TOURNAMENT.id);
+  }
+
+  function _getConfirmationForTest(token) {
+    const tokenHash = crypto.createHash('sha256').update(token).digest('hex');
+    return db.prepare(`SELECT token_hash, expires_at, used, used_at FROM email_confirmations
+      WHERE token_hash = ?`).get(tokenHash);
+  }
+
   return {
     close: () => db.close(),
     getPublicTournament,
     registerConfirmedParticipant,
-    seedInitialParticipants
+    seedInitialParticipants,
+    startEmailRegistration,
+    confirmEmailRegistrationByToken,
+    _expireConfirmationForTest,
+    _allForTest,
+    _getConfirmationForTest
   };
 }
 
 module.exports = {
   INITIAL_FIXED_PARTICIPANTS,
   TOURNAMENT,
+  PENDING_CONFIRMATION_TTL_SECONDS,
   createDatabase
 };
