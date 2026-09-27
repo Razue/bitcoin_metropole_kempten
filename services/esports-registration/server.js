@@ -19,6 +19,8 @@ const port = Number.parseInt(process.env.PORT || '3001', 10);
 const dbPath = process.env.DB_PATH || path.join(__dirname, 'data', 'esports.db');
 const allowedOrigin = process.env.ALLOWED_ORIGIN || 'https://razue.github.io';
 const registrationEnabled = process.env.REGISTRATION_ENABLED === 'true';
+// FC Season 1 defaults to direct confirmation. Future seasons may explicitly opt in.
+const emailConfirmationEnabled = process.env.EMAIL_CONFIRMATION_ENABLED === 'true';
 const rateLimitConfig = {
   windowSeconds: Number.parseInt(process.env.RATE_LIMIT_WINDOW_SECONDS || '60', 10),
   maxRequests: Number.parseInt(process.env.RATE_LIMIT_MAX_REQUESTS || '10', 10)
@@ -32,7 +34,8 @@ const app = createApp({
   onParticipantConfirmed,
   rateLimitConfig,
   // Empty by default: admin endpoints fail closed until a deployment supplies ADMIN_SECRET.
-  adminSecret: process.env.ADMIN_SECRET || ''
+  adminSecret: process.env.ADMIN_SECRET || '',
+  emailConfirmationEnabled
 });
 
 const server = app.listen(port, host, () => {

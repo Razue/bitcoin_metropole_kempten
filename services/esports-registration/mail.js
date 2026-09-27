@@ -31,7 +31,7 @@ function buildConfirmationMail({ to, nickname, confirmationUrl, eventDate, start
   const body = [
     'Hallo ' + (nickname || 'Teilnehmer'),
     '',
-    'Bestätige deine Anmeldung für den 21 eSports Pokal – EA SPORTS FC Season 1.',
+    'Bestätige deine Anmeldung für den 21 eSports Pokal – FC Season 1.',
     '',
     'Dieser Link ist 30 Minuten gültig:',
     confirmationUrl,

@@ -1,32 +1,35 @@
 # 21 eSports registration backend
 
-This is a standalone Node/Express/SQLite service for **21 eSports Pokal – EA SPORTS FC Season 1**. It does not share source files, a database, a port, routes, configuration, or BTCPay code with the Bitcoin-Herbst ticket backend.
+Standalone Node/Express/SQLite service for **21 eSports Pokal – FC Season 1**. It does not share source files, database, port, routes, configuration, or BTCPay code with the Bitcoin-Herbst ticket backend.
 
-## Phase 3B scope
+## Active FC Season 1 flow
 
-- Separate SQLite schema, migration (v2), and idempotent initial seed of the three fixed participants.
-- Pending email registration + SHA-256-hashed confirmation token (single-use, 30-minute expiry).
-- Inert mail adapter with SMTP/API provider placeholders (real delivery disabled by default).
-- Atomic 32-capacity core with parallel registration tests.
-- Public tournament API with explicit PII redaction (no email/Token/PubKey exposed).
-- In-memory rate limiting for email endpoints.
-- Phase 3A regression: all Phase 3A tests still pass.
+- `Nickname + E-Mail → ANMELDEN → confirmed` happens atomically.
+- The private email is visible only through authenticated admin endpoints; public APIs expose nicknames only.
+- Capacity is 32 confirmed participants, including the three fixed existing participants. A 33rd participant is rejected.
+- Registration does not allocate a bracket position. Draw preview and explicit draw lock remain separate admin actions.
+- No automatic email is sent. Organizer contact: `bitcoinmetropole@proton.me`.
+
+## Retained future-season confirmation mode
+
+The pending-email, SHA-256 confirmation-token, and inert mail-adapter infrastructure remains in the codebase for a future season. It is **disabled by default** for FC Season 1. A future deployment must explicitly set `EMAIL_CONFIRMATION_ENABLED=true` before that separate mode can be used.
+
+## Tournament core
+
+- Multi-season/game schema with **21 eSports** as the series name; Season 1 is **FC Season 1**.
+- Fixed positions: BitFit 04, FireOverFiat 07, MischaTurm 25.
+- Persistent draw, match, bye, no-show/disqualification, progression, Top 4, and public Hall-of-Fame model.
+- Server-side admin surface is protected by `ADMIN_SECRET`; it fails closed when absent.
 
 ## Event card on the main page
 
-The main page (`index.html`) renders its event list from `programm.csv` via `script.js`. The 18 October row already exists there as confirmed base state:
-
-```csv
-2026-10-18,10:00,21 eSports Pokal – FC Season 1,"EA SPORTS FC Turnier · 18. Oktober 2026 · 10:00 Uhr.",eSports,Bitcoin Metropole,esports.html
-```
-
-`script.js` `renderEvents` adds the `.event-card--esports` highlight class, a trophy emblem, and an `.event-registration-link` ("JETZT ANMELDEN") that links to `esports.html`. `style.css` `.event-card--esports` already provides the Bitcoin-orange/blue glow. This base state is unchanged by Phase 3B.
+The main page (`index.html`) renders its event list from `programm.csv` via `script.js`. The 18 October row links to `esports.html`. This service does not change the ticket system or BTCPay integration.
 
 ## Local verification
 
 ```text
-npm install
+npm ci
 npm test
 ```
 
-The test suite starts an in-process localhost server with a temporary database. It exercises the full email flow (start → confirm → participant mail callback), token security, capacity, rate limiting, public API PII redaction, and full Phase 3A regression.
+The test suite uses temporary local databases and exercises Phase 3A, the retained Phase 3B confirmation mode, Phase 3C tournament logic, and the active Phase 3D direct FC Season 1 registration flow.

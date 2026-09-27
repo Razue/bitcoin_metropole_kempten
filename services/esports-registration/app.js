@@ -70,7 +70,9 @@ function createApp({
   confirmationBasePath = 'https://esports.localhost/confirm?token=',
   onParticipantConfirmed,
   rateLimitConfig,
-  adminSecret = ''
+  adminSecret = '',
+  // FC Season 1 uses direct confirmation. The former token/mail flow stays opt-in for future seasons.
+  emailConfirmationEnabled = false
 }) {
   const express = require('express');
   const app = express();
@@ -122,10 +124,22 @@ function createApp({
     }
   });
 
-  // Phase 3B: pending email registration. The mail adapter remains inert unless separately enabled.
+  // FC Season 1 active flow: valid nickname + email becomes atomically confirmed; no mail is sent.
   app.post('/api/v1/registrations/email', rateLimiter('email-start'), async (req, res, next) => {
     if (!registrationEnabled) return res.status(403).json({ error: 'registration_disabled' });
     try {
+      if (!emailConfirmationEnabled) {
+        const participant = database.registerConfirmedParticipant({
+          nickname: req.body?.nickname,
+          contactType: 'email',
+          email: req.body?.email,
+          source: 'online_email'
+        });
+        if (!participant.success) return res.status(participant.reason === 'capacity_reached' ? 409 : 403).json({ error: participant.reason });
+        return res.status(201).json({ participant: participant.participant });
+      }
+
+      // Retained, opt-in infrastructure for a future season; it is disabled for FC Season 1.
       const started = database.startEmailRegistration({ nickname: req.body?.nickname, email: req.body?.email });
       if (!started.success) return res.status({ capacity_reached: 409, registration_closed: 403 }[started.reason] || 409).json({ error: started.reason });
       await sendConfirmationMail({ to: started.email, nickname: started.nickname,
@@ -142,7 +156,9 @@ function createApp({
     }
   });
 
+  // A confirmation link is not part of FC Season 1. Kept gated for future opt-in email flows.
   app.get('/api/v1/registrations/email/confirm', rateLimiter('email-confirm'), async (req, res, next) => {
+    if (!emailConfirmationEnabled) return res.status(410).json({ error: 'email_confirmation_disabled' });
     if (!registrationEnabled) return res.status(403).json({ error: 'registration_disabled' });
     try {
       const result = database.confirmEmailRegistrationByToken(req.query?.token);

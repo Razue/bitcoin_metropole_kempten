@@ -12,6 +12,9 @@
     const nicknameInput = document.getElementById('esports-nickname');
     const emailInput = document.getElementById('esports-email');
     const emailSubmit = emailForm ? emailForm.querySelector('button[type="submit"]') : null;
+    const confirmedCount = document.getElementById('confirmed-count');
+    const availableCount = document.getElementById('available-count');
+    const confirmedPlayerList = document.getElementById('confirmed-player-list');
     const apiBase = (document.documentElement.dataset.esportsApiBase || '').trim().replace(/\/$/, '');
 
     const populateBracket = (fields) => {
@@ -44,6 +47,31 @@
         if (emailStatus) emailStatus.textContent = message;
     };
 
+    const renderPublicState = (state) => {
+        if (!state || !state.tournament || !Array.isArray(state.participants)) return;
+        if (confirmedCount) {
+            confirmedCount.textContent = `${state.confirmedParticipantCount} / ${state.tournament.capacity} angemeldet`;
+        }
+        if (availableCount) {
+            const places = state.availableParticipantPlaces;
+            availableCount.textContent = `${places} ${places === 1 ? 'Platz' : 'Plätze'} frei`;
+        }
+        if (confirmedPlayerList) {
+            confirmedPlayerList.replaceChildren(...state.participants.map((participant) => {
+                const item = document.createElement('li');
+                item.textContent = participant.nickname;
+                return item;
+            }));
+        }
+    };
+
+    const refreshPublicState = async () => {
+        if (!apiBase) return;
+        const response = await fetch(`${apiBase}/api/v1/tournament/public`);
+        if (!response.ok) throw new Error('public_state_unavailable');
+        renderPublicState(await response.json());
+    };
+
     if (emailForm && emailStatus && nicknameInput && emailInput && emailSubmit) {
         emailForm.addEventListener('submit', async (event) => {
             event.preventDefault();
@@ -58,7 +86,7 @@
             }
 
             emailSubmit.disabled = true;
-            setEmailStatus('Anmeldung wird vorbereitet …');
+            setEmailStatus('Anmeldung wird gesichert …');
             try {
                 const response = await fetch(`${apiBase}/api/v1/registrations/email`, {
                     method: 'POST',
@@ -71,7 +99,12 @@
                 const data = await response.json();
                 if (response.ok) {
                     emailForm.reset();
-                    setEmailStatus('Prüfe dein E-Mail-Postfach und bestätige den Link innerhalb von 30 Minuten.');
+                    setEmailStatus('Du bist dabei! Dein Platz beim 21 eSports Pokal – FC Season 1 ist gesichert.');
+                    try {
+                        await refreshPublicState();
+                    } catch (_) {
+                        // The registration remains confirmed even if the optional display refresh is temporarily unavailable.
+                    }
                     return;
                 }
                 const message = {
@@ -79,9 +112,10 @@
                     invalid_email: 'Die E-Mail-Adresse ist ungültig.',
                     nickname_registered: 'Dieser Nickname ist bereits registriert.',
                     email_registered: 'Diese E-Mail-Adresse ist bereits registriert.',
+                    capacity_reached: 'Alle 32 Plätze sind bereits vergeben.',
                     registration_closed: 'Die Anmeldung ist geschlossen.',
                     rate_limited: 'Zu viele Anfragen. Bitte versuche es später erneut.'
-                }[data.error] || 'Die Anmeldung konnte nicht vorbereitet werden. Bitte versuche es später erneut.';
+                }[data.error] || 'Die Anmeldung konnte nicht gesichert werden. Bitte versuche es später erneut.';
                 setEmailStatus(message);
             } catch (_) {
                 setEmailStatus('Verbindung fehlgeschlagen. Bitte versuche es später erneut.');

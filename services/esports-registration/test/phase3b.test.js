@@ -22,6 +22,8 @@ async function startServer(database, { maxRequests = 1000, onParticipantConfirme
     allowedOrigin: 'https://razue.github.io',
     confirmationBasePath: 'https://esports.localhost/confirm?token=',
     onParticipantConfirmed,
+    // Phase 3B covers the retained future-season confirmation mode explicitly.
+    emailConfirmationEnabled: true,
     rateLimitConfig: { windowSeconds: 60, maxRequests }
   });
   const server = app.listen(0, '127.0.0.1');

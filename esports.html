@@ -35,7 +35,7 @@
                     <a class="button button-email" href="#anmeldung">MIT E-MAIL<br>ANMELDEN <span>→</span></a>
                     <button class="button button-nostr" type="button" disabled>MIT NOSTR<br>ANMELDEN <small>COMING SOON</small></button>
                 </div>
-                <p class="hero-preview-note">Die E-Mail-Anmeldung wird nach dem Start erst mit dem einmaligen Bestätigungslink verbindlich.</p>
+                <p class="hero-preview-note">Mit Nickname und E-Mail anmelden – dein Platz ist sofort gesichert.</p>
             </div>
 
             <div class="trophy-stage" aria-label="21 eSports Pokal">
@@ -169,10 +169,10 @@
                 <div class="slot-count" aria-label="Maximal 32 Teilnehmer"><strong>32</strong><span>MAXIMAL<br>TEILNEHMER</span></div>
             </div>
             <p class="section-note">Die drei bestätigten Teilnehmer wurden einmal zufällig auf Startpositionen verteilt. Ihre Positionen bleiben bestehen; weitere Anmeldungen lösen keine erneute Auslosung aus. Die öffentliche Starterliste zeigt später ausschließlich Nicknames.</p>
-            <div class="registration-count" aria-label="Aktueller Anmeldestand"><strong>3 / 32 angemeldet</strong><span>29 Plätze frei</span></div>
+            <div class="registration-count" aria-label="Aktueller Anmeldestand"><strong id="confirmed-count">3 / 32 angemeldet</strong><span id="available-count">29 Plätze frei</span></div>
             <section class="confirmed-players" aria-labelledby="confirmed-players-title">
                 <div><p class="section-kicker">AKTUELLER STAND</p><h3 id="confirmed-players-title">ANGEMELDET</h3></div>
-                <ul aria-label="Bestätigte Teilnehmer"><li>FireOverFiat</li><li>MischaTurm</li><li>BitFit</li></ul>
+                <ul id="confirmed-player-list" aria-label="Bestätigte Teilnehmer"><li>FireOverFiat</li><li>MischaTurm</li><li>BitFit</li></ul>
                 <p>Die ausgelosten Positionen bleiben bestehen. Weitere Anmeldungen werden zunächst nur registriert; ihre endgültige Auslosung folgt mit dem Backend.</p>
             </section>
             <div class="slots-grid" id="tournament-slots" aria-label="32 mögliche Turnierpositionen"></div>
@@ -192,7 +192,8 @@
                 <div class="registration-copy">
                     <p class="section-kicker">REGISTRATION · PHASE 3</p>
                     <h2 id="registration-title">WÄHLE DEINEN<br>ANMELDEWEG.</h2>
-                    <p>Die E-Mail-Anmeldung wird erst nach Bestätigung über den einmaligen Link verbindlich.</p>
+                    <p>Nickname und E-Mail genügen. Dein Platz ist nach erfolgreicher Anmeldung sofort gesichert.</p>
+                    <p>Kontakt: <a href="mailto:bitcoinmetropole@proton.me">bitcoinmetropole@proton.me</a></p>
                     <div class="admin-note">
                         <strong>ADMIN-HINWEIS</strong>
                         <p>Persönliche und DM-Anmeldungen können später manuell ergänzt werden. Die drei bestätigten Teilnehmer sind als bestehende Auslosung sichtbar; weitere Nicknames werden erst mit dem Backend final verteilt.</p>
@@ -208,7 +209,7 @@
                         <label for="esports-email">E-Mail</label>
                         <input id="esports-email" name="email" type="email" autocomplete="email" maxlength="200" placeholder="name@beispiel.de" required>
                         <button type="submit">ANMELDEN <span aria-hidden="true">→</span></button>
-                        <small id="email-preview-status" role="status">Bestätige anschließend den Link in deiner E-Mail.</small>
+                        <small id="email-preview-status" role="status">Dein Platz wird nach erfolgreicher Anmeldung sofort gesichert.</small>
                     </form>
                     <div class="registration-option registration-option--nostr">
                         <span class="option-kicker">KONTAKTWEG 02</span>
