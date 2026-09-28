@@ -103,9 +103,12 @@ function renderEvents(data, filter) {
         const day = date.getDate();
         const month = months[date.getMonth()];
         const weekday = weekdays[date.getDay()];
-        const registrationLink = event.Link
-            ? `<a href="${event.Link}" class="event-registration-link">JETZT ANMELDEN</a>`
-            : '';
+        const isQuizNightContact = event.Link === 'quiz-night-contact';
+        const registrationLink = isQuizNightContact
+            ? '<button type="button" class="event-registration-link" data-quiz-night-contact-open aria-haspopup="dialog">JETZT ANMELDEN</button>'
+            : event.Link
+                ? `<a href="${event.Link}" class="event-registration-link">JETZT ANMELDEN</a>`
+                : '';
         const cardClass = event.Link ? ' event-card--with-cta' : '';
         const eventHighlightClass = event.Typ === 'eSports' ? ' event-card--esports' : '';
         const eventEmblem = event.Typ === 'eSports'
