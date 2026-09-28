@@ -135,6 +135,12 @@
         linear-gradient(145deg, #101721 0%, #111d2b 50%, #162938 100%);
 }
 
+.esports-event-card--quiz {
+    background:
+        radial-gradient(circle at 79% 22%, rgba(169, 110, 242, 0.26), transparent 23%),
+        linear-gradient(145deg, #191225 0%, #211732 52%, #2d1e42 100%);
+}
+
 .esports-card-topline,
 .esports-card-copy,
 .esports-card-cta,
@@ -195,6 +201,44 @@
 .esports-fc-mark span { font-size: 4.7rem; letter-spacing: -0.13em; }
 .esports-fc-mark small { margin-top: -34px; font-size: 0.68rem; letter-spacing: 0.18em; }
 
+.esports-quiz-mark {
+    position: absolute;
+    top: 68px;
+    right: 27px;
+    display: grid;
+    place-items: center;
+    width: 150px;
+    height: 150px;
+    color: rgba(255, 255, 255, 0.94);
+    background: linear-gradient(145deg, rgba(169, 110, 242, 0.94), rgba(102, 61, 163, 0.88));
+    border: 9px solid rgba(255, 255, 255, 0.08);
+    border-radius: 50%;
+    box-shadow: 0 0 0 18px rgba(169, 110, 242, 0.07), 0 16px 40px rgba(0, 0, 0, 0.25);
+    transform: rotate(-8deg);
+}
+
+.esports-quiz-mark::before,
+.esports-quiz-mark::after {
+    position: absolute;
+    content: '';
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+}
+
+.esports-quiz-mark::before { inset: 14px; }
+.esports-quiz-mark::after { inset: 34px; }
+
+.esports-quiz-mark span,
+.esports-quiz-mark small {
+    position: relative;
+    z-index: 1;
+    font-weight: 700;
+    line-height: 0.8;
+}
+
+.esports-quiz-mark span { font-size: 5.6rem; }
+.esports-quiz-mark small { margin-top: -38px; font-size: 0.62rem; letter-spacing: 0.2em; }
+
 .esports-card-copy { max-width: 70%; margin-top: 74px; }
 .esports-event-date { margin-bottom: 11px; color: #f5a542; font-size: 0.68rem; font-weight: 700; letter-spacing: 0.11em; }
 .esports-card-copy h3 { margin-bottom: 14px; color: #f8f9fb; font-size: clamp(2rem, 4vw, 3.3rem); font-weight: 700; line-height: 0.92; letter-spacing: -0.06em; }
@@ -217,6 +261,14 @@
     font-weight: 500;
 }
 
+.esports-quiz-series-progress {
+    margin-top: 22px;
+    color: #d6b8fc;
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+}
+
 .esports-card-cta {
     display: inline-flex;
     align-items: center;
@@ -236,6 +288,20 @@
 
 .esports-card-cta span { font-size: 1.15rem; line-height: 0.8; }
 .esports-card-cta:hover { background: #ffb653; box-shadow: 0 9px 25px rgba(247, 147, 26, 0.26); transform: translateY(-2px); }
+
+.esports-card-cta--pending {
+    border: 0;
+    color: #d9c8ed;
+    background: rgba(255, 255, 255, 0.09);
+    cursor: not-allowed;
+    font-family: inherit;
+}
+
+.esports-card-cta--pending:hover {
+    background: rgba(255, 255, 255, 0.09);
+    box-shadow: none;
+    transform: none;
+}
 
 .esports-track-lines {
     position: absolute;
@@ -361,6 +427,9 @@
     .esports-fc-mark { top: 65px; right: 21px; width: 119px; height: 119px; border-width: 7px; }
     .esports-fc-mark span { font-size: 3.7rem; }
     .esports-fc-mark small { margin-top: -29px; font-size: 0.58rem; }
+    .esports-quiz-mark { top: 65px; right: 21px; width: 119px; height: 119px; border-width: 7px; }
+    .esports-quiz-mark span { font-size: 4.4rem; }
+    .esports-quiz-mark small { margin-top: -31px; font-size: 0.54rem; }
     .esports-event-card--time-trial .esports-card-copy { max-width: 84%; }
     .esports-track-lines { top: 13px; width: 59%; }
     .esports-full-ranking { grid-template-columns: 1fr; gap: 22px; padding: 22px 18px; }
@@ -378,6 +447,7 @@
     .esports-fact-list { gap: 6px; margin-top: 18px; }
     .esports-fact-list li { padding: 6px 8px; font-size: 0.65rem; }
     .esports-event-card--time-trial .esports-card-copy { max-width: 82%; }
+    .esports-event-card--quiz .esports-card-copy { max-width: 68%; }
     .esports-ranking-preview { padding: 13px; }
     .esports-full-ranking { margin-top: 16px; }
 }
