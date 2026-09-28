@@ -384,7 +384,7 @@
                         </ul>
                         <p class="esports-quiz-series-progress">QUIZ-SERIE · #01 → #02 → #03 …</p>
                     </div>
-                    <button class="esports-card-cta esports-card-cta--quiz" type="button" id="quiz-night-contact-open" aria-haspopup="dialog">Jetzt anmelden <span aria-hidden="true">→</span></button>
+                    <button class="esports-card-cta esports-card-cta--quiz" type="button" id="quiz-night-contact-open" data-contact-modal-event="quiz" aria-haspopup="dialog">Jetzt anmelden <span aria-hidden="true">→</span></button>
                 </article>
             </div>
 
@@ -416,9 +416,9 @@
     <dialog class="quiz-night-contact-dialog" id="quiz-night-contact-dialog" aria-labelledby="quiz-night-contact-title">
         <div class="quiz-night-contact-dialog__content">
             <button class="quiz-night-contact-dialog__close" type="button" data-quiz-night-contact-close aria-label="Modal schließen">×</button>
-            <p class="quiz-night-contact-dialog__kicker">21 eSPORTS · QUIZ NIGHT #01</p>
-            <h2 id="quiz-night-contact-title">Zur Quiz Night #01 anmelden</h2>
-            <p class="quiz-night-contact-dialog__intro">Schreib uns kurz deinen Namen/Nickname und dass du bei Quiz Night #01 dabei bist.</p>
+            <p class="quiz-night-contact-dialog__kicker" data-contact-modal-kicker>21 eSPORTS · QUIZ NIGHT #01</p>
+            <h2 id="quiz-night-contact-title" data-contact-modal-title>Zur Quiz Night #01 anmelden</h2>
+            <p class="quiz-night-contact-dialog__intro" data-contact-modal-intro>Schreib uns kurz deinen Namen/Nickname und dass du bei Quiz Night #01 dabei bist.</p>
             <p class="quiz-night-contact-dialog__contact-label">Kontakt</p>
 
             <a class="quiz-night-contact-dialog__telegram" href="https://t.me/mx12art" target="_blank" rel="noopener noreferrer">
@@ -431,8 +431,8 @@
                 <p>Weitere Kontaktmöglichkeiten</p>
                 <div class="quiz-night-contact-dialog__links">
                     <a href="https://signal.me/#p/mx12art.46" target="_blank" rel="noopener noreferrer">Signal <span>mx12art.46</span></a>
-                    <a href="https://wa.me/4917660901497?text=Hallo%2C%20ich%20m%C3%B6chte%20mich%20f%C3%BCr%20die%2021%20eSports%20Quiz%20Night%20%2301%20anmelden." target="_blank" rel="noopener noreferrer">WhatsApp <span>Nachricht vorbereiten</span></a>
-                    <a href="mailto:bitcoinmetropole@proton.me?subject=Anmeldung%20Quiz%20Night%20%2301">E-Mail <span>bitcoinmetropole@proton.me</span></a>
+                    <a data-contact-modal-whatsapp href="https://wa.me/4917660901497?text=Hallo%2C%20ich%20m%C3%B6chte%20mich%20f%C3%BCr%20die%2021%20eSports%20Quiz%20Night%20%2301%20anmelden." target="_blank" rel="noopener noreferrer">WhatsApp <span>Nachricht vorbereiten</span></a>
+                    <a data-contact-modal-email href="mailto:bitcoinmetropole@proton.me?subject=Anmeldung%20Quiz%20Night%20%2301">E-Mail <span>bitcoinmetropole@proton.me</span></a>
                     <a href="https://instagram.com/bitcoinmetropole" target="_blank" rel="noopener noreferrer">Instagram <span>@bitcoinmetropole</span></a>
                     <a href="https://instagram.com/mx12art" target="_blank" rel="noopener noreferrer">Instagram <span>@mx12art</span></a>
                     <a href="tel:+4917660901497">Telefon</a>
