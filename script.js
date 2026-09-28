@@ -103,13 +103,18 @@ function renderEvents(data, filter) {
         const day = date.getDate();
         const month = months[date.getMonth()];
         const weekday = weekdays[date.getDay()];
-        const registrationLink = event.Link
-            ? `<a href="${event.Link}" class="event-registration-link">JETZT ANMELDEN</a>`
-            : '';
+        const isQuizNightContact = event.Link === 'quiz-night-contact';
+        const registrationLink = isQuizNightContact
+            ? '<button type="button" class="event-registration-link" data-quiz-night-contact-open aria-haspopup="dialog">JETZT ANMELDEN</button>'
+            : event.Link
+                ? `<a href="${event.Link}" class="event-registration-link">JETZT ANMELDEN</a>`
+                : '';
         const cardClass = event.Link ? ' event-card--with-cta' : '';
         const eventHighlightClass = event.Typ === 'eSports' ? ' event-card--esports' : '';
         const eventEmblem = event.Typ === 'eSports'
-            ? `<span class="event-trophy" aria-hidden="true"><svg viewBox="0 0 64 64" focusable="false"><path d="M18 7h28v12c0 11-6 19-14 22-8-3-14-11-14-22V7Zm-7 5h7v12c0 5-3 8-7 8-4 0-7-3-7-8v-5h7m42-7h7v7c0 5-3 8-7 8-4 0-7-3-7-8V12ZM27 42h10v7h9v7H18v-7h9v-7Z"/></svg></span>`
+            ? isQuizNightContact
+                ? '<span class="event-trophy" aria-hidden="true"><svg viewBox="0 0 64 64" focusable="false"><text x="32" y="49" text-anchor="middle" font-size="56" font-family="Space Grotesk, sans-serif" font-weight="700">?</text></svg></span>'
+                : `<span class="event-trophy" aria-hidden="true"><svg viewBox="0 0 64 64" focusable="false"><path d="M18 7h28v12c0 11-6 19-14 22-8-3-14-11-14-22V7Zm-7 5h7v12c0 5-3 8-7 8-4 0-7-3-7-8v-5h7m42-7h7v7c0 5-3 8-7 8-4 0-7-3-7-8V12ZM27 42h10v7h9v7H18v-7h9v-7Z"/></svg></span>`
             : '';
 
         html += `
