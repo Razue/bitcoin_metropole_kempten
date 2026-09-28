@@ -303,6 +303,139 @@
     transform: none;
 }
 
+.esports-card-cta--quiz {
+    border: 0;
+    font-family: inherit;
+    cursor: pointer;
+}
+
+/* Quiz Night: contact-only registration. No form, storage or API request. */
+.quiz-night-contact-dialog {
+    width: min(480px, calc(100% - 32px));
+    max-height: min(680px, calc(100vh - 32px));
+    margin: auto;
+    padding: 0;
+    color: #edf3fb;
+    background: #171124;
+    border: 1px solid rgba(196, 151, 255, 0.42);
+    border-radius: 18px;
+    box-shadow: 0 24px 72px rgba(0, 0, 0, 0.55), 0 0 0 1px rgba(247, 147, 26, 0.12);
+}
+
+.quiz-night-contact-dialog::backdrop {
+    background: rgba(4, 7, 13, 0.76);
+    backdrop-filter: blur(4px);
+}
+
+.quiz-night-contact-dialog__content {
+    position: relative;
+    overflow-y: auto;
+    max-height: inherit;
+    padding: 30px;
+    background:
+        radial-gradient(circle at 100% 0%, rgba(169, 110, 242, 0.22), transparent 35%),
+        linear-gradient(145deg, #191225 0%, #211732 100%);
+}
+
+.quiz-night-contact-dialog__close {
+    position: absolute;
+    top: 13px;
+    right: 15px;
+    width: 34px;
+    height: 34px;
+    display: grid;
+    place-items: center;
+    color: #e6d9f7;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    border-radius: 50%;
+    cursor: pointer;
+    font: inherit;
+    font-size: 1.3rem;
+    line-height: 1;
+}
+
+.quiz-night-contact-dialog__close:hover { background: rgba(255, 255, 255, 0.16); }
+
+.quiz-night-contact-dialog__kicker {
+    margin: 0 44px 12px 0;
+    color: #d6b8fc;
+    font-size: 0.66rem;
+    font-weight: 700;
+    letter-spacing: 0.13em;
+}
+
+.quiz-night-contact-dialog h2 {
+    margin: 0 0 14px;
+    color: #fff;
+    font-size: clamp(1.8rem, 7vw, 2.5rem);
+    line-height: 0.98;
+    letter-spacing: -0.05em;
+}
+
+.quiz-night-contact-dialog__intro {
+    margin: 0 0 18px;
+    color: #c7c0d6;
+    font-size: 0.92rem;
+    line-height: 1.55;
+}
+
+.quiz-night-contact-dialog__contact-label {
+    margin: 0 0 10px;
+    color: #d6b8fc;
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}
+
+.quiz-night-contact-dialog__telegram {
+    display: grid;
+    gap: 3px;
+    padding: 17px;
+    color: #16101f;
+    background: #f6a33a;
+    border-radius: 10px;
+    box-shadow: 0 12px 28px rgba(247, 147, 26, 0.2);
+}
+
+.quiz-night-contact-dialog__telegram:hover { background: #ffb653; }
+.quiz-night-contact-dialog__telegram > span { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; }
+.quiz-night-contact-dialog__telegram strong { font-size: 1.3rem; line-height: 1; }
+.quiz-night-contact-dialog__telegram small { font-size: 0.72rem; font-weight: 600; }
+
+.quiz-night-contact-dialog__other { margin-top: 25px; }
+.quiz-night-contact-dialog__other > p { margin: 0 0 10px; color: #d6b8fc; font-size: 0.68rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; }
+
+.quiz-night-contact-dialog__links {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
+}
+
+.quiz-night-contact-dialog__links a {
+    min-height: 52px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 10px 11px;
+    color: #f1edf7;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 8px;
+    font-size: 0.78rem;
+    font-weight: 700;
+}
+
+.quiz-night-contact-dialog__links a:hover { border-color: rgba(247, 147, 26, 0.72); background: rgba(255, 255, 255, 0.1); }
+.quiz-night-contact-dialog__links span { margin-top: 3px; color: #cbb5e8; font-size: 0.61rem; font-weight: 500; line-height: 1.25; }
+
+@media (max-width: 430px) {
+    .quiz-night-contact-dialog__content { padding: 25px 20px 22px; }
+    .quiz-night-contact-dialog__links { gap: 7px; }
+    .quiz-night-contact-dialog__links a { min-height: 50px; font-size: 0.74rem; }
+}
+
 .esports-track-lines {
     position: absolute;
     z-index: 0;
