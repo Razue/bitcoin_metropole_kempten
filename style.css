@@ -1275,6 +1275,91 @@ button {
     cursor: not-allowed;
 }
 
+/* --- Public Ticket Support --- */
+.herbst-support {
+    max-width: 480px;
+    margin: 18px auto 0;
+    padding: 28px 24px;
+    background: var(--color-bg-card);
+    border: 1px solid var(--color-border);
+    border-radius: var(--border-radius-lg);
+    text-align: center;
+}
+
+.herbst-support h3 {
+    margin: 0 0 10px;
+    color: var(--color-text);
+    font-size: 1rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+}
+
+.herbst-support > p {
+    margin: 0 0 20px;
+    color: var(--color-text-secondary);
+    font-size: 0.92rem;
+    line-height: 1.55;
+}
+
+.herbst-support__links {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
+    text-align: left;
+}
+
+.herbst-support__link {
+    display: flex;
+    min-height: 52px;
+    flex-direction: column;
+    justify-content: center;
+    padding: 10px 11px;
+    color: var(--color-text);
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid var(--color-border-light);
+    border-radius: var(--border-radius);
+    font-size: 0.78rem;
+    font-weight: 700;
+    text-decoration: none;
+    transition: var(--transition);
+}
+
+.herbst-support__link:hover {
+    border-color: var(--color-accent);
+    background: rgba(247, 147, 26, 0.08);
+}
+
+.herbst-support__link small {
+    margin-top: 3px;
+    color: var(--color-text-muted);
+    font-size: 0.66rem;
+    font-weight: 500;
+    line-height: 1.25;
+}
+
+.herbst-support__link--telegram {
+    grid-column: 1 / -1;
+    padding: 16px;
+    color: var(--color-bg);
+    background: var(--color-accent);
+    border-color: var(--color-accent);
+}
+
+.herbst-support__link--telegram:hover {
+    background: #ffb653;
+}
+
+.herbst-support__link--telegram span {
+    font-size: 0.72rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.herbst-support__link--telegram strong {
+    font-size: 1.3rem;
+    line-height: 1;
+}
+
 /* --- Speaker Section --- */
 .speaker-section {
     background: var(--color-bg);
@@ -1813,6 +1898,19 @@ button {
 
     .bitcoin-herbst-card {
         padding: 24px 16px;
+    }
+
+    .herbst-support {
+        padding: 24px 16px;
+    }
+
+    .herbst-support__links {
+        gap: 7px;
+    }
+
+    .herbst-support__link {
+        min-height: 50px;
+        font-size: 0.74rem;
     }
 
     .herbst-title {
