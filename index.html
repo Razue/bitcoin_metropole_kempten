@@ -10,7 +10,8 @@
     <meta property="og:type" content="website">
     <meta property="og:image" content="images/metropole_01.webp">
     <title>Bitcoin Metropole Kempten</title>
-    <link rel="stylesheet" href="style.css?v=4">
+    <link rel="stylesheet" href="style.css?v=5">
+    <link rel="stylesheet" href="esports-series.css?v=1">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -301,6 +302,95 @@
             <div class="events-list" id="events-container">
                 <p style="text-align: center; color: var(--color-text-muted);">Events werden geladen...</p>
             </div>
+        </div>
+    </section>
+
+    <!-- 21 eSports Series: current events and growing Hall of Fame -->
+    <section id="esports" class="esports-series" aria-labelledby="esports-title">
+        <div class="esports-series-light esports-series-light--left" aria-hidden="true"></div>
+        <div class="esports-series-light esports-series-light--right" aria-hidden="true"></div>
+        <div class="container esports-series-content">
+            <header class="esports-series-header">
+                <p class="esports-series-kicker">BITCOIN METROPOLE · LOCAL SERIES</p>
+                <h2 id="esports-title">21 eSPORTS</h2>
+                <p>Lokale Turniere. Echte Ranglisten. Bitcoin Metropole Kempten.</p>
+            </header>
+
+            <div class="esports-series-label">
+                <span>AKTUELLE EVENTS</span>
+                <span aria-hidden="true"></span>
+            </div>
+
+            <div class="esports-event-grid">
+                <article class="esports-event-card esports-event-card--fc" aria-labelledby="esports-fc-title">
+                    <div class="esports-card-topline">
+                        <span>21 eSPORTS · SEASON 1</span>
+                        <span>FC</span>
+                    </div>
+                    <div class="esports-fc-mark" aria-hidden="true"><span>21</span><small>FC</small></div>
+                    <div class="esports-card-copy">
+                        <p class="esports-event-date">18.10.2026 · AB 10:00 UHR</p>
+                        <h3 id="esports-fc-title">21 eSports FC<br>– Season 1</h3>
+                        <p class="esports-card-description">Das Fußball-Gaming-Turnier der Bitcoin Metropole.</p>
+                        <ul class="esports-fact-list" aria-label="Turnierdetails">
+                            <li>Fußball-Gaming-Turnier</li>
+                            <li>PlayStation 5</li>
+                            <li>32 Plätze</li>
+                            <li>Teilnahme kostenlos</li>
+                            <li>Anmeldung erforderlich</li>
+                        </ul>
+                    </div>
+                    <a class="esports-card-cta" href="esports.html#anmeldung">Zur FC-Anmeldung <span aria-hidden="true">→</span></a>
+                </article>
+
+                <article class="esports-event-card esports-event-card--time-trial" aria-labelledby="time-trial-title">
+                    <div class="esports-card-topline">
+                        <span>21 eSPORTS · TIME TRIAL</span>
+                        <span>OKTOBER 2026</span>
+                    </div>
+                    <div class="esports-track-lines" aria-hidden="true"><span></span><span></span><span></span></div>
+                    <div class="esports-card-copy">
+                        <p class="esports-event-date">MONATLICHE CHALLENGE · PLAYSTATION 5</p>
+                        <h3 id="time-trial-title">Time Trial<br>– Oktober 2026</h3>
+                        <p class="esports-card-description">Komm während des Monats vorbei, verbessere deine persönliche Bestzeit und sichere dir einen Platz in der Rangliste. Mehrere Versuche sind möglich.</p>
+                    </div>
+                    <section class="esports-ranking-preview" aria-labelledby="time-trial-ranking-title">
+                        <div class="esports-ranking-head">
+                            <h4 id="time-trial-ranking-title">Aktuelle Top 3</h4>
+                            <span>RANGLISTE FOLGT</span>
+                        </div>
+                        <ol class="esports-podium-list">
+                            <li class="esports-podium esports-podium--gold"><span class="esports-podium-place">Platz 1</span><span class="esports-podium-empty">Noch offen</span></li>
+                            <li class="esports-podium esports-podium--silver"><span class="esports-podium-place">Platz 2</span><span class="esports-podium-empty">Noch offen</span></li>
+                            <li class="esports-podium esports-podium--bronze"><span class="esports-podium-place">Platz 3</span><span class="esports-podium-empty">Noch offen</span></li>
+                        </ol>
+                        <a class="esports-ranking-link" href="#time-trial-full-ranking">Gesamte Rangliste ansehen <span aria-hidden="true">↓</span></a>
+                    </section>
+                </article>
+            </div>
+
+            <section id="time-trial-full-ranking" class="esports-full-ranking" aria-labelledby="full-ranking-title">
+                <div>
+                    <p class="esports-series-kicker">TIME TRIAL · OKTOBER 2026</p>
+                    <h3 id="full-ranking-title">Gesamte Rangliste</h3>
+                </div>
+                <div class="esports-ranking-table-wrap" tabindex="0">
+                    <table>
+                        <thead><tr><th>Platz</th><th>Nickname</th><th>Bestzeit</th><th>Versuche</th><th>Datum der Bestzeit</th></tr></thead>
+                        <tbody><tr><td colspan="5">Noch keine Bestzeiten veröffentlicht.</td></tr></tbody>
+                    </table>
+                </div>
+                <p class="esports-ranking-note">Zum festgelegten Stichtag wird die Monatsrangliste geschlossen. Die finale Top 3 bleibt anschließend im Archiv sichtbar.</p>
+            </section>
+
+            <section class="esports-hall" aria-labelledby="esports-hall-title">
+                <div class="esports-series-label">
+                    <span id="esports-hall-title">VERGANGENE EVENTS · HALL OF FAME</span>
+                    <span aria-hidden="true"></span>
+                </div>
+                <p>Abgeschlossene Seasons und Time Trials bleiben hier mit ihren finalen Ergebnissen erhalten.</p>
+                <div class="esports-hall-empty">Das Archiv wächst mit der Serie.</div>
+            </section>
         </div>
     </section>
 

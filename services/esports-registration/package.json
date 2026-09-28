@@ -1,0 +1,17 @@
+{
+  "name": "bitcoin-metropole-esports-registration",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Isolated registration backend for 21 eSports Pokal – FC Season 1",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "test": "node test/phase3a.test.js && node test/phase3b.test.js && node test/phase3c.test.js && node test/phase3d.test.js"
+  },
+  "engines": {
+    "node": ">=22"
+  },
+  "dependencies": {
+    "express": "4.22.3"
+  }
+}
