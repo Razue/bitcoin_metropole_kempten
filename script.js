@@ -103,9 +103,14 @@ function renderEvents(data, filter) {
         const day = date.getDate();
         const month = months[date.getMonth()];
         const weekday = weekdays[date.getDay()];
-        const isQuizNightContact = event.Link === 'quiz-night-contact';
-        const registrationLink = isQuizNightContact
-            ? '<button type="button" class="event-registration-link" data-quiz-night-contact-open aria-haspopup="dialog">JETZT ANMELDEN</button>'
+        const contactModalEvent = event.Link === 'quiz-night-contact'
+            ? 'quiz'
+            : event.Link === 'fc-contact'
+                ? 'fc'
+                : null;
+        const isQuizNightContact = contactModalEvent === 'quiz';
+        const registrationLink = contactModalEvent
+            ? `<button type="button" class="event-registration-link" data-contact-modal-event="${contactModalEvent}" aria-haspopup="dialog">JETZT ANMELDEN</button>`
             : event.Link
                 ? `<a href="${event.Link}" class="event-registration-link">JETZT ANMELDEN</a>`
                 : '';
