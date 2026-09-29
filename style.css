@@ -997,10 +997,6 @@ button {
         font-size: 1.7rem;
     }
 
-    .speaker-grid {
-        grid-template-columns: 1fr;
-    }
-
     .club-key {
         width: 100px;
     }
@@ -1463,8 +1459,14 @@ button {
     margin: 0;
 }
 
-.speaker-card:nth-child(n+3) .speaker-name {
+.speaker-card:not(.speaker-card--confirmed):nth-child(n+3) .speaker-name {
     color: var(--color-text-muted);
+}
+
+@media (max-width: 480px) {
+    .speaker-grid {
+        grid-template-columns: 1fr;
+    }
 }
 
 /* --- Club Section --- */
