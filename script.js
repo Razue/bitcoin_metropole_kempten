@@ -121,6 +121,9 @@ function renderEvents(data, filter) {
                 ? '<span class="event-trophy" aria-hidden="true"><svg viewBox="0 0 64 64" focusable="false"><text x="32" y="49" text-anchor="middle" font-size="56" font-family="Space Grotesk, sans-serif" font-weight="700">?</text></svg></span>'
                 : `<span class="event-trophy" aria-hidden="true"><svg viewBox="0 0 64 64" focusable="false"><path d="M18 7h28v12c0 11-6 19-14 22-8-3-14-11-14-22V7Zm-7 5h7v12c0 5-3 8-7 8-4 0-7-3-7-8v-5h7m42-7h7v7c0 5-3 8-7 8-4 0-7-3-7-8V12ZM27 42h10v7h9v7H18v-7h9v-7Z"/></svg></span>`
             : '';
+        const eventTypeBadge = isQuizNightContact
+            ? ''
+            : `<span class="event-type-badge badge-${event.Typ}">${event.Typ}</span>`;
 
         html += `
             <div class="event-card${cardClass}${eventHighlightClass}" data-type="${event.Typ}">
@@ -136,7 +139,7 @@ function renderEvents(data, filter) {
                 </div>
                 <div class="event-meta">
                     <span class="event-time">${event.Zeit} Uhr</span>
-                    <span class="event-type-badge badge-${event.Typ}">${event.Typ}</span>
+                    ${eventTypeBadge}
                     ${registrationLink}
                 </div>
             </div>
