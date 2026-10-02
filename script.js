@@ -108,18 +108,30 @@ function renderEvents(data, filter) {
             : event.Link === 'fc-contact'
                 ? 'fc'
                 : null;
+        const isPokerNight = event.Link === 'club-members-only';
         const isQuizNightContact = contactModalEvent === 'quiz';
-        const registrationLink = contactModalEvent
+        const registrationLink = isPokerNight
+            ? `<span class="event-registration-link event-registration-link--club"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M7 10V7a5 5 0 0 1 10 0v3m-9 0h8a2 2 0 0 1 2 2v8H6v-8a2 2 0 0 1 2-2Zm4 4v3"/></svg>NUR FÜR CLUBMITGLIEDER</span>`
+            : contactModalEvent
             ? `<button type="button" class="event-registration-link" data-contact-modal-event="${contactModalEvent}" aria-haspopup="dialog">JETZT ANMELDEN</button>`
             : event.Link
                 ? `<a href="${event.Link}" class="event-registration-link">JETZT ANMELDEN</a>`
                 : '';
         const cardClass = event.Link ? ' event-card--with-cta' : '';
-        const eventHighlightClass = event.Typ === 'eSports' ? ' event-card--esports' : '';
-        const eventEmblem = event.Typ === 'eSports'
+        const eventHighlightClass = isPokerNight
+            ? ' event-card--poker'
+            : event.Typ === 'eSports'
+                ? ' event-card--esports'
+                : '';
+        const eventEmblem = isPokerNight
+            ? `<span class="event-poker-cards" aria-hidden="true"><svg viewBox="0 0 96 96" focusable="false"><g fill="none" stroke="currentColor" stroke-width="4" stroke-linejoin="round"><path d="M18 23h39a5 5 0 0 1 5 5v48a5 5 0 0 1-5 5H18a5 5 0 0 1-5-5V28a5 5 0 0 1 5-5Z"/><path d="m37 15 38 17a5 5 0 0 1 3 6L57 84a5 5 0 0 1-6 3L14 70"/></g><text x="26" y="51" fill="currentColor" font-size="27" font-family="Space Grotesk, sans-serif" font-weight="700">A</text><path d="m50 44 7-8 7 8c0 6-4 10-7 14-3-4-7-8-7-14Z" fill="currentColor"/></svg></span>`
+            : event.Typ === 'eSports'
             ? isQuizNightContact
                 ? '<span class="event-trophy" aria-hidden="true"><svg viewBox="0 0 64 64" focusable="false"><text x="32" y="49" text-anchor="middle" font-size="56" font-family="Space Grotesk, sans-serif" font-weight="700">?</text></svg></span>'
                 : `<span class="event-trophy" aria-hidden="true"><svg viewBox="0 0 64 64" focusable="false"><path d="M18 7h28v12c0 11-6 19-14 22-8-3-14-11-14-22V7Zm-7 5h7v12c0 5-3 8-7 8-4 0-7-3-7-8v-5h7m42-7h7v7c0 5-3 8-7 8-4 0-7-3-7-8V12ZM27 42h10v7h9v7H18v-7h9v-7Z"/></svg></span>`
+            : '';
+        const livestreamBadge = isPokerNight
+            ? '<span class="event-livestream-badge"><span aria-hidden="true"></span>LIVE / LIVESTREAM</span>'
             : '';
         const eventTypeBadge = isQuizNightContact
             ? ''
@@ -140,6 +152,7 @@ function renderEvents(data, filter) {
                 <div class="event-meta">
                     <span class="event-time">${event.Zeit} Uhr</span>
                     ${eventTypeBadge}
+                    ${livestreamBadge}
                     ${registrationLink}
                 </div>
             </div>
