@@ -2,7 +2,6 @@
     'use strict';
 
     const dialog = document.getElementById('quiz-night-contact-dialog');
-    const closeButton = dialog?.querySelector('[data-quiz-night-contact-close]');
 
     if (!dialog) return;
 
@@ -32,6 +31,7 @@
         const content = modalContent[eventType];
         if (!content) return false;
 
+        dialog.dataset.contactModalEvent = eventType;
         if (kicker) {
             kicker.textContent = content.kicker;
             kicker.hidden = !content.kicker;
@@ -66,11 +66,14 @@
     };
 
     document.addEventListener('click', (event) => {
+        if (event.target.closest('[data-quiz-night-contact-close]')) {
+            closeDialog();
+            return;
+        }
+
         const openButton = event.target.closest('[data-contact-modal-event]');
         if (openButton) openDialog(openButton.dataset.contactModalEvent);
     });
-
-    closeButton?.addEventListener('click', closeDialog);
     dialog.addEventListener('click', (event) => {
         if (event.target === dialog) closeDialog();
     });
