@@ -163,43 +163,21 @@
     color: #f5a542;
 }
 
-.esports-fc-mark {
+.esports-fc-ball {
     position: absolute;
     top: 69px;
     right: 27px;
-    display: grid;
-    place-items: center;
     width: 150px;
     height: 150px;
-    color: rgba(255, 255, 255, 0.94);
-    background: linear-gradient(145deg, rgba(247, 147, 26, 0.96), rgba(199, 95, 9, 0.86));
-    border: 9px solid rgba(255, 255, 255, 0.08);
-    border-radius: 50%;
-    box-shadow: 0 0 0 18px rgba(247, 147, 26, 0.06), 0 16px 40px rgba(0, 0, 0, 0.25);
+    filter: drop-shadow(0 0 0 14px rgba(247, 147, 26, 0.06)) drop-shadow(0 16px 24px rgba(0, 0, 0, 0.25));
     transform: rotate(9deg);
 }
 
-.esports-fc-mark::before,
-.esports-fc-mark::after {
-    position: absolute;
-    content: '';
-    border: 1px solid rgba(255, 255, 255, 0.22);
-    border-radius: 50%;
+.esports-fc-ball svg {
+    display: block;
+    width: 100%;
+    height: 100%;
 }
-
-.esports-fc-mark::before { inset: 14px; }
-.esports-fc-mark::after { inset: 34px; }
-
-.esports-fc-mark span,
-.esports-fc-mark small {
-    position: relative;
-    z-index: 1;
-    font-weight: 700;
-    line-height: 0.8;
-}
-
-.esports-fc-mark span { font-size: 4.7rem; letter-spacing: -0.13em; }
-.esports-fc-mark small { margin-top: -34px; font-size: 0.68rem; letter-spacing: 0.18em; }
 
 .esports-quiz-mark {
     position: absolute;
@@ -304,6 +282,12 @@
 }
 
 .esports-card-cta--quiz {
+    border: 0;
+    font-family: inherit;
+    cursor: pointer;
+}
+
+.esports-card-cta--fc {
     border: 0;
     font-family: inherit;
     cursor: pointer;
@@ -429,6 +413,36 @@
 
 .quiz-night-contact-dialog__links a:hover { border-color: rgba(247, 147, 26, 0.72); background: rgba(255, 255, 255, 0.1); }
 .quiz-night-contact-dialog__links span { margin-top: 3px; color: #cbb5e8; font-size: 0.61rem; font-weight: 500; line-height: 1.25; }
+
+/* FC uses the existing contact card with an orange, football-series treatment. */
+.quiz-night-contact-dialog[data-contact-modal-event="fc"] {
+    color: #edf3fb;
+    background: #14191d;
+    border-color: rgba(246, 163, 58, 0.54);
+}
+
+.quiz-night-contact-dialog[data-contact-modal-event="fc"] .quiz-night-contact-dialog__content {
+    background:
+        radial-gradient(circle at 100% 0%, rgba(247, 147, 26, 0.22), transparent 36%),
+        linear-gradient(145deg, #14191d 0%, #202a31 100%);
+}
+
+.quiz-night-contact-dialog[data-contact-modal-event="fc"] .quiz-night-contact-dialog__close {
+    color: #ffe7c4;
+}
+
+.quiz-night-contact-dialog[data-contact-modal-event="fc"] .quiz-night-contact-dialog__contact-label,
+.quiz-night-contact-dialog[data-contact-modal-event="fc"] .quiz-night-contact-dialog__other > p {
+    color: #f6a33a;
+}
+
+.quiz-night-contact-dialog[data-contact-modal-event="fc"] .quiz-night-contact-dialog__intro {
+    color: #c6d0d8;
+}
+
+.quiz-night-contact-dialog[data-contact-modal-event="fc"] .quiz-night-contact-dialog__links span {
+    color: #efc28d;
+}
 
 @media (max-width: 430px) {
     .quiz-night-contact-dialog__content { padding: 25px 20px 22px; }
@@ -557,9 +571,7 @@
     .esports-event-grid { grid-template-columns: 1fr; gap: 16px; }
     .esports-event-card { min-height: 530px; padding: 21px; border-radius: 16px; }
     .esports-card-copy { max-width: 72%; margin-top: 65px; }
-    .esports-fc-mark { top: 65px; right: 21px; width: 119px; height: 119px; border-width: 7px; }
-    .esports-fc-mark span { font-size: 3.7rem; }
-    .esports-fc-mark small { margin-top: -29px; font-size: 0.58rem; }
+    .esports-fc-ball { top: 65px; right: 21px; width: 119px; height: 119px; }
     .esports-quiz-mark { top: 65px; right: 21px; width: 119px; height: 119px; border-width: 7px; }
     .esports-quiz-mark span { font-size: 4.4rem; }
     .esports-quiz-mark small { margin-top: -31px; font-size: 0.54rem; }
@@ -576,6 +588,7 @@
     .esports-card-topline { font-size: 0.57rem; }
     .esports-card-copy { max-width: 68%; }
     .esports-card-copy h3 { font-size: 2.1rem; }
+    .esports-event-card--fc .esports-card-copy h3 { font-size: 1.85rem; }
     .esports-card-description { font-size: 0.88rem; }
     .esports-fact-list { gap: 6px; margin-top: 18px; }
     .esports-fact-list li { padding: 6px 8px; font-size: 0.65rem; }
