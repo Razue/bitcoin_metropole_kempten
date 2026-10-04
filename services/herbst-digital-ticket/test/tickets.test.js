@@ -190,8 +190,8 @@ describe("http preview", () => {
     const validRes = await fetch(`${base}/verify/${ticket.token}`);
     const validHtml = await validRes.text();
     assert.match(validHtml, /BITCOIN HERBST 2026/);
-    assert.match(validHtml, /(?<!UN)GÃœLTIG/);
-    assert.match(validHtml, /20\.â€“21\. November 2026/);
+    assert.match(validHtml, /(?<!UN)GÜLTIG/);
+    assert.match(validHtml, /20\.–21\. November 2026/);
     assert.match(validHtml, /Bitcoin Metropole Kempten/);
     assert.equal(disclosesTicketNumber(validHtml, ticket.number), true);
 
@@ -201,9 +201,9 @@ describe("http preview", () => {
     const invalidHtml = await invalidRes.text();
     assert.equal(invalidRes.status, 200);
     assert.match(invalidHtml, /BITCOIN HERBST 2026/);
-    assert.match(invalidHtml, /UNGÃœLTIG/);
-    assert.doesNotMatch(invalidHtml, /(?<!UN)GÃœLTIG/);
-    assert.match(invalidHtml, /20\.â€“21\. November 2026/);
+    assert.match(invalidHtml, /UNGÜLTIG/);
+    assert.doesNotMatch(invalidHtml, /(?<!UN)GÜLTIG/);
+    assert.match(invalidHtml, /20\.–21\. November 2026/);
     assert.match(invalidHtml, /Bitcoin Metropole Kempten/);
     const issued = db.prepare("SELECT ticket_number, token FROM tickets").all();
     for (const row of issued) {
