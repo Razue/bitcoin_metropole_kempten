@@ -1,0 +1,22 @@
+{
+  "name": "bitcoin-herbst-tickets-preview",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Local non-production preview of Bitcoin Herbst 2026 admission tickets. Does not call the production ticket API.",
+  "scripts": {
+    "start": "node src/server.js",
+    "test": "node --test test/tickets.test.js"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "better-sqlite3": "^11.10.0",
+    "qrcode": "^1.5.4"
+  },
+  "devDependencies": {
+    "jsqr": "^1.4.0",
+    "pngjs": "^7.0.0"
+  }
+}
