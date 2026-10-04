@@ -230,7 +230,7 @@ function shell(title, inner) {
 <style>${CSS}</style>
 </head>
 <body>
-<p class="banner">Lokale Vorschau<br>Kein Produktionsticket Â· kein Check-in</p>
+<p class="banner">Lokale Vorschau<br>Kein Produktionsticket · kein Check-in</p>
 ${inner}
 </body>
 </html>`;
@@ -256,7 +256,7 @@ export function renderTicketPage({ number, qrDataUrl }) {
     </div>
     <p class="paid">PAID / VALID</p>
     <dl>
-      <div><dt>Datum</dt><dd>20.â€“21. November 2026</dd></div>
+      <div><dt>Datum</dt><dd>20.–21. November 2026</dd></div>
       <div><dt>Ort</dt><dd>Bitcoin Metropole Kempten</dd></div>
       <div><dt>Eintritt</dt><dd>100000 sats</dd></div>
     </dl>
@@ -264,28 +264,28 @@ export function renderTicketPage({ number, qrDataUrl }) {
   <aside class="stub">
     <img class="key" src="/images/gold_transparent.png" alt="">
     <p class="admit">ADMIT ONE</p>
-    <img class="qr" alt="QR-Code zur PrÃ¼fung" src="${qrDataUrl}">
-    <p class="hint">PrÃ¼fung vor Ort</p>
+    <img class="qr" alt="QR-Code zur Prüfung" src="${qrDataUrl}">
+    <p class="hint">Prüfung vor Ort</p>
   </aside>
 </article>`);
 }
 
 export function renderVerifyPage({ valid, number }) {
   const verdict = valid
-    ? `<p class="verdict valid">GÃœLTIG</p>
+    ? `<p class="verdict valid">GÜLTIG</p>
        <div class="number-row">
          <p class="num" data-ticket-number="${Number(number)}">${Number(number)}</p>
          <p class="of">VON 50</p>
        </div>`
-    : `<p class="verdict invalid">UNGÃœLTIG</p>`;
-  return shell("Bitcoin Herbst 2026 PrÃ¼fung", `
+    : `<p class="verdict invalid">UNGÜLTIG</p>`;
+  return shell("Bitcoin Herbst 2026 Prüfung", `
 <article class="card">
   <img class="watermark" src="/images/bitcoin-herbst-leaf-transparent.png" alt="">
   <img class="logo" src="/images/goldenLogoHerbst.png" alt="Goldenes Ahornblatt mit Bitcoin-Zeichen">
   <h1>BITCOIN HERBST 2026</h1>
   ${verdict}
   <dl class="meta">
-    <div><dt>Datum</dt><dd>20.â€“21. November 2026</dd></div>
+    <div><dt>Datum</dt><dd>20.–21. November 2026</dd></div>
     <div><dt>Ort</dt><dd>Bitcoin Metropole Kempten</dd></div>
   </dl>
 </article>`);
@@ -293,13 +293,13 @@ export function renderVerifyPage({ valid, number }) {
 
 export function renderHome(links) {
   const list = links.length
-    ? `<p><a href="${escapeHtml(links[0])}">Lokales Fixture-Ticket Ã¶ffnen</a></p>`
+    ? `<p><a href="${escapeHtml(links[0])}">Lokales Fixture-Ticket öffnen</a></p>`
     : `<p>Keine Fixture-Tickets in dieser Datenbank.</p>`;
   return shell("Bitcoin Herbst 2026 Vorschau", `
 <article class="card">
   <img class="logo" src="/images/goldenLogoHerbst.png" alt="Goldenes Ahornblatt mit Bitcoin-Zeichen">
   <h1>BITCOIN HERBST 2026</h1>
-  <p>20.â€“21. November 2026<br>Bitcoin Metropole Kempten</p>
+  <p>20.–21. November 2026<br>Bitcoin Metropole Kempten</p>
   ${list}
 </article>`);
 }
