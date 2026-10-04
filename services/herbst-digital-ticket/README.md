@@ -1,4 +1,4 @@
-# Bitcoin Herbst 2026 â€” local digital ticket preview
+# Bitcoin Herbst 2026 — local digital ticket preview
 
 Local preview only. Not deployed.
 
@@ -35,6 +35,6 @@ npm start
 
 The only SQLite file is `data/tickets.db` inside this service. It is gitignored. The only purchase id the process assigns on startup is the labeled local fixture `local-fixture-settled-001`. That fixture is not a buyer, an invoice, or a payment. The eight tickets already sold in production are not invented here.
 
-QR codes encode only `http://127.0.0.1:<port>/verify/<opaque-token>`. An unknown token renders UNGÃœLTIG and no ticket number.
+QR codes encode only `http://127.0.0.1:<port>/verify/<opaque-token>`. An unknown token renders UNGÜLTIG and no ticket number.
 
 `data/tickets.db`, `data/local-preview.json`, `node_modules/`, and `.env` must stay private and must not be pushed.
