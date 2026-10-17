@@ -142,7 +142,7 @@ function renderEvents(data, filter) {
             : isHalloweenGhostNight
             ? `<span class="event-halloween-illustration" aria-hidden="true"><svg viewBox="0 0 96 96" focusable="false"><g fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M47 27c1-8 5-13 12-16"/><path d="M59 11c-1 6 2 10 8 11"/><path d="M48 27c-16 0-28 12-28 30 0 18 12 29 28 29s28-11 28-29c0-18-12-30-28-30Z"/><path d="M48 29c-7 8-8 37 0 55"/><path d="M48 29c7 8 8 37 0 55"/><path d="M29 40c8 5 30 5 38 0"/></g><path d="m32 55 10-6 1 11Zm31 0-10-6-1 11Zm-28 14c8 7 18 7 26 0l-4 11H39Z" fill="currentColor"/></svg></span>`
             : isProofOfRace
-            ? '<span class="event-rally-car" aria-hidden="true"><svg viewBox="0 0 120 72" focusable="false"><path d="M18 47h9l9-19h42l15 19h9a8 8 0 0 1 8 8v4H10v-4a8 8 0 0 1 8-8Z"/><path d="M44 28 54 14h22l12 14M53 14h24"/><circle cx="31" cy="59" r="9"/><circle cx="88" cy="59" r="9"/><path d="M17 47h20m54 0h12M44 40h17m19 0h12"/></svg></span>'
+            ? '<span class="event-rally-tyre" aria-hidden="true"><svg viewBox="0 0 96 96" focusable="false"><circle cx="48" cy="48" r="35"/><circle cx="48" cy="48" r="22"/><circle cx="48" cy="48" r="7"/><path d="m48 13 7 12-7 8-7-8Zm25 10 1 14-11 4-5-11Zm10 25-12 7-8-7 7-8Zm-10 25-14 1-4-11 11-5Zm-25 10-7-12 7-8 7 8Zm-25-10-1-14 11-4 5 11Zm-10-25 12-7 8 7-7 8Zm10-25 14-1 4 11-11 5Z"/></svg></span>'
             : event.Typ === 'eSports'
             ? isQuizNightContact
                 ? '<span class="event-trophy" aria-hidden="true"><svg viewBox="0 0 64 64" focusable="false"><text x="32" y="49" text-anchor="middle" font-size="56" font-family="Space Grotesk, sans-serif" font-weight="700">?</text></svg></span>'

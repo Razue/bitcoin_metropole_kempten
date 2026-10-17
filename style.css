@@ -621,7 +621,7 @@ button {
 }
 
 .event-card--bitcoin-herbst .event-info {
-    padding-right: 96px;
+    padding-right: 132px;
 }
 
 .event-card--bitcoin-herbst .event-info h3 {
@@ -645,7 +645,7 @@ button {
     pointer-events: none;
 }
 
-/* Das Finale bleibt ein regulärer Kalendertermin, bekommt aber sein eigenes Rallye-Symbol. */
+/* Das Finale bleibt ein regulärer Kalendertermin, bekommt aber sein eigenes Reifen-Symbol. */
 .event-card--proof-of-race {
     background:
         radial-gradient(circle at 86% 26%, rgba(103, 194, 255, 0.18), transparent 24%),
@@ -655,36 +655,47 @@ button {
 }
 
 .event-card--proof-of-race .event-info {
-    padding-right: 100px;
+    padding-right: 118px;
 }
 
-.event-rally-car {
+.event-rally-tyre {
     position: absolute;
     top: 50%;
-    right: 12px;
-    width: 98px;
-    height: 66px;
-    color: #7ed3ff;
-    filter: drop-shadow(0 0 12px rgba(81, 190, 255, 0.8));
-    transform: translateY(-50%) rotate(-4deg);
+    right: 16px;
+    width: 78px;
+    height: 78px;
+    color: #f3ba4d;
+    filter: drop-shadow(0 0 12px rgba(243, 186, 77, 0.6));
+    transform: translateY(-50%) rotate(-12deg);
     pointer-events: none;
 }
 
-.event-rally-car svg {
+.event-rally-tyre svg {
     display: block;
     width: 100%;
     height: 100%;
-    fill: rgba(28, 111, 163, 0.28);
+    fill: #121a22;
     stroke: currentColor;
     stroke-linecap: round;
     stroke-linejoin: round;
-    stroke-width: 3.5;
+    stroke-width: 4;
+}
+
+.event-rally-tyre svg circle:nth-child(2) {
+    fill: #253847;
+}
+
+.event-rally-tyre svg circle:nth-child(3) {
+    fill: #f3ba4d;
 }
 
 @media (max-width: 768px) {
-    .event-card--bitcoin-herbst .event-info,
+    .event-card--bitcoin-herbst .event-info {
+        padding-right: 96px;
+    }
+
     .event-card--proof-of-race .event-info {
-        padding-right: 0;
+        padding-right: 88px;
     }
 
     .event-herbst-leaf {
@@ -695,12 +706,12 @@ button {
         transform: rotate(8deg);
     }
 
-    .event-rally-car {
+    .event-rally-tyre {
         top: 18px;
-        right: 13px;
-        width: 76px;
-        height: 51px;
-        transform: rotate(-4deg);
+        right: 15px;
+        width: 62px;
+        height: 62px;
+        transform: rotate(-12deg);
     }
 }
 
