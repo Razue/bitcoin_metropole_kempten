@@ -602,6 +602,119 @@ button {
     box-shadow: 0 0 22px rgba(247, 147, 26, 0.42);
 }
 
+/* Ausschließlich die zwei Bitcoin-Herbst-Termine erhalten die Ticket-Inszenierung. */
+.event-card--bitcoin-herbst {
+    position: relative;
+    overflow: hidden;
+    border-color: rgba(255, 190, 74, 0.78);
+    background:
+        radial-gradient(circle at 88% 24%, rgba(255, 190, 74, 0.2), transparent 24%),
+        linear-gradient(135deg, #221708 0%, #18130d 52%, #31210a 100%);
+    box-shadow: 0 0 0 1px rgba(255, 190, 74, 0.18), 0 16px 38px rgba(247, 147, 26, 0.2);
+}
+
+.event-card--bitcoin-herbst .event-info,
+.event-card--bitcoin-herbst .event-meta,
+.event-card--bitcoin-herbst .event-date {
+    position: relative;
+    z-index: 1;
+}
+
+.event-card--bitcoin-herbst .event-info {
+    padding-right: 132px;
+}
+
+.event-card--bitcoin-herbst .event-info h3 {
+    color: #ffe3a0;
+}
+
+.event-card--bitcoin-herbst .event-registration-link {
+    background: linear-gradient(135deg, #f4b63c, #ffd56d);
+    box-shadow: 0 0 24px rgba(255, 190, 74, 0.34);
+}
+
+.event-herbst-leaf {
+    position: absolute;
+    top: 50%;
+    right: 14px;
+    width: 92px;
+    height: 92px;
+    object-fit: contain;
+    filter: drop-shadow(0 0 13px rgba(255, 190, 74, 0.7));
+    transform: translateY(-50%) rotate(8deg);
+    pointer-events: none;
+}
+
+/* Das Finale bleibt ein regulärer Kalendertermin, bekommt aber sein eigenes Reifen-Symbol. */
+.event-card--proof-of-race {
+    background:
+        radial-gradient(circle at 86% 26%, rgba(103, 194, 255, 0.18), transparent 24%),
+        linear-gradient(135deg, #101317 0%, #171d24 54%, #172f42 100%);
+    border-color: rgba(103, 194, 255, 0.5);
+    box-shadow: 0 0 0 1px rgba(103, 194, 255, 0.12), 0 14px 34px rgba(29, 152, 234, 0.15);
+}
+
+.event-card--proof-of-race .event-info {
+    padding-right: 118px;
+}
+
+.event-rally-tyre {
+    position: absolute;
+    top: 50%;
+    right: 16px;
+    width: 78px;
+    height: 78px;
+    color: #f3ba4d;
+    filter: drop-shadow(0 0 12px rgba(243, 186, 77, 0.6));
+    transform: translateY(-50%) rotate(-12deg);
+    pointer-events: none;
+}
+
+.event-rally-tyre svg {
+    display: block;
+    width: 100%;
+    height: 100%;
+    fill: #121a22;
+    stroke: currentColor;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-width: 4;
+}
+
+.event-rally-tyre svg circle:nth-child(2) {
+    fill: #253847;
+}
+
+.event-rally-tyre svg circle:nth-child(3) {
+    fill: #f3ba4d;
+}
+
+@media (max-width: 768px) {
+    .event-card--bitcoin-herbst .event-info {
+        padding-right: 96px;
+    }
+
+    .event-card--proof-of-race .event-info {
+        padding-right: 88px;
+    }
+
+    .event-herbst-leaf {
+        top: 18px;
+        right: 18px;
+        width: 66px;
+        height: 66px;
+        transform: rotate(8deg);
+    }
+
+    .event-rally-tyre {
+        top: 18px;
+        right: 15px;
+        width: 62px;
+        height: 62px;
+        transform: rotate(-12deg);
+    }
+}
+
 /* Einzelne, CSV-gesteuerte Hervorhebung für die Club Poker Night. */
 .event-card--poker {
     position: relative;

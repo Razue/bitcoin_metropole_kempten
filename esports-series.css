@@ -135,6 +135,49 @@
         linear-gradient(145deg, #101721 0%, #111d2b 50%, #162938 100%);
 }
 
+.esports-event-card--proof-of-race {
+    background:
+        radial-gradient(circle at 83% 17%, rgba(87, 205, 255, 0.24), transparent 22%),
+        radial-gradient(circle at 70% 72%, rgba(246, 94, 56, 0.16), transparent 35%),
+        linear-gradient(145deg, #090d12 0%, #121b25 52%, #0c151e 100%);
+    border-color: rgba(115, 208, 255, 0.24);
+}
+
+.esports-event-card--proof-of-race .esports-card-copy {
+    max-width: 61%;
+}
+
+.esports-rally-tyre {
+    position: absolute;
+    z-index: 1;
+    top: 48px;
+    right: 24px;
+    width: 144px;
+    height: 144px;
+    color: #f3ba4d;
+    filter: drop-shadow(0 0 15px rgba(243, 186, 77, 0.58)) drop-shadow(0 18px 24px rgba(0, 0, 0, 0.44));
+    transform: rotate(-12deg);
+}
+
+.esports-rally-tyre svg {
+    display: block;
+    width: 100%;
+    height: 100%;
+    fill: #0d151d;
+    stroke: currentColor;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-width: 7;
+}
+
+.esports-rally-tyre svg circle:nth-child(2) {
+    fill: #263846;
+}
+
+.esports-rally-tyre svg circle:nth-child(3) {
+    fill: #f3ba4d;
+}
+
 .esports-event-card--quiz {
     background:
         radial-gradient(circle at 79% 22%, rgba(169, 110, 242, 0.26), transparent 23%),
@@ -525,7 +568,12 @@
 .esports-podium--silver::before { content: '2'; background: #c1cdda; }
 .esports-podium--bronze { background: linear-gradient(90deg, rgba(191, 125, 80, 0.16), transparent); }
 .esports-podium--bronze::before { content: '3'; background: #bf7d50; }
+.esports-podium--fourth { background: linear-gradient(90deg, rgba(124, 151, 177, 0.12), transparent); }
+.esports-podium--fourth::before { content: '4'; color: #dfeaf4; background: #466078; }
+.esports-podium--fifth { background: linear-gradient(90deg, rgba(124, 151, 177, 0.08), transparent); }
+.esports-podium--fifth::before { content: '5'; color: #dfeaf4; background: #324759; }
 .esports-podium-place { color: #f2f6fb; font-size: 0.72rem; font-weight: 600; }
+.esports-podium time { color: #f7d684; font-size: 0.72rem; font-weight: 700; font-variant-numeric: tabular-nums; }
 .esports-podium-empty { color: #8d9eb3; font-size: 0.7rem; font-style: italic; }
 
 .esports-ranking-link {
@@ -560,6 +608,26 @@
 .esports-full-ranking tbody td { text-align: center; }
 .esports-ranking-note { grid-column: 2; margin: -13px 0 0; color: #8f9eaf; font-size: 0.75rem; line-height: 1.5; }
 
+.esports-full-ranking--proof-of-race {
+    border-left-color: #74d6ff;
+    background:
+        linear-gradient(90deg, rgba(69, 183, 241, 0.08), transparent 48%),
+        rgba(255, 255, 255, 0.035);
+}
+
+.esports-full-ranking--proof-of-race table {
+    min-width: 360px;
+}
+
+.esports-full-ranking--proof-of-race tbody tr:first-child td {
+    color: #f7d684;
+    font-weight: 700;
+}
+
+.esports-full-ranking--proof-of-race time {
+    font-variant-numeric: tabular-nums;
+}
+
 .esports-hall { margin-top: 55px; }
 .esports-hall > p { max-width: 510px; margin-bottom: 18px; color: #9eabba; font-size: 0.92rem; }
 .esports-hall-empty { padding: 20px 22px; color: #7f8da0; border: 1px dashed rgba(255, 255, 255, 0.18); font-size: 0.82rem; }
@@ -576,6 +644,8 @@
     .esports-quiz-mark span { font-size: 4.4rem; }
     .esports-quiz-mark small { margin-top: -31px; font-size: 0.54rem; }
     .esports-event-card--time-trial .esports-card-copy { max-width: 84%; }
+    .esports-event-card--proof-of-race .esports-card-copy { max-width: 52%; }
+    .esports-rally-tyre { top: 52px; right: 17px; width: 112px; height: 112px; }
     .esports-track-lines { top: 13px; width: 59%; }
     .esports-full-ranking { grid-template-columns: 1fr; gap: 22px; padding: 22px 18px; }
     .esports-ranking-note { grid-column: 1; margin: -8px 0 0; }
