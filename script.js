@@ -103,6 +103,7 @@ function renderEvents(data, filter) {
         const day = date.getDate();
         const month = months[date.getMonth()];
         const weekday = weekdays[date.getDay()];
+        const timeDisplay = event.Zeit.toLowerCase() === 'ganztägig' ? 'ganztägig' : `${event.Zeit} Uhr`;
         const contactModalEvent = event.Link === 'quiz-night-contact'
             ? 'quiz'
             : event.Link === 'fc-contact'
@@ -110,26 +111,38 @@ function renderEvents(data, filter) {
                 : null;
         const isPokerNight = event.Link === 'club-members-only';
         const isHalloweenGhostNight = event.Link === 'halloween-ghost-night';
+        const isBitcoinHerbst = event.Link === 'bitcoin-herbst-ticket';
+        const isProofOfRace = event.Link === 'proof-of-race';
         const isQuizNightContact = contactModalEvent === 'quiz';
         const registrationLink = isPokerNight
             ? `<span class="event-registration-link event-registration-link--club"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M7 10V7a5 5 0 0 1 10 0v3m-9 0h8a2 2 0 0 1 2 2v8H6v-8a2 2 0 0 1 2-2Zm4 4v3"/></svg>NUR FÜR CLUBMITGLIEDER</span>`
+            : isBitcoinHerbst
+            ? '<a href="#bitcoin-herbst" class="event-registration-link">TICKET SICHERN</a>'
             : contactModalEvent
             ? `<button type="button" class="event-registration-link" data-contact-modal-event="${contactModalEvent}" aria-haspopup="dialog">JETZT ANMELDEN</button>`
-            : event.Link && !isHalloweenGhostNight
+            : event.Link && !isHalloweenGhostNight && !isProofOfRace
                 ? `<a href="${event.Link}" class="event-registration-link">JETZT ANMELDEN</a>`
                 : '';
-        const cardClass = event.Link && !isHalloweenGhostNight ? ' event-card--with-cta' : '';
-        const eventHighlightClass = isPokerNight
-            ? ' event-card--poker'
-            : isHalloweenGhostNight
-                ? ' event-card--halloween'
-            : event.Typ === 'eSports'
-                ? ' event-card--esports'
-                : '';
-        const eventEmblem = isPokerNight
+        const cardClass = (event.Link && !isHalloweenGhostNight && !isProofOfRace) ? ' event-card--with-cta' : '';
+        const eventHighlightClass = isBitcoinHerbst
+            ? ' event-card--bitcoin-herbst'
+            : isPokerNight
+                ? ' event-card--poker'
+                : isHalloweenGhostNight
+                    ? ' event-card--halloween'
+                    : isProofOfRace
+                        ? ' event-card--esports event-card--proof-of-race'
+                        : event.Typ === 'eSports'
+                            ? ' event-card--esports'
+                            : '';
+        const eventEmblem = isBitcoinHerbst
+            ? '<img class="event-herbst-leaf" src="images/bitcoin-herbst-leaf-transparent.png" alt="" aria-hidden="true">'
+            : isPokerNight
             ? `<span class="event-poker-cards" aria-hidden="true"><svg viewBox="0 0 96 96" focusable="false"><g fill="none" stroke="currentColor" stroke-width="4" stroke-linejoin="round"><path d="M18 23h39a5 5 0 0 1 5 5v48a5 5 0 0 1-5 5H18a5 5 0 0 1-5-5V28a5 5 0 0 1 5-5Z"/><path d="m37 15 38 17a5 5 0 0 1 3 6L57 84a5 5 0 0 1-6 3L14 70"/></g><text x="26" y="51" fill="currentColor" font-size="27" font-family="Space Grotesk, sans-serif" font-weight="700">A</text><path d="m50 44 7-8 7 8c0 6-4 10-7 14-3-4-7-8-7-14Z" fill="currentColor"/></svg></span>`
             : isHalloweenGhostNight
             ? `<span class="event-halloween-illustration" aria-hidden="true"><svg viewBox="0 0 96 96" focusable="false"><g fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M47 27c1-8 5-13 12-16"/><path d="M59 11c-1 6 2 10 8 11"/><path d="M48 27c-16 0-28 12-28 30 0 18 12 29 28 29s28-11 28-29c0-18-12-30-28-30Z"/><path d="M48 29c-7 8-8 37 0 55"/><path d="M48 29c7 8 8 37 0 55"/><path d="M29 40c8 5 30 5 38 0"/></g><path d="m32 55 10-6 1 11Zm31 0-10-6-1 11Zm-28 14c8 7 18 7 26 0l-4 11H39Z" fill="currentColor"/></svg></span>`
+            : isProofOfRace
+            ? '<span class="event-rally-car" aria-hidden="true"><svg viewBox="0 0 120 72" focusable="false"><path d="M18 47h9l9-19h42l15 19h9a8 8 0 0 1 8 8v4H10v-4a8 8 0 0 1 8-8Z"/><path d="M44 28 54 14h22l12 14M53 14h24"/><circle cx="31" cy="59" r="9"/><circle cx="88" cy="59" r="9"/><path d="M17 47h20m54 0h12M44 40h17m19 0h12"/></svg></span>'
             : event.Typ === 'eSports'
             ? isQuizNightContact
                 ? '<span class="event-trophy" aria-hidden="true"><svg viewBox="0 0 64 64" focusable="false"><text x="32" y="49" text-anchor="middle" font-size="56" font-family="Space Grotesk, sans-serif" font-weight="700">?</text></svg></span>'
@@ -155,7 +168,7 @@ function renderEvents(data, filter) {
                     <p>${event.Beschreibung}</p>
                 </div>
                 <div class="event-meta">
-                    <span class="event-time">${event.Zeit} Uhr</span>
+                    <span class="event-time">${timeDisplay}</span>
                     ${eventTypeBadge}
                     ${livestreamBadge}
                     ${registrationLink}
