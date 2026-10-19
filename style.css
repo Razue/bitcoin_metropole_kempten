@@ -76,7 +76,7 @@ button {
     top: 0;
     left: 0;
     right: 0;
-    padding: 20px 24px;
+    padding: 12px 24px;
     background: rgba(10, 10, 10, 0.9);
     backdrop-filter: blur(20px);
     border-bottom: 1px solid var(--color-border-light);
@@ -87,16 +87,17 @@ button {
 .nav-container {
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
+    gap: 32px;
     max-width: var(--max-width);
     margin: 0 auto;
     position: relative;
 }
 
 .nav-container .logo {
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
 }
 
 .nav-links {
@@ -106,7 +107,8 @@ button {
 }
 
 .logo-img {
-    height: 40px;
+    display: block;
+    height: 60px;
     width: auto;
 }
 
@@ -155,6 +157,17 @@ button {
     height: 2px;
     background-color: var(--color-text);
     transition: var(--transition);
+}
+
+/* Schmale Desktop-Breiten: etwas engere Navigation, damit Logo und Links nebeneinander passen. */
+@media (min-width: 769px) and (max-width: 1024px) {
+    .nav-container {
+        gap: 24px;
+    }
+
+    .nav-links {
+        gap: 20px;
+    }
 }
 
 /* ===== Hero Section ===== */
@@ -1139,8 +1152,13 @@ button {
         display: none;
     }
 
+    /* Logo mittig; der Menü-Button hat noch kein aufklappbares Menü und lag bisher unsichtbar hinter dem Logo. */
+    .nav-container {
+        justify-content: center;
+    }
+
     .mobile-menu-btn {
-        display: flex;
+        display: none;
     }
 
     .hero-title {
@@ -2080,7 +2098,7 @@ button {
     position: relative;
     background: linear-gradient(145deg, #ffffff 0%, #f9f8f4 100%);
     padding: 18px 24px 14px;
-    margin: 68px auto 0;
+    margin: 86px auto 0;
     border-radius: 18px;
     text-align: center;
     transform: rotate(-1.5deg);
@@ -2255,7 +2273,7 @@ button {
     }
 
     .event-sticker {
-        margin: 64px auto 8px;
+        margin: 84px auto 8px;
         padding: 20px 10px 14px;
         transform: rotate(-2deg);
         border-radius: 2px;
