@@ -15,10 +15,10 @@
         },
         fc: {
             kicker: '',
-            title: 'Zum 21 eSports Pokal – FC anmelden',
-            intro: 'Schreib uns kurz deinen Namen/Nickname und dass du beim FC-Turnier am 18. Oktober dabei sein möchtest.',
-            whatsappMessage: 'Hallo, ich möchte mich für den 21 eSports Pokal – FC am 18. Oktober anmelden.',
-            emailSubject: 'Anmeldung 21 eSports Pokal – FC'
+            title: 'Zur 21 eSports FC – Season 2 anmelden',
+            intro: 'Schreib uns kurz deinen Namen/Nickname und dass du bei der 21 eSports FC – Season 2 dabei sein möchtest.',
+            whatsappMessage: 'Hallo, ich möchte mich für die 21 eSports FC – Season 2 anmelden.',
+            emailSubject: 'Anmeldung 21 eSports FC – Season 2'
         }
     });
     const kicker = dialog.querySelector('[data-contact-modal-kicker]');

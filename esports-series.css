@@ -668,6 +668,129 @@
     .esports-full-ranking { margin-top: 16px; }
 }
 
+/* 21 eSports FC: finished Season 1 (archive card) and upcoming Season 2. */
+.esports-soon-badge,
+.esports-done-badge {
+    display: block;
+    width: fit-content;
+    margin-bottom: 9px;
+    padding: 4px 8px;
+    border-radius: 999px;
+    font-size: 0.6rem;
+    letter-spacing: 0.12em;
+}
+
+.esports-soon-badge { color: #10151c; background: #f6a33a; }
+.esports-done-badge { color: #f5a542; background: rgba(245, 165, 66, 0.12); border: 1px solid rgba(245, 165, 66, 0.45); }
+
+.esports-fc-logo { filter: drop-shadow(0 14px 22px rgba(0, 0, 0, 0.35)); transform: none; }
+.esports-fc-logo img { display: block; width: 100%; height: 100%; object-fit: contain; }
+
+.esports-fc-final {
+    margin-top: 14px;
+    color: #d9e0e9;
+    font-size: 0.85rem;
+}
+
+.esports-fc-final strong { color: #f7d684; }
+
+.esports-fc-results {
+    margin-top: 22px;
+    border-color: rgba(245, 165, 66, 0.2);
+}
+
+.esports-fc-results .esports-ranking-head span { color: #f5a542; }
+
+.esports-podium-sats {
+    color: #f7d684;
+    font-size: 0.72rem;
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+}
+
+.esports-fc-payout {
+    margin-top: 10px;
+    color: #b9c2cf;
+    font-size: 0.74rem;
+}
+
+.esports-fc-payout strong { color: #f7d684; }
+
+.esports-fc-standings {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 4px 12px;
+    margin-top: 12px;
+    padding-top: 11px;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    color: #c9d1dc;
+    font-size: 0.66rem;
+    line-height: 1.35;
+    list-style: none;
+}
+
+.esports-fc-standings li { display: grid; grid-template-columns: 1.9em minmax(0, 1fr); min-width: 0; list-style: none; overflow-wrap: anywhere; }
+.esports-fc-standings span { color: #8d9eb3; font-variant-numeric: tabular-nums; }
+
+.esports-pot-sponsor {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 13px;
+    padding-top: 11px;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.esports-pot-sponsor span,
+.esports-pot-sponsors h4 {
+    color: #8d9eb3;
+    font-size: 0.6rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+}
+
+.esports-pot-sponsor img { display: block; width: 150px; height: auto; }
+
+.esports-pot-sponsors {
+    position: relative;
+    z-index: 1;
+    margin-top: auto;
+    padding-top: 26px;
+}
+
+.esports-pot-sponsors h4 { margin-bottom: 10px; }
+
+.esports-sponsor-slots {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 10px;
+}
+
+.esports-sponsor-slots li {
+    display: grid;
+    place-items: center;
+    min-height: 58px;
+    padding: 8px;
+    color: #8d9eb3;
+    border: 1px dashed rgba(245, 165, 66, 0.4);
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.025);
+    font-size: 0.66rem;
+    font-weight: 600;
+    text-align: center;
+}
+
+.esports-pot-sponsors + .esports-card-cta { margin-top: 20px; }
+
+@media (max-width: 430px) {
+    .esports-fc-standings { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .esports-sponsor-slots { gap: 7px; }
+    .esports-sponsor-slots li { min-height: 52px; font-size: 0.6rem; }
+    .esports-pot-sponsor img { width: 132px; }
+}
+
 @media (prefers-reduced-motion: reduce) {
     .esports-card-cta { transition: none; }
 }

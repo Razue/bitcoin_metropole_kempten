@@ -11,7 +11,7 @@
     <meta property="og:image" content="images/metropole_01.webp">
     <title>Bitcoin Metropole Kempten</title>
     <link rel="stylesheet" href="style.css?v=7">
-    <link rel="stylesheet" href="esports-series.css?v=2">
+    <link rel="stylesheet" href="esports-series.css?v=3">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -377,34 +377,76 @@
             </div>
 
             <div class="esports-event-grid">
-                <article class="esports-event-card esports-event-card--fc" aria-labelledby="esports-fc-title">
+                <article class="esports-event-card esports-event-card--fc" aria-labelledby="esports-fc-s2-title">
+                    <div class="esports-card-topline">
+                        <span>21 eSPORTS · SEASON 2</span>
+                        <span>FC</span>
+                    </div>
+                    <div class="esports-fc-ball esports-fc-logo" aria-hidden="true">
+                        <img src="images/21-esports-fc-logo.webp" alt="" width="600" height="600" decoding="async">
+                    </div>
+                    <div class="esports-card-copy">
+                        <p class="esports-event-date"><span class="esports-soon-badge">COMING SOON</span> TERMIN FOLGT</p>
+                        <h3 id="esports-fc-s2-title">21 eSports FC<br>– Season 2</h3>
+                        <p class="esports-card-description">Das Fußball-Gaming-Turnier der Bitcoin Metropole geht in die nächste Season.</p>
+                    </div>
+                    <section class="esports-pot-sponsors" aria-labelledby="esports-fc-s2-sponsors">
+                        <h4 id="esports-fc-s2-sponsors">Pot-Sponsoren</h4>
+                        <ul class="esports-sponsor-slots">
+                            <li>Dein Logo hier</li>
+                            <li>Dein Logo hier</li>
+                            <li>Dein Logo hier</li>
+                        </ul>
+                    </section>
+                    <button class="esports-card-cta esports-card-cta--fc" type="button" data-contact-modal-event="fc" aria-haspopup="dialog" aria-controls="quiz-night-contact-dialog">Zur FC-Anmeldung <span aria-hidden="true">→</span></button>
+                </article>
+
+                <article class="esports-event-card esports-event-card--fc esports-event-card--finished" data-status="finished" aria-labelledby="esports-fc-title">
                     <div class="esports-card-topline">
                         <span>21 eSPORTS · SEASON 1</span>
                         <span>FC</span>
                     </div>
-                    <div class="esports-fc-ball" aria-hidden="true">
-                        <svg viewBox="0 0 150 150" focusable="false">
-                            <circle cx="75" cy="75" r="66" fill="#fbf8f2" stroke="#f6a33a" stroke-width="7"/>
-                            <circle cx="75" cy="75" r="60" fill="none" stroke="rgba(33, 43, 52, 0.35)" stroke-width="1.5"/>
-                            <path d="M75 48 99 65 90 94 60 94 51 65Z" fill="#f6a33a" stroke="#25313b" stroke-width="3" stroke-linejoin="round"/>
-                            <path d="M75 48 75 24M99 65 123 50M90 94 106 119M60 94 44 119M51 65 27 50" fill="none" stroke="#25313b" stroke-width="3" stroke-linecap="round"/>
-                            <path d="M61 27 75 24 89 27 97 44 75 48 53 44ZM112 41 123 50 126 66 111 78 99 65ZM98 111 106 119 94 132 76 135 68 116 90 94ZM44 119 52 132 70 135 82 116 60 94ZM24 66 27 50 38 41 51 65 39 78Z" fill="#f6a33a" stroke="#25313b" stroke-width="2.2" stroke-linejoin="round"/>
-                            <path d="M75 17c30 0 55 22 59 51" fill="none" stroke="rgba(255,255,255,0.8)" stroke-width="3" stroke-linecap="round"/>
-                        </svg>
+                    <div class="esports-fc-ball esports-fc-logo" aria-hidden="true">
+                        <img src="images/21-esports-fc-logo.webp" alt="" width="600" height="600" decoding="async">
                     </div>
                     <div class="esports-card-copy">
-                        <p class="esports-event-date">18.10.2026 · AB 10:00 UHR</p>
+                        <p class="esports-event-date"><span class="esports-done-badge">BEENDET</span> 18.10.2026</p>
                         <h3 id="esports-fc-title">21 eSports FC<br>– Season 1</h3>
                         <p class="esports-card-description">Das Fußball-Gaming-Turnier der Bitcoin Metropole.</p>
-                        <ul class="esports-fact-list" aria-label="Turnierdetails">
-                            <li>Fußball-Gaming-Turnier</li>
-                            <li>PlayStation 5</li>
-                            <li>32 Plätze</li>
-                            <li>Teilnahme kostenlos</li>
-                            <li>Anmeldung erforderlich</li>
-                        </ul>
+                        <p class="esports-fc-final">Finale: <strong>Samu 2:0 nattixx</strong></p>
                     </div>
-                    <button class="esports-card-cta esports-card-cta--fc" type="button" data-contact-modal-event="fc" aria-haspopup="dialog" aria-controls="quiz-night-contact-dialog">Zur FC-Anmeldung <span aria-hidden="true">→</span></button>
+                    <section class="esports-ranking-preview esports-fc-results" aria-labelledby="esports-fc-results-title">
+                        <div class="esports-ranking-head">
+                            <h4 id="esports-fc-results-title">Endstand</h4>
+                            <span>GEWINNER</span>
+                        </div>
+                        <ol class="esports-podium-list">
+                            <li class="esports-podium esports-podium--gold"><span class="esports-podium-place">Samu</span><span class="esports-podium-sats">207.798 sats</span></li>
+                            <li class="esports-podium esports-podium--silver"><span class="esports-podium-place">nattixx</span><span class="esports-podium-sats">138.532 sats</span></li>
+                            <li class="esports-podium esports-podium--bronze"><span class="esports-podium-place">Ferro33</span><span class="esports-podium-sats">69.266 sats</span></li>
+                            <li class="esports-podium esports-podium--fourth"><span class="esports-podium-place">Donny</span><span class="esports-podium-sats">69.271 sats</span></li>
+                        </ol>
+                        <p class="esports-fc-payout">Insgesamt ausgezahlt: <strong>484.867 sats</strong></p>
+                        <ol class="esports-fc-standings" aria-label="Weitere Platzierungen">
+                            <li><span>5.</span> BARON (Omar Al)</li>
+                            <li><span>6.</span> MischaTurm</li>
+                            <li><span>7.</span> Kiwi (Lars)</li>
+                            <li><span>8.</span> Raphael21</li>
+                            <li><span>9.</span> Samuel21</li>
+                            <li><span>10.</span> Kartoffel</li>
+                            <li><span>11.</span> nedim94x und FireOverFiat</li>
+                            <li><span>13.</span> Fabio21</li>
+                            <li><span>14.</span> Abdul</li>
+                            <li><span>15.</span> brindenentbrinder</li>
+                            <li><span>16.</span> Ripple</li>
+                            <li><span>17.</span> Mika</li>
+                            <li><span>18.</span> Die Pulserin (Janna)</li>
+                        </ol>
+                        <div class="esports-pot-sponsor">
+                            <span>Pot-Sponsor</span>
+                            <img src="images/einundzwanzig-horizontal-inverted.svg" alt="Einundzwanzig" width="134" height="12" loading="lazy">
+                        </div>
+                    </section>
                 </article>
 
                 <article class="esports-event-card esports-event-card--proof-of-race" aria-labelledby="proof-of-race-title">
