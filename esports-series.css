@@ -794,3 +794,118 @@
 @media (prefers-reduced-motion: reduce) {
     .esports-card-cta { transition: none; }
 }
+
+/* 21 Schach: Schachturnier Nr. 1 (orange/gold, Anmeldung über das gemeinsame Kontakt-Modal). */
+.esports-event-card--schach {
+    background:
+        radial-gradient(circle at 79% 22%, rgba(247, 147, 26, 0.26), transparent 23%),
+        linear-gradient(145deg, #17120b 0%, #1d1810 52%, #2b2112 100%);
+    border-color: rgba(246, 163, 58, 0.28);
+}
+
+.esports-chess-mark {
+    position: absolute;
+    top: 68px;
+    right: 27px;
+    display: grid;
+    place-items: center;
+    width: 150px;
+    height: 150px;
+    color: #1a1208;
+    background: linear-gradient(145deg, rgba(247, 168, 58, 0.96), rgba(196, 112, 18, 0.9));
+    border: 9px solid rgba(255, 255, 255, 0.08);
+    border-radius: 50%;
+    box-shadow: 0 0 0 18px rgba(247, 147, 26, 0.07), 0 16px 40px rgba(0, 0, 0, 0.25);
+    transform: rotate(-8deg);
+}
+
+.esports-chess-mark::before,
+.esports-chess-mark::after {
+    position: absolute;
+    content: '';
+    border: 1px solid rgba(255, 255, 255, 0.24);
+    border-radius: 50%;
+}
+
+.esports-chess-mark::before { inset: 14px; }
+.esports-chess-mark::after { inset: 34px; }
+
+.esports-chess-mark img {
+    position: absolute;
+    z-index: 1;
+    top: 17px;
+    left: 50%;
+    width: auto;
+    max-width: none;
+    height: 80px;
+    transform: translateX(-50%);
+    filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.35));
+}
+
+.esports-chess-mark small {
+    position: absolute;
+    z-index: 1;
+    bottom: 19px;
+    left: 0;
+    right: 0;
+    text-align: center;
+    font-size: 0.62rem;
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: 0.2em;
+    text-indent: 0.2em;
+}
+
+.esports-payout-note {
+    margin-top: 16px;
+    color: #c9b89c;
+    font-size: 0.8rem;
+    line-height: 1.5;
+}
+
+.esports-event-card--quiz .esports-payout-note { color: #c9b8e2; }
+
+.esports-card-cta--schach {
+    border: 0;
+    font-family: inherit;
+    cursor: pointer;
+}
+
+.quiz-night-contact-dialog[data-contact-modal-event="schach"] {
+    background: #17120b;
+    border-color: rgba(246, 163, 58, 0.54);
+}
+
+.quiz-night-contact-dialog[data-contact-modal-event="schach"] .quiz-night-contact-dialog__content {
+    background:
+        radial-gradient(circle at 100% 0%, rgba(247, 147, 26, 0.24), transparent 36%),
+        linear-gradient(145deg, #17120b 0%, #2a2014 100%);
+}
+
+.quiz-night-contact-dialog[data-contact-modal-event="schach"] .quiz-night-contact-dialog__close { color: #ffe7c4; }
+
+.quiz-night-contact-dialog[data-contact-modal-event="schach"] .quiz-night-contact-dialog__kicker,
+.quiz-night-contact-dialog[data-contact-modal-event="schach"] .quiz-night-contact-dialog__contact-label,
+.quiz-night-contact-dialog[data-contact-modal-event="schach"] .quiz-night-contact-dialog__other > p {
+    color: #f6a33a;
+}
+
+.quiz-night-contact-dialog[data-contact-modal-event="schach"] .quiz-night-contact-dialog__intro { color: #d4c8b4; }
+.quiz-night-contact-dialog[data-contact-modal-event="schach"] .quiz-night-contact-dialog__links span { color: #efc28d; }
+
+.esports-nowrap { white-space: nowrap; }
+.event-chess-king { color: inherit; opacity: 0.3; filter: sepia(1) saturate(3) hue-rotate(-12deg); }
+.event-chess-king img { display: block; width: auto; height: 100%; margin: 0 auto; }
+
+@media (max-width: 768px) {
+    .esports-chess-mark { top: 65px; right: 21px; width: 119px; height: 119px; border-width: 7px; }
+    .esports-chess-mark img { top: 13px; height: 62px; }
+    .esports-chess-mark small { bottom: 15px; font-size: 0.54rem; }
+    .esports-event-card--schach .esports-event-date { max-width: 150px; line-height: 1.5; }
+}
+
+@media (max-width: 430px) {
+    .esports-event-card--schach .esports-card-copy { max-width: 68%; }
+    .esports-event-card--schach .esports-card-copy h3 { font-size: 1.85rem; }
+    .esports-payout-note { font-size: 0.78rem; }
+}

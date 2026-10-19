@@ -9,9 +9,16 @@
         quiz: {
             kicker: '21 eSPORTS · QUIZ NIGHT #01',
             title: 'Zur Quiz Night #01 anmelden',
-            intro: 'Schreib uns kurz deinen Namen/Nickname und dass du bei Quiz Night #01 dabei bist.',
+            intro: 'Schreib uns kurz deinen Namen/Nickname und dass du bei Quiz Night #01 am Sa 24.10.2026 um 18:30 Uhr dabei bist. Gespielt wird einzeln. Startgeld 5 €, in Euro oder sats, alles geht in den Pot.',
             whatsappMessage: 'Hallo, ich möchte mich für die 21 eSports Quiz Night #01 anmelden.',
             emailSubject: 'Anmeldung Quiz Night #01'
+        },
+        schach: {
+            kicker: '21 SCHACH · SCHACHTURNIER NR. 1',
+            title: 'Zum Schachturnier Nr. 1 anmelden',
+            intro: 'Schreib uns kurz deinen Namen/Nickname und dass du beim Schachturnier Nr. 1 am So 25.10.2026 ab 14:00 Uhr dabei bist. Startgeld 10 €, in Euro oder sats, alles geht in den Pot.',
+            whatsappMessage: 'Hallo, ich möchte mich für das 21 Schach – Schachturnier Nr. 1 am 25.10.2026 anmelden.',
+            emailSubject: 'Anmeldung Schachturnier Nr. 1'
         },
         fc: {
             kicker: '',
