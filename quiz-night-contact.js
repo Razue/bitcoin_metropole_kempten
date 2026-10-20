@@ -20,6 +20,13 @@
             whatsappMessage: 'Hallo, ich möchte mich für das 21 Schach – Schachturnier Nr. 1 am 25.10.2026 anmelden.',
             emailSubject: 'Anmeldung Schachturnier Nr. 1'
         },
+        vortrag: {
+            kicker: 'VORTRAG · FR 30.10.2026 · 19:00',
+            title: 'Zum Vortrag anmelden',
+            intro: 'Schreib uns kurz deinen Namen und dass du beim Vortrag „Copyright-Sicherung & Ewige ID auf Bitcoin“ mit Gabriele Peters am Fr 30.10.2026 um 19:00 Uhr dabei bist.',
+            whatsappMessage: 'Hallo, ich möchte mich für den Vortrag „Copyright-Sicherung & Ewige ID auf Bitcoin“ mit Gabriele Peters am 30.10.2026 anmelden.',
+            emailSubject: 'Anmeldung Vortrag 30.10.2026'
+        },
         fc: {
             kicker: '',
             title: 'Zur 21 eSports FC – Season 2 anmelden',

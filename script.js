@@ -110,7 +110,9 @@ function renderEvents(data, filter) {
                 ? 'fc'
                 : event.Link === 'schach-contact'
                     ? 'schach'
-                    : null;
+                    : event.Link === 'vortrag-contact'
+                        ? 'vortrag'
+                        : null;
         const isPokerNight = event.Link === 'club-members-only';
         const isHalloweenGhostNight = event.Link === 'halloween-ghost-night';
         const isBitcoinHerbst = event.Link === 'bitcoin-herbst-ticket';
