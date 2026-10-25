@@ -871,27 +871,30 @@
     cursor: pointer;
 }
 
-.quiz-night-contact-dialog[data-contact-modal-event="schach"] {
+.quiz-night-contact-dialog:is([data-contact-modal-event="schach"], [data-contact-modal-event="schach2"]) {
     background: #17120b;
     border-color: rgba(246, 163, 58, 0.54);
 }
 
-.quiz-night-contact-dialog[data-contact-modal-event="schach"] .quiz-night-contact-dialog__content {
+.quiz-night-contact-dialog:is([data-contact-modal-event="schach"], [data-contact-modal-event="schach2"]) .quiz-night-contact-dialog__content {
     background:
         radial-gradient(circle at 100% 0%, rgba(247, 147, 26, 0.24), transparent 36%),
         linear-gradient(145deg, #17120b 0%, #2a2014 100%);
 }
 
-.quiz-night-contact-dialog[data-contact-modal-event="schach"] .quiz-night-contact-dialog__close { color: #ffe7c4; }
+.quiz-night-contact-dialog:is([data-contact-modal-event="schach"], [data-contact-modal-event="schach2"]) .quiz-night-contact-dialog__close { color: #ffe7c4; }
 
-.quiz-night-contact-dialog[data-contact-modal-event="schach"] .quiz-night-contact-dialog__kicker,
-.quiz-night-contact-dialog[data-contact-modal-event="schach"] .quiz-night-contact-dialog__contact-label,
-.quiz-night-contact-dialog[data-contact-modal-event="schach"] .quiz-night-contact-dialog__other > p {
+.quiz-night-contact-dialog:is([data-contact-modal-event="schach"], [data-contact-modal-event="schach2"]) .quiz-night-contact-dialog__kicker,
+.quiz-night-contact-dialog:is([data-contact-modal-event="schach"], [data-contact-modal-event="schach2"]) .quiz-night-contact-dialog__contact-label,
+.quiz-night-contact-dialog:is([data-contact-modal-event="schach"], [data-contact-modal-event="schach2"]) .quiz-night-contact-dialog__other > p {
     color: #f6a33a;
 }
 
-.quiz-night-contact-dialog[data-contact-modal-event="schach"] .quiz-night-contact-dialog__intro { color: #d4c8b4; }
-.quiz-night-contact-dialog[data-contact-modal-event="schach"] .quiz-night-contact-dialog__links span { color: #efc28d; }
+.quiz-night-contact-dialog:is([data-contact-modal-event="schach"], [data-contact-modal-event="schach2"]) .quiz-night-contact-dialog__intro { color: #d4c8b4; }
+.quiz-night-contact-dialog:is([data-contact-modal-event="schach"], [data-contact-modal-event="schach2"]) .quiz-night-contact-dialog__links span { color: #efc28d; }
+
+.esports-event-card--schach .esports-quiz-series-progress { color: #f6a33a; }
+.esports-fc-standings--two { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 
 .esports-nowrap { white-space: nowrap; }
 .event-chess-king { color: inherit; opacity: 0.3; filter: sepia(1) saturate(3) hue-rotate(-12deg); }

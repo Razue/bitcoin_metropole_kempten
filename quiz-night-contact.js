@@ -27,6 +27,13 @@
             whatsappMessage: 'Hallo, ich möchte mich für das 21 Schach – Schachturnier Nr. 1 am 25.10.2026 anmelden.',
             emailSubject: 'Anmeldung Schachturnier Nr. 1'
         },
+        schach2: {
+            kicker: '21 SCHACH · SCHACHTURNIER NR. 2',
+            title: 'Zum Schachturnier Nr. 2 anmelden',
+            intro: 'Schreib uns kurz deinen Namen/Nickname und dass du beim nächsten Schachturnier dabei sein möchtest. Der genaue Termin folgt. Du möchtest den Pot sponsern? Melde dich bei uns.',
+            whatsappMessage: 'Hallo, ich möchte mich für das 21 Schach – Schachturnier Nr. 2 anmelden.',
+            emailSubject: 'Anmeldung Schachturnier Nr. 2'
+        },
         vortrag: {
             kicker: 'VORTRAG · FR 30.10.2026 · 19:00',
             title: 'Zum Vortrag anmelden',
