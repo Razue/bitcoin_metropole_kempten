@@ -6,6 +6,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initSmoothScroll();
     initNavbarScroll();
     initQuickNav();
+    initMapConsent();
 });
 
 // ===== Mobile Menu =====
@@ -523,5 +524,24 @@ function initQuickNav() {
     window.addEventListener('resize', () => {
         clearTimeout(resizeTimer);
         resizeTimer = setTimeout(observe, 200);
+    });
+}
+
+
+// ===== Karte erst nach Klick laden (Datenschutz: keine Verbindung zu OpenStreetMap ohne Zutun) =====
+function initMapConsent() {
+    const box = document.getElementById('map-consent');
+    const btn = document.getElementById('map-consent-btn');
+    if (!box || !btn) return;
+    btn.addEventListener('click', function() {
+        const iframe = document.createElement('iframe');
+        iframe.src = box.getAttribute('data-map-src');
+        iframe.width = '100%';
+        iframe.height = '400';
+        iframe.title = 'Karte: Bitcoin Metropole Kempten, Rathausstraße 2';
+        iframe.setAttribute('allowfullscreen', '');
+        iframe.referrerPolicy = 'no-referrer';
+        iframe.style.cssText = 'border:0; border-radius: 12px;';
+        box.replaceWith(iframe);
     });
 }

@@ -337,3 +337,8 @@ h2 { margin: 0; color: var(--navy); font-size: clamp(2.3rem, 5vw, 4.8rem); line-
     .draw-facts { grid-template-columns: 1fr; }
 }
 @media (prefers-reduced-motion: reduce) { *, *::before, *::after { scroll-behavior: auto !important; transition: none !important; } }
+
+.site-footer > .footer-end { display: grid; gap: 8px; justify-items: end; text-align: right; }
+.site-footer .footer-end a { color: var(--blue); font-weight: 700; }
+.site-footer .footer-legal { font-weight: 400; }
+@media (max-width: 760px) { .site-footer > .footer-end { justify-items: start; text-align: left; } }

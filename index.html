@@ -10,11 +10,9 @@
     <meta property="og:type" content="website">
     <meta property="og:image" content="images/metropole_01.webp">
     <title>Bitcoin Metropole Kempten</title>
-    <link rel="stylesheet" href="style.css?v=12">
+    <link rel="stylesheet" href="style.css?v=17">
     <link rel="stylesheet" href="esports-series.css?v=5">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="fonts/fonts.css?v=1">
 </head>
 <body>
     <!-- Herbst-Atmosphäre -->    <!-- Navigation -->
@@ -111,6 +109,8 @@
                     <button type="submit" class="btn btn-primary btn-herst" id="herbst-cta">
                         Ticket sichern
                     </button>
+
+                    <p class="herbst-fineprint">Mit „Ticket sichern“ werden dein Name oder Pseudonym, deine E-Mail (falls angegeben) und die Anzahl an unseren Ticket-Server übertragen. Mehr dazu in der <a href="datenschutz.html#ticket">Datenschutzerklärung</a>.</p>
 
                     <div class="herbst-status" id="herbst-status" role="status" aria-live="polite"></div>
                 </form>
@@ -432,9 +432,9 @@
                         </ol>
                         <p class="esports-fc-payout">Insgesamt ausgezahlt: <strong>484.867 sats</strong></p>
                         <ol class="esports-fc-standings" aria-label="Weitere Platzierungen">
-                            <li><span>5.</span> BARON (Omar Al)</li>
+                            <li><span>5.</span> BARON</li>
                             <li><span>6.</span> MischaTurm</li>
-                            <li><span>7.</span> Kiwi (Lars)</li>
+                            <li><span>7.</span> Kiwi</li>
                             <li><span>8.</span> Raphael21</li>
                             <li><span>9.</span> Samuel21</li>
                             <li><span>10.</span> Kartoffel</li>
@@ -444,7 +444,7 @@
                             <li><span>15.</span> brindenentbrinder</li>
                             <li><span>16.</span> Ripple</li>
                             <li><span>17.</span> Mika</li>
-                            <li><span>18.</span> Die Pulserin (Janna)</li>
+                            <li><span>18.</span> Die Pulserin</li>
                         </ol>
                         <div class="esports-pot-sponsor">
                             <span>Pot-Sponsor</span>
@@ -662,11 +662,12 @@
                     <div class="sessions-advisor">
                         <span class="sessions-advisor-label">Dein Berater</span>
                         <strong class="sessions-advisor-name">Andreas Bäcker</strong>
-                        <span class="sessions-price"><b>50 €</b> pro Stunde</span>
+                        <span class="sessions-price"><b>50 €</b> pro Stunde <span class="sessions-price-note">· Bezahlung vor Ort</span></span>
                     </div>
 
                     <h3 class="sessions-list-title">Das können wir gemeinsam machen</h3>
                     <p class="sessions-examples-note">Das sind nur Beispiele – du kannst mit jeder Frage rund um Bitcoin kommen. Wir machen alles in Ruhe zusammen.</p>
+                    <p class="sessions-disclaimer"><strong>Wir helfen rein technisch,</strong> etwa bei Apps und Wallets. Keine Anlage-, Finanz-, Steuer- oder Rechtsberatung.</p>
                     <ul class="sessions-topics">
                         <li>
                             <span class="sessions-topic-icon" aria-hidden="true">&#128273;</span>
@@ -760,7 +761,7 @@
 
                         <button type="submit" class="btn btn-primary sessions-submit" id="sessions-submit">Terminanfrage senden</button>
                         <p class="sessions-send-status" id="sessions-send-status" role="status" aria-live="polite"></p>
-                        <p class="sessions-fineprint">Deine Anfrage wird über einen Mail-Formular-Dienst direkt an die Bitcoin Metropole geschickt. Falls das Senden nicht klappt, kannst du sie auch per Mail-App an bitcoinmetropole@proton.me schicken.</p>
+                        <p class="sessions-fineprint">Mit dem Absenden werden deine Angaben (Name, E-Mail, Wunschtermin, Nachricht) über den Dienst FormSubmit an uns per E-Mail übermittelt. Mehr dazu in der <a href="datenschutz.html#terminanfrage">Datenschutzerklärung</a>. Falls das Senden nicht klappt, kannst du die Anfrage auch per Mail-App an bitcoinmetropole@proton.me schicken.</p>
                     </form>
 
                     <div class="sessions-success" id="sessions-success" role="status" aria-live="polite" hidden>
@@ -912,14 +913,11 @@
                     <p>Facebook: <a href="https://www.facebook.com/share/g/17JGAwmy97/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer">Join group</a></p>
                 </div>
                 <div class="location-map">
-                    <iframe
-                        src="https://www.openstreetmap.org/export/embed.html?bbox=10.3100%2C47.7210%2C10.3250%2C47.7300&layer=mapnik&marker=47.7267%2C10.3155"
-                        width="100%"
-                        height="400"
-                        style="border:0; border-radius: 12px;"
-                        allowfullscreen=""
-                        loading="lazy">
-                    </iframe>
+                    <div class="map-consent" id="map-consent" data-map-src="https://www.openstreetmap.org/export/embed.html?bbox=10.3100%2C47.7210%2C10.3250%2C47.7300&amp;layer=mapnik&amp;marker=47.7267%2C10.3155">
+                        <p class="map-consent-title">Karte von OpenStreetMap</p>
+                        <p class="map-consent-text">Beim Laden der Karte wird deine IP-Adresse an OpenStreetMap (OpenStreetMap Foundation) übertragen. Mehr dazu in der <a href="datenschutz.html#karte">Datenschutzerklärung</a>.</p>
+                        <button type="button" class="btn btn-primary map-consent-btn" id="map-consent-btn">Karte laden</button>
+                    </div>
                     <a href="https://www.openstreetmap.org/?mlat=47.7267&mlon=10.3155#map=17/47.7267/10.3155" target="_blank" class="map-link">Größere Karte anzeigen</a>
                 </div>
             </div>
@@ -993,7 +991,7 @@
         </div>
     </footer>
 
-    <script src="script.js?v=5"></script>
+    <script src="script.js?v=6"></script>
     <script src="quiz-night-contact.js?v=4"></script>
     <script src="sessions.js?v=3"></script>
 </body>

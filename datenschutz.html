@@ -4,15 +4,15 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="fonts/fonts.css?v=1">
   <title>Datenschutzerklärung – Bitcoin Metropole Kempten</title>
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
 
-```
 body {
   background-color: #0d0d0d;
   color: #e0e0e0;
-  font-family: 'Courier New', Courier, monospace;
+  font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -39,12 +39,15 @@ header .logo span { color: #ffffff; }
 
 main {
   flex: 1;
+  min-width: 0;
+  width: 100%;
   max-width: 760px;
   margin: 3rem auto;
   padding: 0 1.5rem;
 }
 
 h1 {
+  overflow-wrap: anywhere;
   font-size: 1.8rem;
   color: #f7931a;
   border-bottom: 1px solid #333;
@@ -64,6 +67,7 @@ h2 {
 }
 
 p {
+  overflow-wrap: anywhere;
   font-style: normal;
   line-height: 1.8;
   color: #cccccc;
@@ -91,12 +95,19 @@ footer {
   text-align: center;
   padding: 1.5rem;
   border-top: 1px solid #222;
-  font-size: 0.75rem;
-  color: #444;
+  font-size: 0.8rem;
+  color: #888;
 }
 
-footer a { color: #555; }
-```
+footer a { color: #b3b3b3; }
+
+
+@media (max-width: 520px) {
+  header { padding: 1.1rem 1.25rem; }
+  main { margin: 2rem auto; padding: 0 1.1rem; }
+  h1 { font-size: 1.3rem; letter-spacing: 0.04em; }
+  .block { padding: 1rem 1.1rem; }
+}
 
   </style>
 </head>
@@ -109,7 +120,6 @@ footer a { color: #555; }
   <main>
     <h1>Datenschutzerklärung</h1>
 
-```
 <h2>1. Verantwortlicher</h2>
 <div class="block">
   <p>
@@ -124,7 +134,10 @@ footer a { color: #555; }
   <p>
     Diese Website verwendet keine Cookies, kein Tracking und keine
     Analyse-Tools. Es werden keine personenbezogenen Daten durch uns
-    aktiv erhoben oder gespeichert.
+    aktiv erhoben oder gespeichert. Ausnahme: wenn du das Terminformular
+    nutzt (siehe Abschnitt 4a) oder ein Ticket bestellst (siehe Abschnitt 4b).
+    Die Schriften dieser Website sind lokal eingebunden (keine Verbindung
+    zu Google-Servern).
   </p>
 </div>
 
@@ -152,10 +165,116 @@ footer a { color: #555; }
 <h2>4. Externe Links</h2>
 <div class="block">
   <p>
-    Diese Website enthält Links zu externen Diensten (Instagram, Geyser Fund).
+    Diese Website enthält Links zu externen Diensten (Instagram, X, Nostr,
+    Facebook, Telegram, Signal, WhatsApp, Geyser Fund, OpenStreetMap).
     Beim Anklicken dieser Links gelten die Datenschutzbestimmungen der
     jeweiligen Anbieter. Wir haben keinen Einfluss auf deren
     Datenverarbeitung.
+  </p>
+</div>
+
+<h2 id="terminanfrage">4a. Terminanfrage 1:1 Beratung (Kontaktformular)</h2>
+<div class="block">
+  <p>
+    <strong>Zweck:</strong> Bearbeitung deiner Terminanfrage für eine
+    1:1 Beratung (technische Unterstützung) in der Bitcoin Metropole Kempten.
+  </p>
+  <p>
+    <strong>Daten:</strong> Name, E-Mail-Adresse, optional Telefon bzw.
+    Telegram, Wunschtermin (Tag, Dauer, Startzeit) und deine Nachricht.
+    Beim Dienst fallen zusätzlich technisch bedingt deine IP-Adresse und
+    der Zeitpunkt der Übermittlung an. Die Angaben sind freiwillig, ohne sie
+    können wir deine Anfrage aber nicht bearbeiten.
+  </p>
+  <p>
+    <strong>Übermittlung:</strong> Beim Absenden werden deine Angaben aus
+    deinem Browser an den Dienst FormSubmit (formsubmit.co), einen Anbieter
+    aus den USA, übertragen und dort auf dessen Servern verarbeitet. Dabei
+    kann eine Übermittlung in ein Land außerhalb der EU/des EWR stattfinden.
+    FormSubmit leitet die Anfrage als E-Mail an
+    <a href="mailto:bitcoinmetropole@proton.me">bitcoinmetropole@proton.me</a>
+    weiter. Dieses Postfach wird bei Proton gehostet.
+  </p>
+  <p>
+    <strong>Rechtsgrundlage:</strong> Art. 6 Abs. 1 lit. b DSGVO
+    (Durchführung vorvertraglicher Maßnahmen auf deine Anfrage), soweit die
+    Anfrage nicht auf einen Vertrag gerichtet ist, Art. 6 Abs. 1 lit. f DSGVO
+    (berechtigtes Interesse an der Bearbeitung von Anfragen).
+  </p>
+  <p>
+    <strong>Speicherdauer:</strong> Deine Anfrage wird so lange gespeichert,
+    wie es für die Bearbeitung und Dokumentation erforderlich ist. Auf Wunsch
+    löschen wir sie jederzeit – schreib uns einfach eine E-Mail.
+  </p>
+  <p>
+    <strong>Deine Rechte:</strong> Es gelten deine Rechte aus Abschnitt 5.
+    Du kannst die Löschung deiner Anfrage jederzeit per E-Mail verlangen.
+    Alternativ kannst du uns auch ohne das Formular direkt per E-Mail schreiben.
+  </p>
+</div>
+
+<h2 id="ticket">4b. Bitcoin Herbst: Ticketbestellung und Verfügbarkeitsanzeige</h2>
+<div class="block">
+  <p>
+    <strong>Verfügbarkeitsanzeige:</strong> Beim Laden der Startseite ruft
+    dein Browser die Anzahl freier Tickets von unserem Ticket-Server
+    (tickets.lernbitcoin.com) ab. Dabei wird technisch bedingt deine
+    IP-Adresse an diesen Server übermittelt. Rechtsgrundlage ist Art. 6
+    Abs. 1 lit. f DSGVO (Anzeige der verfügbaren Plätze).
+    Der Ticket-Server wird von uns betrieben und bei einem von uns gemieteten
+    Hosting-Anbieter gehostet.
+  </p>
+  <p>
+    <strong>Ticketbestellung:</strong> Wenn du ein Ticket sicherst,
+    werden dein Name bzw. Pseudonym, deine E-Mail-Adresse (freiwillig)
+    und die Anzahl der Tickets an unseren Ticket-Server (tickets.lernbitcoin.com)
+    übertragen und dort zur Abwicklung deiner Bestellung gespeichert.
+    Zusätzlich fallen technisch bedingt IP-Adresse und Zeitpunkt an.
+    Rechtsgrundlage ist Art. 6 Abs. 1 lit. b DSGVO.
+  </p>
+  <p>
+    <strong>Zahlung:</strong> Nach der Bestellung wirst du zur Bezahlung
+    auf einen BTCPay-Server (btcpay.mx12.art) weitergeleitet. Dort werden
+    die zur Zahlungsabwicklung erforderlichen Daten verarbeitet. Falls du
+    on-chain bezahlst, werden Transaktionsdaten dauerhaft und öffentlich auf
+    der Bitcoin-Blockchain gespeichert; eine Löschung ist technisch nicht
+    möglich.
+  </p>
+  <p>
+    <strong>Speicherdauer:</strong> Die Bestelldaten werden so lange
+    gespeichert, wie es für die Abwicklung und Dokumentation erforderlich ist.
+    <!-- NICHT SICHTBAR / OFFEN: Name des Hosting-Anbieters des Ticket-Servers (TODO Name des gemieteten Hosting-Anbieters: Anbieter noch unbestätigt; ggf. in sichtbaren Text aufnehmen; Auftragsverarbeitung prüfen); Betreiber des BTCPay-Servers btcpay.mx12.art (aus dem Repo nicht eindeutig ableitbar, daher neutral formuliert); konkrete Speicherfristen; rechtliche Einordnung Ticketverkauf (Widerruf, Preisangabe) -->
+  </p>
+  <p>
+    <strong>Video:</strong> Das eingebundene allgäu.tv-Video wird von
+    demselben Server (tickets.lernbitcoin.com) bereitgestellt. Es wird erst
+    geladen, wenn du auf „Play“ klickst. Dabei wird deine IP-Adresse an
+    diesen Server übermittelt.
+  </p>
+</div>
+
+<h2 id="karte">4c. Karte (OpenStreetMap)</h2>
+<div class="block">
+  <p>
+    Die Karte im Bereich „Location“ wird erst geladen, wenn du auf „Karte
+    laden“ klickst. Dann wird eine Karte von OpenStreetMap
+    (OpenStreetMap Foundation) eingebunden und deine IP-Adresse an
+    OpenStreetMap übermittelt. Ohne Klick findet keine Verbindung statt.
+    Rechtsgrundlage ist deine Einwilligung durch den Klick (Art. 6 Abs. 1
+    lit. a DSGVO). Mehr dazu in der Datenschutzerklärung von OpenStreetMap:
+    <a href="https://osmfoundation.org/wiki/Privacy_Policy" target="_blank">OSMF Privacy Policy</a>
+  </p>
+</div>
+
+<h2>4d. Kontaktaufnahme per E-Mail, Messenger oder Telefon</h2>
+<div class="block">
+  <p>
+    Wenn du uns per E-Mail, Telegram, Signal, WhatsApp oder Telefon
+    kontaktierst (z. B. über die Links auf dieser Website), verarbeiten wir
+    die von dir mitgeteilten Daten (z. B. Name, Kontaktdaten, Inhalt der
+    Nachricht), um deine Anfrage zu beantworten. Rechtsgrundlage ist Art. 6
+    Abs. 1 lit. b bzw. lit. f DSGVO. Beim Nutzen der Messenger gelten
+    zusätzlich die Datenschutzbestimmungen der jeweiligen Anbieter.
   </p>
 </div>
 
@@ -165,10 +284,13 @@ footer a { color: #555; }
   <p>— Auskunft über gespeicherte Daten (Art. 15 DSGVO)</p>
   <p>— Berichtigung unrichtiger Daten (Art. 16 DSGVO)</p>
   <p>— Löschung deiner Daten (Art. 17 DSGVO)</p>
+  <p>— Einschränkung der Verarbeitung (Art. 18 DSGVO)</p>
+  <p>— Datenübertragbarkeit (Art. 20 DSGVO)</p>
+  <p>— Widerspruch gegen Verarbeitungen auf Grundlage von Art. 6 Abs. 1 lit. f DSGVO (Art. 21 DSGVO)</p>
   <p>— Beschwerde bei einer Aufsichtsbehörde (Art. 77 DSGVO)</p>
   <p>
-    Da wir selbst keine personenbezogenen Daten erheben, entfällt
-    in der Praxis ein Auskunftsersuchen an uns. Bei Fragen wende
+    Da wir selbst keine personenbezogenen Daten erheben (Ausnahme: Terminformular
+    und Ticketbestellung, siehe Abschnitte 4a und 4b), entfällt in der Praxis ein Auskunftsersuchen an uns. Bei Fragen wende
     dich an: <a href="mailto:info@bitfit.club">info@bitfit.club</a>
   </p>
 </div>
@@ -182,7 +304,6 @@ footer a { color: #555; }
     <a href="https://www.lda.bayern.de" target="_blank">www.lda.bayern.de</a>
   </p>
 </div>
-```
 
   </main>
 
