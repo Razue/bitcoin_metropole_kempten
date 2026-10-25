@@ -10,7 +10,7 @@
     <meta property="og:type" content="website">
     <meta property="og:image" content="images/metropole_01.webp">
     <title>Bitcoin Metropole Kempten</title>
-    <link rel="stylesheet" href="style.css?v=11">
+    <link rel="stylesheet" href="style.css?v=12">
     <link rel="stylesheet" href="esports-series.css?v=5">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -753,13 +753,26 @@
                             <span class="sessions-error" id="sessions-error-message" role="alert"></span>
                         </div>
 
-                        <button type="submit" class="btn btn-primary sessions-submit">Terminanfrage senden</button>
-                        <p class="sessions-fineprint">Beim Senden öffnet sich deine Mail-App mit einer fertigen Nachricht an bitcoinmetropole@proton.me. Erst wenn du sie dort absendest, erreicht uns deine Anfrage.</p>
+                        <div class="sessions-honey" aria-hidden="true">
+                            <label for="sessions-honey">Bitte leer lassen</label>
+                            <input type="text" id="sessions-honey" name="_honey" tabindex="-1" autocomplete="off" value="">
+                        </div>
+
+                        <button type="submit" class="btn btn-primary sessions-submit" id="sessions-submit">Terminanfrage senden</button>
+                        <p class="sessions-send-status" id="sessions-send-status" role="status" aria-live="polite"></p>
+                        <p class="sessions-fineprint">Deine Anfrage wird über einen Mail-Formular-Dienst direkt an die Bitcoin Metropole geschickt. Falls das Senden nicht klappt, kannst du sie auch per Mail-App an bitcoinmetropole@proton.me schicken.</p>
                     </form>
 
-                    <div class="sessions-result" id="sessions-result" role="status" aria-live="polite" hidden>
-                        <h4>Fast geschafft!</h4>
-                        <p>Falls sich deine Mail-App nicht geöffnet hat, kopiere die Zusammenfassung und schicke sie an <a href="mailto:bitcoinmetropole@proton.me">bitcoinmetropole@proton.me</a>.</p>
+                    <div class="sessions-success" id="sessions-success" role="status" aria-live="polite" hidden>
+                        <div class="sessions-success-icon" aria-hidden="true">&#10003;</div>
+                        <h4>Danke!</h4>
+                        <p>Deine Anfrage ist bei uns angekommen. Wir lesen sie durch und bestätigen den Termin per Antwort auf deine E-Mail.</p>
+                        <button type="button" class="btn btn-secondary" id="sessions-again">Weitere Anfrage stellen</button>
+                    </div>
+
+                    <div class="sessions-result" id="sessions-result" role="alert" hidden>
+                        <h4>Senden hat nicht geklappt</h4>
+                        <p>Du kannst die Anfrage auch per Mail-App schicken. Falls sich keine Mail-App öffnet, kopiere die Zusammenfassung und schicke sie an <a href="mailto:bitcoinmetropole@proton.me">bitcoinmetropole@proton.me</a>.</p>
                         <textarea id="sessions-summary" class="sessions-summary" readonly rows="9" aria-label="Zusammenfassung deiner Terminanfrage"></textarea>
                         <div class="sessions-result-actions">
                             <button type="button" class="btn btn-primary" id="sessions-copy">Zusammenfassung kopieren</button>
@@ -982,6 +995,6 @@
 
     <script src="script.js?v=5"></script>
     <script src="quiz-night-contact.js?v=4"></script>
-    <script src="sessions.js?v=2"></script>
+    <script src="sessions.js?v=3"></script>
 </body>
 </html>

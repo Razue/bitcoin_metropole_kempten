@@ -193,19 +193,91 @@
         return { subject, body };
     }
 
-    form.addEventListener('submit', event => {
-        event.preventDefault();
-        if (!validate()) return;
-        const { subject, body } = buildRequest();
-        const href = `mailto:${MAIL_TO}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    const ENDPOINT = 'https://formsubmit.co/ajax/' + MAIL_TO;
+    const submitBtn = $('sessions-submit');
+    const sendStatus = $('sessions-send-status');
+    const resultEl = $('sessions-result');
+    const successEl = $('sessions-success');
+    let sending = false;
 
+    function showSuccess() {
+        resultEl.hidden = true;
+        form.hidden = true;
+        successEl.hidden = false;
+        successEl.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+
+    function showFallback(subject, body) {
+        const href = `mailto:${MAIL_TO}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
         $('sessions-summary').value = `An: ${MAIL_TO}\nBetreff: ${subject}\n\n${body}`;
         $('sessions-mailto').href = href;
         $('sessions-copy-status').textContent = '';
-        const result = $('sessions-result');
-        result.hidden = false;
-        result.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-        window.location.href = href;
+        resultEl.hidden = false;
+        resultEl.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+
+    form.addEventListener('submit', async event => {
+        event.preventDefault();
+        if (sending || !validate()) return;
+        const { subject, body } = buildRequest();
+
+        // Honeypot: Bots füllen das versteckte Feld aus. Dann tun wir so, als wäre alles gut, senden aber nichts.
+        if ($('sessions-honey').value) { showSuccess(); return; }
+
+        const dur = Number(durEl.value);
+        const start = toMin(timeEl.value);
+        const payload = {
+            name: $('sessions-name').value.trim(),
+            email: $('sessions-email').value.trim(),
+            'Telefon / Telegram': $('sessions-phone').value.trim() || '–',
+            Tag: formatDate(dateEl.value),
+            Dauer: `${dur} ${dur === 1 ? 'Stunde' : 'Stunden'}`,
+            Startzeit: `${fmt(start)}–${fmt(start + dur * 60)} Uhr`,
+            Nachricht: $('sessions-message').value.trim(),
+            _replyto: $('sessions-email').value.trim(),
+            _subject: subject,
+            _template: 'table',
+            _captcha: 'false',
+            _honey: ''
+        };
+
+        sending = true;
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Wird gesendet …';
+        sendStatus.textContent = '';
+        resultEl.hidden = true;
+
+        const controller = new AbortController();
+        const timer = setTimeout(() => controller.abort(), 20000);
+        try {
+            const res = await fetch(ENDPOINT, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+                body: JSON.stringify(payload),
+                signal: controller.signal
+            });
+            const data = await res.json().catch(() => null);
+            // FormSubmit liefert success teils als String "true"
+            if (!res.ok || !data || String(data.success) !== 'true') throw new Error('Antwort: ' + (data && data.message ? data.message : res.status));
+            showSuccess();
+        } catch (err) {
+            console.warn('Sessions: Senden fehlgeschlagen', err);
+            showFallback(subject, body);
+        } finally {
+            clearTimeout(timer);
+            sending = false;
+            submitBtn.disabled = false;
+            submitBtn.textContent = 'Terminanfrage senden';
+        }
+    });
+
+    $('sessions-again').addEventListener('click', () => {
+        form.reset();
+        form.hidden = false;
+        successEl.hidden = true;
+        sendStatus.textContent = '';
+        renderSlots();
+        form.scrollIntoView({ behavior: 'smooth', block: 'start' });
     });
 
     $('sessions-copy').addEventListener('click', async () => {

@@ -2824,3 +2824,75 @@ html {
     font-weight: 600;
     font-size: 0.9rem;
 }
+
+/* --- Sessions: Direktversand, Erfolg, Fehler --- */
+.sessions-honey {
+    position: absolute;
+    left: -9999px;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+}
+
+.sessions-form[hidden],
+.sessions-success[hidden] {
+    display: none;
+}
+
+.sessions-submit:disabled {
+    opacity: 0.7;
+    cursor: wait;
+    transform: none;
+    box-shadow: none;
+}
+
+.sessions-send-status {
+    margin-top: 12px;
+    font-size: 0.9rem;
+    text-align: center;
+    color: #ef4444;
+}
+
+.sessions-send-status:empty {
+    display: none;
+}
+
+.sessions-success {
+    text-align: center;
+    padding: 28px 20px;
+    background: var(--color-bg);
+    border: 1px solid var(--color-success);
+    border-radius: var(--border-radius);
+}
+
+.sessions-success-icon {
+    width: 52px;
+    height: 52px;
+    margin: 0 auto 14px;
+    display: grid;
+    place-items: center;
+    font-size: 1.6rem;
+    color: #0a0a0a;
+    background: var(--color-success);
+    border-radius: 50%;
+}
+
+.sessions-success h4 {
+    font-size: 1.3rem;
+    margin-bottom: 8px;
+}
+
+.sessions-success p {
+    color: var(--color-text-secondary);
+    margin-bottom: 18px;
+}
+
+.sessions-success .btn {
+    padding: 12px 22px;
+    font-size: 0.92rem;
+    cursor: pointer;
+}
+
+.sessions-result h4 {
+    color: #ef4444;
+}
