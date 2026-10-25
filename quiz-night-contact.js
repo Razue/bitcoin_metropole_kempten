@@ -13,6 +13,13 @@
             whatsappMessage: 'Hallo, ich möchte mich für die 21 eSports Quiz Night #01 anmelden.',
             emailSubject: 'Anmeldung Quiz Night #01'
         },
+        quiz2: {
+            kicker: '21 eSPORTS · QUIZ NIGHT #02',
+            title: 'Zur Quiz Night #02 anmelden',
+            intro: 'Schreib uns kurz deinen Namen/Nickname und dass du bei der nächsten Quiz Night dabei sein möchtest. Gespielt wird einzeln, alles Startgeld geht in den Pot. Du möchtest den Pot sponsern? Melde dich bei uns.',
+            whatsappMessage: 'Hallo, ich möchte mich für die 21 eSports Quiz Night #02 anmelden.',
+            emailSubject: 'Anmeldung Quiz Night #02'
+        },
         schach: {
             kicker: '21 SCHACH · SCHACHTURNIER NR. 1',
             title: 'Zum Schachturnier Nr. 1 anmelden',
