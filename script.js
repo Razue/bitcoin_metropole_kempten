@@ -5,6 +5,7 @@ document.addEventListener('DOMContentLoaded', function() {
     loadEventsFromCSV();
     initSmoothScroll();
     initNavbarScroll();
+    initQuickNav();
 });
 
 // ===== Mobile Menu =====
@@ -221,16 +222,37 @@ function initSmoothScroll() {
             const target = document.querySelector(href);
             if (target) {
                 e.preventDefault();
-                const navHeight = document.querySelector('.navbar').offsetHeight;
-                const targetPosition = target.offsetTop - navHeight;
-
-                window.scrollTo({
-                    top: targetPosition,
-                    behavior: 'smooth'
-                });
+                scrollToSection(target);
             }
         });
     });
+}
+
+// Scrollt unter die feste Navbar. Lazy-Bilder verändern beim Scrollen die Seitenhöhe,
+// deshalb wird nach dem Scrollen die Position geprüft und ggf. nachkorrigiert.
+function scrollToSection(target) {
+    const navbar = document.querySelector('.navbar');
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const behavior = reduceMotion ? 'auto' : 'smooth';
+    const offsetTarget = () => target.getBoundingClientRect().top - navbar.offsetHeight;
+
+    window.scrollTo({ top: window.scrollY + offsetTarget(), behavior: behavior });
+
+    let lastY = -1;
+    let checks = 0;
+    const settle = () => {
+        checks++;
+        const stable = Math.abs(window.scrollY - lastY) < 1;
+        lastY = window.scrollY;
+        if (stable && Math.abs(offsetTarget()) > 2) {
+            window.scrollTo({ top: window.scrollY + offsetTarget(), behavior: behavior });
+            lastY = -1;
+        }
+        if (checks < 20 && (!stable || Math.abs(offsetTarget()) > 2)) {
+            setTimeout(settle, 350);
+        }
+    };
+    setTimeout(settle, 350);
 }
 
 // ===== Navbar Scroll Effect =====
@@ -413,3 +435,93 @@ document.head.insertAdjacentHTML('beforeend', `
     // Initial laden
     loadAvailability();
 })();
+
+
+// ===== Schnellnavigation: aktiven Eintrag hervorheben =====
+function initQuickNav() {
+    const nav = document.querySelector('.quick-nav');
+    const navbar = document.querySelector('.navbar');
+    if (!nav || !navbar) return;
+
+    const links = Array.from(nav.querySelectorAll('a[href^="#"]'));
+    const byId = new Map();
+    links.forEach(link => {
+        const target = document.getElementById(link.getAttribute('href').slice(1));
+        if (target) byId.set(target.id, link);
+    });
+
+    function setActive(link) {
+        links.forEach(l => {
+            const on = l === link;
+            l.classList.toggle('is-active', on);
+            if (on) l.setAttribute('aria-current', 'true');
+            else l.removeAttribute('aria-current');
+        });
+        // Aktiven Chip in der waagerechten Leiste sichtbar halten (ohne die Seite zu scrollen)
+        const list = nav.querySelector('.quick-nav-list');
+        if (link && list && list.scrollWidth > list.clientWidth) {
+            const target = link.offsetLeft - (list.clientWidth - link.offsetWidth) / 2;
+            list.scrollTo({ left: target, behavior: 'auto' });
+        }
+    }
+
+    // Während eines Klick-Scrolls bleibt der geklickte Chip aktiv (kein Flackern über die Zwischenabschnitte).
+    let locked = false;
+    let lockTimer;
+    function lockWhileScrolling() {
+        locked = true;
+        clearInterval(lockTimer);
+        let lastY = -1;
+        let still = 0;
+        lockTimer = setInterval(() => {
+            still = Math.abs(window.scrollY - lastY) < 1 ? still + 1 : 0;
+            lastY = window.scrollY;
+            if (still >= 4) {
+                clearInterval(lockTimer);
+                locked = false;
+                update();
+            }
+        }, 200);
+    }
+
+    links.forEach(link => link.addEventListener('click', () => {
+        setActive(link);
+        lockWhileScrolling();
+    }));
+
+    if (!('IntersectionObserver' in window)) return;
+
+    let io = null;
+    const visible = new Set();
+
+    function update() {
+        if (locked) return;
+        const id = Array.from(byId.keys()).find(k => visible.has(k));
+        setActive(id ? byId.get(id) : null);
+    }
+
+    function observe() {
+        if (io) io.disconnect();
+        visible.clear();
+        // Schmales Band direkt unter der Navbar: dort liegt immer genau ein Abschnitt.
+        // Band etwas unterhalb der Navbar (ca. dort, wo die Überschrift nach dem Anspringen sitzt), damit der Chip schon umspringt,
+        // wenn die Sektion oben ankommt.
+        const top = Math.min(navbar.offsetHeight + 110, Math.round(window.innerHeight * 0.45));
+        const bottom = Math.max(window.innerHeight - top - 4, 0);
+        io = new IntersectionObserver(entries => {
+            entries.forEach(e => {
+                if (e.isIntersecting) visible.add(e.target.id);
+                else visible.delete(e.target.id);
+            });
+            update();
+        }, { rootMargin: `-${top}px 0px -${bottom}px 0px`, threshold: 0 });
+        byId.forEach((_, id) => io.observe(document.getElementById(id)));
+    }
+
+    observe();
+    let resizeTimer;
+    window.addEventListener('resize', () => {
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(observe, 200);
+    });
+}

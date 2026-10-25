@@ -10,7 +10,7 @@
     <meta property="og:type" content="website">
     <meta property="og:image" content="images/metropole_01.webp">
     <title>Bitcoin Metropole Kempten</title>
-    <link rel="stylesheet" href="style.css?v=8">
+    <link rel="stylesheet" href="style.css?v=11">
     <link rel="stylesheet" href="esports-series.css?v=5">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -23,15 +23,19 @@
             <a href="#" class="logo">
                 <img src="images/bitcoin-metropole-kempten-logo.webp" alt="Bitcoin Metropole Kempten" class="logo-img" width="162" height="60">
             </a>
-            <ul class="nav-links">
-                <li><a href="#about">About</a></li>
-                <li><a href="#angebot">Angebot</a></li>
-                <li><a href="#events">Events</a></li>
-                <li><a href="#galerie">Galerie</a></li>
-                <li><a href="#location">Location</a></li>
-                <li><a href="#mitmachen">Mitmachen</a></li>
-                <li><a href="#collaborations">Partner</a></li>
-            </ul>
+            <nav class="quick-nav" aria-label="Schnellnavigation">
+                <ul class="quick-nav-list">
+                    <li><a href="#bitcoin-herbst">Bitcoin Herbst</a></li>
+                    <li><a href="#club">Club</a></li>
+                    <li><a href="#events">Events</a></li>
+                    <li><a href="#esports">eSports</a></li>
+                    <li><a href="#sessions">Beratung</a></li>
+                    <li><a href="#galerie">Galerie</a></li>
+                    <li><a href="#collaborations">Partner</a></li>
+                    <li><a href="#location">Location</a></li>
+                    <li><a href="#mitmachen">Mitmachen</a></li>
+                </ul>
+            </nav>
             <button class="mobile-menu-btn" aria-label="Menu">
                 <span></span>
                 <span></span>
@@ -647,6 +651,127 @@
         </div>
     </dialog>
 
+    <!-- 1:1 Sessions Section -->
+    <section id="sessions" class="section sessions-section" aria-labelledby="sessions-title">
+        <div class="container">
+            <h2 class="section-title" id="sessions-title">1:1 Sessions</h2>
+            <p class="section-subtitle">1:1 Beratung &amp; Sessions – persönliche Bitcoin-Hilfe, ganz in Ruhe und nur für dich, in der Bitcoin Metropole Kempten.</p>
+
+            <div class="sessions-layout">
+                <div class="sessions-info">
+                    <div class="sessions-advisor">
+                        <span class="sessions-advisor-label">Dein Berater</span>
+                        <strong class="sessions-advisor-name">Andreas Bäcker</strong>
+                        <span class="sessions-price"><b>50 €</b> pro Stunde</span>
+                    </div>
+
+                    <h3 class="sessions-list-title">Das können wir gemeinsam machen</h3>
+                    <p class="sessions-examples-note">Das sind nur Beispiele – du kannst mit jeder Frage rund um Bitcoin kommen. Wir machen alles in Ruhe zusammen.</p>
+                    <ul class="sessions-topics">
+                        <li>
+                            <span class="sessions-topic-icon" aria-hidden="true">&#128273;</span>
+                            <span><strong>Hardware Wallet einrichten</strong></span>
+                        </li>
+                        <li>
+                            <span class="sessions-topic-icon" aria-hidden="true">&#128214;</span>
+                            <span><strong>Bitcoin Wallet verstehen</strong></span>
+                        </li>
+                        <li>
+                            <span class="sessions-topic-icon" aria-hidden="true">&#128736;</span>
+                            <span><strong>Technische Beratung</strong></span>
+                        </li>
+                        <li>
+                            <span class="sessions-topic-icon" aria-hidden="true">&#128274;</span>
+                            <span><strong>Seeds sicher aufbewahren</strong> <small>Backup / Seed-Sicherung</small></span>
+                        </li>
+                        <li class="sessions-topic-own">
+                            <span class="sessions-topic-icon" aria-hidden="true">&#128172;</span>
+                            <span><strong>Deine eigene Frage</strong> <small>Alles rund um Bitcoin</small></span>
+                        </li>
+                    </ul>
+
+                    <div class="sessions-steps">
+                        <h3 class="sessions-list-title">So läuft’s ab</h3>
+                        <ol class="sessions-steps-list">
+                            <li><span class="sessions-step-num" aria-hidden="true">1</span><span>Tag und Uhrzeit wählen und kurz beschreiben, worum es geht.</span></li>
+                            <li><span class="sessions-step-num" aria-hidden="true">2</span><span>Anfrage abschicken – sie kommt per E-Mail bei uns an.</span></li>
+                            <li><span class="sessions-step-num" aria-hidden="true">3</span><span>Wir lesen sie durch und bestätigen den Termin per Antwort auf deine E-Mail.</span></li>
+                        </ol>
+                    </div>
+                </div>
+
+                <div class="sessions-card">
+                    <h3 class="sessions-card-title">Termin anfragen</h3>
+                    <p class="sessions-note"><strong>Das ist eine Terminanfrage.</strong> Du bekommst die Bestätigung per Mail / Nachricht.</p>
+
+                    <form id="sessions-form" class="sessions-form" novalidate>
+                        <div class="sessions-row">
+                            <div class="sessions-field">
+                                <label for="sessions-date">Tag</label>
+                                <input type="date" id="sessions-date" name="date" required>
+                                <span class="sessions-error" id="sessions-error-date" role="alert"></span>
+                            </div>
+                            <div class="sessions-field">
+                                <label for="sessions-duration">Dauer</label>
+                                <select id="sessions-duration" name="duration">
+                                    <option value="1" selected>1 Stunde</option>
+                                    <option value="2">2 Stunden</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="sessions-field">
+                            <label for="sessions-time">Startzeit</label>
+                            <select id="sessions-time" name="time" required disabled>
+                                <option value="">Bitte zuerst einen Tag wählen</option>
+                            </select>
+                            <span class="sessions-hint" id="sessions-slot-hint">Slots sind „frei laut Kalender“. Die endgültige Bestätigung kommt per E-Mail.</span>
+                            <span class="sessions-error" id="sessions-error-time" role="alert"></span>
+                        </div>
+
+                        <div class="sessions-field">
+                            <label for="sessions-name">Name</label>
+                            <input type="text" id="sessions-name" name="name" autocomplete="name" required placeholder="Dein Name">
+                            <span class="sessions-error" id="sessions-error-name" role="alert"></span>
+                        </div>
+
+                        <div class="sessions-row">
+                            <div class="sessions-field">
+                                <label for="sessions-email">E-Mail</label>
+                                <input type="email" id="sessions-email" name="email" autocomplete="email" inputmode="email" required placeholder="deine@mail.de">
+                                <span class="sessions-error" id="sessions-error-email" role="alert"></span>
+                            </div>
+                            <div class="sessions-field">
+                                <label for="sessions-phone">Telefon / Telegram <small>(optional)</small></label>
+                                <input type="text" id="sessions-phone" name="phone" autocomplete="tel" placeholder="+49 … oder @name">
+                            </div>
+                        </div>
+
+                        <div class="sessions-field">
+                            <label for="sessions-message">Worum geht es? Welche Beratung brauchst du?</label>
+                            <textarea id="sessions-message" name="message" rows="4" maxlength="1500" required placeholder="z. B. Ich möchte eine Hardware Wallet einrichten …"></textarea>
+                            <span class="sessions-error" id="sessions-error-message" role="alert"></span>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary sessions-submit">Terminanfrage senden</button>
+                        <p class="sessions-fineprint">Beim Senden öffnet sich deine Mail-App mit einer fertigen Nachricht an bitcoinmetropole@proton.me. Erst wenn du sie dort absendest, erreicht uns deine Anfrage.</p>
+                    </form>
+
+                    <div class="sessions-result" id="sessions-result" role="status" aria-live="polite" hidden>
+                        <h4>Fast geschafft!</h4>
+                        <p>Falls sich deine Mail-App nicht geöffnet hat, kopiere die Zusammenfassung und schicke sie an <a href="mailto:bitcoinmetropole@proton.me">bitcoinmetropole@proton.me</a>.</p>
+                        <textarea id="sessions-summary" class="sessions-summary" readonly rows="9" aria-label="Zusammenfassung deiner Terminanfrage"></textarea>
+                        <div class="sessions-result-actions">
+                            <button type="button" class="btn btn-primary" id="sessions-copy">Zusammenfassung kopieren</button>
+                            <a class="btn btn-secondary" id="sessions-mailto" href="mailto:bitcoinmetropole@proton.me">Mail-App öffnen</a>
+                        </div>
+                        <span class="sessions-copy-status" id="sessions-copy-status" aria-live="polite"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Galerie Section -->
     <section id="galerie" class="section galerie-section">
         <div class="container">
@@ -826,6 +951,7 @@
                         <li><a href="#about">About</a></li>
                         <li><a href="#angebot">Angebot</a></li>
                         <li><a href="#events">Events</a></li>
+                        <li><a href="#sessions">1:1 Beratung</a></li>
                         <li><a href="#galerie">Galerie</a></li>
                         <li><a href="#location">Location</a></li>
                         <li><a href="#mitmachen">Mitmachen</a></li>
@@ -854,7 +980,8 @@
         </div>
     </footer>
 
-    <script src="script.js?v=3"></script>
+    <script src="script.js?v=5"></script>
     <script src="quiz-night-contact.js?v=4"></script>
+    <script src="sessions.js?v=2"></script>
 </body>
 </html>
