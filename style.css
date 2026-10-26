@@ -2973,3 +2973,21 @@ html {
 .sessions-price-note {
     white-space: nowrap;
 }
+
+/* ===== Google-Links (reine Links, keine eingebetteten Inhalte) ===== */
+.map-google-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px 22px;
+}
+
+.location-google {
+    margin-top: 10px;
+}
+
+.location-google a {
+    color: var(--color-accent);
+    font-size: 0.95rem;
+    font-weight: 500;
+    text-decoration: underline;
+}
