@@ -1673,68 +1673,227 @@ button {
     transform: rotate(20deg);
 }
 
+.speaker-intro {
+    text-align: center;
+    color: var(--color-text-secondary);
+    font-size: 1.05rem;
+    margin: 12px auto 0;
+    max-width: 520px;
+}
+
 .speaker-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 16px;
-    max-width: 800px;
-    margin: 32px auto 0;
+    gap: 18px;
+    max-width: 880px;
+    margin: 36px auto 0;
 }
 
 .speaker-card {
-    background: var(--color-bg-card);
+    background: linear-gradient(180deg, #181818 0%, var(--color-bg-card) 100%);
     border: 1px solid var(--color-border-light);
-    border-radius: var(--border-radius);
-    padding: 24px 16px;
+    border-radius: var(--border-radius-lg);
+    padding: 28px 16px 24px;
     text-align: center;
     position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
-.speaker-card--confirmed::before {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 50px;
-    height: 50px;
-    background-image: url('images/bitcoin-herbst-leaf-transparent.png');
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
-    opacity: 0.25;
-    pointer-events: none;
-    z-index: 0;
+.speaker-card--confirmed:hover {
+    transform: translateY(-4px);
+    border-color: rgba(247, 147, 26, 0.45);
+    box-shadow: 0 14px 36px rgba(247, 147, 26, 0.12);
+}
+
+.speaker-avatar {
+    width: 96px;
+    height: 96px;
+    border-radius: 50%;
+    padding: 3px;
+    background: linear-gradient(135deg, #ffd27a, var(--color-accent) 55%, #8a4b00);
+    box-shadow: 0 0 0 4px rgba(247, 147, 26, 0.08), 0 8px 24px rgba(247, 147, 26, 0.18);
+    margin-bottom: 16px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.speaker-card--confirmed:hover .speaker-avatar {
+    transform: scale(1.05);
+    box-shadow: 0 0 0 5px rgba(247, 147, 26, 0.16), 0 10px 30px rgba(247, 147, 26, 0.3);
+}
+
+.speaker-avatar img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+    display: block;
+    border: 2px solid var(--color-bg);
+    background: #1a1a1a;
+}
+
+.speaker-avatar--tile,
+.speaker-avatar--tile img {
+    border-radius: 28px;
+}
+
+.speaker-avatar--tile img {
+    object-fit: contain;
 }
 
 .speaker-name {
-    font-size: 1rem;
-    font-weight: 600;
+    font-size: 1.05rem;
+    font-weight: 700;
     color: var(--color-text);
     margin: 0;
 }
 
-.speaker-sub {
-    font-size: 0.8rem;
+.speaker-role {
+    display: inline-block;
+    margin: 8px 0 10px;
+    padding: 3px 10px;
+    border-radius: 999px;
+    border: 1px solid rgba(247, 147, 26, 0.35);
+    background: var(--color-accent-glow);
     color: var(--color-accent);
-    margin: 6px 0 2px;
+    font-size: 0.68rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.speaker-sub {
+    font-size: 0.9rem;
+    color: var(--color-text);
+    margin: 0 0 4px;
     font-weight: 500;
-    letter-spacing: 0.04em;
+    line-height: 1.35;
 }
 
 .speaker-location {
-    font-size: 0.75rem;
+    font-size: 0.78rem;
     color: var(--color-text-muted);
     margin: 0;
 }
 
-.speaker-card:not(.speaker-card--confirmed):nth-child(n+3) .speaker-name {
+.speaker-card--partner {
+    border-color: rgba(247, 147, 26, 0.3);
+    background: linear-gradient(180deg, rgba(247, 147, 26, 0.08) 0%, var(--color-bg-card) 70%);
+}
+
+.speaker-card--partner .speaker-avatar {
+    border-radius: 31px;
+}
+
+.speaker-card--soon {
+    border-style: dashed;
+    border-color: rgba(255, 255, 255, 0.12);
+    background: transparent;
+    justify-content: center;
+}
+
+.speaker-card--soon {
+    grid-column: 1 / -1;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    column-gap: 20px;
+    padding: 22px 20px;
+    text-align: left;
+}
+
+.speaker-card--soon .speaker-avatar {
+    margin: 0;
+    width: 72px;
+    height: 72px;
+    flex: none;
+}
+
+.speaker-card--soon .speaker-text {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.speaker-card--soon .speaker-role {
+    margin: 6px 0 6px;
+}
+
+.speaker-card--soon .speaker-name {
+    color: var(--color-text-secondary);
+}
+
+.speaker-card--soon .speaker-role {
+    border-color: rgba(255, 255, 255, 0.15);
+    background: rgba(255, 255, 255, 0.04);
     color: var(--color-text-muted);
 }
 
-@media (max-width: 480px) {
+.speaker-avatar--locked {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: repeating-linear-gradient(135deg, #1b1b1b 0 8px, #141414 8px 16px);
+    box-shadow: none;
+    border: 2px dashed rgba(255, 255, 255, 0.18);
+    padding: 0;
+    color: rgba(247, 147, 26, 0.55);
+    font-size: 2.2rem;
+    font-weight: 700;
+    filter: blur(0.3px);
+}
+
+.speaker-cta {
+    text-align: center;
+    margin-top: 44px;
+}
+
+.speaker-cta__btn {
+    padding: 16px 44px;
+    font-size: 1.1rem;
+}
+
+.speaker-cta__note {
+    margin: 14px 0 0;
+    color: var(--color-text-secondary);
+    font-size: 0.9rem;
+    letter-spacing: 0.02em;
+}
+
+@media (max-width: 760px) {
     .speaker-grid {
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 14px;
+    }
+}
+
+@media (max-width: 480px) {
+    .speaker-section {
+        padding: 48px 0;
+    }
+    .speaker-grid {
+        gap: 10px;
+    }
+    .speaker-card {
+        padding: 20px 10px 18px;
+        border-radius: 18px;
+    }
+    .speaker-avatar {
+        width: 80px;
+        height: 80px;
+    }
+    .speaker-name {
+        font-size: 0.95rem;
+    }
+    .speaker-sub {
+        font-size: 0.82rem;
+    }
+    .speaker-cta__btn {
+        display: block;
+        padding: 16px 20px;
     }
 }
 
