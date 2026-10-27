@@ -16,8 +16,8 @@
         quiz2: {
             kicker: '21 eSPORTS · QUIZ NIGHT #02',
             title: 'Zur Quiz Night #02 anmelden',
-            intro: 'Schreib uns kurz deinen Namen/Nickname und dass du bei der nächsten Quiz Night dabei sein möchtest. Gespielt wird einzeln, alles Startgeld geht in den Pot. Du möchtest den Pot sponsern? Melde dich bei uns.',
-            whatsappMessage: 'Hallo, ich möchte mich für die 21 eSports Quiz Night #02 anmelden.',
+            intro: 'Schreib uns kurz deinen Namen/Nickname und dass du bei Quiz Night #02 am Sa 12.12.2026 um 18:30 Uhr dabei bist. Gespielt wird einzeln. Startgeld 5 €, in Euro oder sats, der ganze Pot geht an die Gewinner. Du möchtest den Pot sponsern? Melde dich bei uns.',
+            whatsappMessage: 'Hallo, ich möchte mich für die 21 eSports Quiz Night #02 am 12.12.2026 anmelden.',
             emailSubject: 'Anmeldung Quiz Night #02'
         },
         schach: {
@@ -30,8 +30,8 @@
         schach2: {
             kicker: '21 SCHACH · SCHACHTURNIER NR. 2',
             title: 'Zum Schachturnier Nr. 2 anmelden',
-            intro: 'Schreib uns kurz deinen Namen/Nickname und dass du beim nächsten Schachturnier dabei sein möchtest. Der genaue Termin folgt. Du möchtest den Pot sponsern? Melde dich bei uns.',
-            whatsappMessage: 'Hallo, ich möchte mich für das 21 Schach – Schachturnier Nr. 2 anmelden.',
+            intro: 'Schreib uns kurz deinen Namen/Nickname und dass du beim Schachturnier Nr. 2 am Sa 05.12.2026 ab 14:00 Uhr dabei bist. 5 Runden, niemand fliegt raus. Startgeld 5 €, in Euro oder sats, der ganze Pot geht an die Gewinner. Du möchtest den Pot sponsern? Melde dich bei uns.',
+            whatsappMessage: 'Hallo, ich möchte mich für das 21 Schach – Schachturnier Nr. 2 am 05.12.2026 anmelden.',
             emailSubject: 'Anmeldung Schachturnier Nr. 2'
         },
         vortrag: {

@@ -108,10 +108,14 @@ function renderEvents(data, filter) {
         const timeDisplay = event.Zeit.toLowerCase() === 'ganztägig' ? 'ganztägig' : `${event.Zeit} Uhr`;
         const contactModalEvent = event.Link === 'quiz-night-contact'
             ? 'quiz'
+            : event.Link === 'quiz-night-2-contact'
+                ? 'quiz2'
             : event.Link === 'fc-contact'
                 ? 'fc'
                 : event.Link === 'schach-contact'
                     ? 'schach'
+                    : event.Link === 'schach-2-contact'
+                        ? 'schach2'
                     : event.Link === 'vortrag-contact'
                         ? 'vortrag'
                         : null;
@@ -119,8 +123,8 @@ function renderEvents(data, filter) {
         const isHalloweenGhostNight = event.Link === 'halloween-ghost-night';
         const isBitcoinHerbst = event.Link === 'bitcoin-herbst-ticket';
         const isProofOfRace = event.Link === 'proof-of-race';
-        const isQuizNightContact = contactModalEvent === 'quiz';
-        const isSchachContact = contactModalEvent === 'schach';
+        const isQuizNightContact = contactModalEvent === 'quiz' || contactModalEvent === 'quiz2';
+        const isSchachContact = contactModalEvent === 'schach' || contactModalEvent === 'schach2';
         const registrationLink = isPokerNight
             ? `<span class="event-registration-link event-registration-link--club"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M7 10V7a5 5 0 0 1 10 0v3m-9 0h8a2 2 0 0 1 2 2v8H6v-8a2 2 0 0 1 2-2Zm4 4v3"/></svg>NUR FÜR CLUBMITGLIEDER</span>`
             : isBitcoinHerbst
