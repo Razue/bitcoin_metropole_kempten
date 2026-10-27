@@ -380,6 +380,10 @@
         <div class="container">
             <h2 class="section-title">Veranstaltungen</h2>
             <p class="section-subtitle">Kommende Events in der Bitcoin Metropole</p>
+            <div class="events-view-toggle" id="events-view-toggle" role="group" aria-label="Ansicht der Veranstaltungen" hidden>
+                <button type="button" class="view-toggle__btn active" data-view="list" aria-pressed="true">Liste</button>
+                <button type="button" class="view-toggle__btn" data-view="calendar" aria-pressed="false">Kalender</button>
+            </div>
             <div class="events-filter">
                 <button class="filter-btn active" data-filter="all">Alle</button>
                 <button class="filter-btn" data-filter="Kurse">Kurse</button>
@@ -390,6 +394,7 @@
             <div class="events-list" id="events-container">
                 <p style="text-align: center; color: var(--color-text-muted);">Events werden geladen...</p>
             </div>
+            <div class="events-calendar-view" id="events-calendar" hidden></div>
         </div>
     </section>
 

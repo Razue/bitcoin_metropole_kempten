@@ -37,6 +37,7 @@ async function loadEventsFromCSV() {
         const eventsData = parseCSV(csvText);
         renderEvents(eventsData);
         initEventFilter(eventsData);
+        initEventViews(eventsData);
     } catch (error) {
         console.error('Fehler beim Laden der Events:', error);
     }
@@ -80,6 +81,37 @@ function parseCSVLine(line) {
     return values;
 }
 
+// Link-Spalte der programm.csv: gleiche Auswertung für Liste und Kalender (Anmelde-Dialog, Ticket-Sprung, Club-Hinweis, Direktlink)
+function eventLinkInfo(event) {
+    const contactModalEvent = event.Link === 'quiz-night-contact'
+        ? 'quiz'
+        : event.Link === 'quiz-night-2-contact'
+            ? 'quiz2'
+        : event.Link === 'fc-contact'
+            ? 'fc'
+            : event.Link === 'schach-contact'
+                ? 'schach'
+                : event.Link === 'schach-2-contact'
+                    ? 'schach2'
+                : event.Link === 'vortrag-contact'
+                    ? 'vortrag'
+                    : null;
+    const isPokerNight = event.Link === 'club-members-only';
+    const isHalloweenGhostNight = event.Link === 'halloween-ghost-night';
+    const isBitcoinHerbst = event.Link === 'bitcoin-herbst-ticket';
+    const isProofOfRace = event.Link === 'proof-of-race';
+    const registrationLink = isPokerNight
+        ? `<span class="event-registration-link event-registration-link--club"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M7 10V7a5 5 0 0 1 10 0v3m-9 0h8a2 2 0 0 1 2 2v8H6v-8a2 2 0 0 1 2-2Zm4 4v3"/></svg>NUR FÜR CLUBMITGLIEDER</span>`
+        : isBitcoinHerbst
+        ? '<a href="#bitcoin-herbst" class="event-registration-link">TICKET SICHERN</a>'
+        : contactModalEvent
+        ? `<button type="button" class="event-registration-link" data-contact-modal-event="${contactModalEvent}" aria-haspopup="dialog">JETZT ANMELDEN</button>`
+        : event.Link && !isHalloweenGhostNight && !isProofOfRace
+            ? `<a href="${event.Link}" class="event-registration-link">JETZT ANMELDEN</a>`
+            : '';
+    return { contactModalEvent, isPokerNight, isHalloweenGhostNight, isBitcoinHerbst, isProofOfRace, registrationLink };
+}
+
 // Render Events
 function renderEvents(data, filter) {
     const container = document.getElementById('events-container');
@@ -106,34 +138,9 @@ function renderEvents(data, filter) {
         const month = months[date.getMonth()];
         const weekday = weekdays[date.getDay()];
         const timeDisplay = event.Zeit.toLowerCase() === 'ganztägig' ? 'ganztägig' : `${event.Zeit} Uhr`;
-        const contactModalEvent = event.Link === 'quiz-night-contact'
-            ? 'quiz'
-            : event.Link === 'quiz-night-2-contact'
-                ? 'quiz2'
-            : event.Link === 'fc-contact'
-                ? 'fc'
-                : event.Link === 'schach-contact'
-                    ? 'schach'
-                    : event.Link === 'schach-2-contact'
-                        ? 'schach2'
-                    : event.Link === 'vortrag-contact'
-                        ? 'vortrag'
-                        : null;
-        const isPokerNight = event.Link === 'club-members-only';
-        const isHalloweenGhostNight = event.Link === 'halloween-ghost-night';
-        const isBitcoinHerbst = event.Link === 'bitcoin-herbst-ticket';
-        const isProofOfRace = event.Link === 'proof-of-race';
+        const { contactModalEvent, isPokerNight, isHalloweenGhostNight, isBitcoinHerbst, isProofOfRace, registrationLink } = eventLinkInfo(event);
         const isQuizNightContact = contactModalEvent === 'quiz' || contactModalEvent === 'quiz2';
         const isSchachContact = contactModalEvent === 'schach' || contactModalEvent === 'schach2';
-        const registrationLink = isPokerNight
-            ? `<span class="event-registration-link event-registration-link--club"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M7 10V7a5 5 0 0 1 10 0v3m-9 0h8a2 2 0 0 1 2 2v8H6v-8a2 2 0 0 1 2-2Zm4 4v3"/></svg>NUR FÜR CLUBMITGLIEDER</span>`
-            : isBitcoinHerbst
-            ? '<a href="#bitcoin-herbst" class="event-registration-link">TICKET SICHERN</a>'
-            : contactModalEvent
-            ? `<button type="button" class="event-registration-link" data-contact-modal-event="${contactModalEvent}" aria-haspopup="dialog">JETZT ANMELDEN</button>`
-            : event.Link && !isHalloweenGhostNight && !isProofOfRace
-                ? `<a href="${event.Link}" class="event-registration-link">JETZT ANMELDEN</a>`
-                : '';
         const cardClass = (event.Link && !isHalloweenGhostNight && !isProofOfRace) ? ' event-card--with-cta' : '';
         const eventHighlightClass = isBitcoinHerbst
             ? ' event-card--bitcoin-herbst'
@@ -213,7 +220,183 @@ function initEventFilter(data) {
             this.classList.add('active');
 
             renderEvents(data, filter);
+            renderEventCalendar(data, filter);
         });
+    });
+}
+
+// ===== Kalenderansicht ("Liste | Kalender") =====
+// Zeigt ausschließlich Termine aus programm.csv. Tage ohne Termin bleiben still leer (kein "frei", keine Hinweise).
+// Ohne JavaScript (oder wenn die CSV nicht lädt) bleibt der Umschalter ausgeblendet und die Liste ist die einzige Ansicht.
+const CAL_WEEKDAYS_SHORT = ['Mo', 'Di', 'Mi', 'Do', 'Fr', 'Sa', 'So'];
+const CAL_WEEKDAYS_LONG = ['Montag', 'Dienstag', 'Mittwoch', 'Donnerstag', 'Freitag', 'Samstag', 'Sonntag'];
+const CAL_MONTHS_SHORT = ['Jan', 'Feb', 'Mär', 'Apr', 'Mai', 'Jun', 'Jul', 'Aug', 'Sep', 'Okt', 'Nov', 'Dez'];
+const CAL_MONTHS_LONG = ['Januar', 'Februar', 'März', 'April', 'Mai', 'Juni', 'Juli', 'August', 'September', 'Oktober', 'November', 'Dezember'];
+const CAL_TYPE_ORDER = ['Kurse', 'Kultur', 'Meetups', 'Events', 'eSports'];
+
+function calEscape(value) {
+    return String(value ?? '').replace(/[&<>"']/g, ch => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[ch]));
+}
+
+function calIso(date) {
+    return `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}-${String(date.getDate()).padStart(2, '0')}`;
+}
+
+function calParse(iso) {
+    const [y, m, d] = iso.split('-').map(Number);
+    return new Date(y, m - 1, d);
+}
+
+function calAddDays(date, days) {
+    const copy = new Date(date.getFullYear(), date.getMonth(), date.getDate());
+    copy.setDate(copy.getDate() + days);
+    return copy;
+}
+
+function calMonday(date) {
+    return calAddDays(date, -((date.getDay() + 6) % 7));
+}
+
+function calTimeLabel(event) {
+    return !event.Zeit || event.Zeit.toLowerCase() === 'ganztägig' ? 'ganztägig' : event.Zeit;
+}
+
+function calTypeSlug(type) {
+    return String(type).toLowerCase().replace(/[^a-z0-9]+/g, '');
+}
+
+function calendarDetailHtml(event, id) {
+    const date = calParse(event.Datum);
+    const cta = eventLinkInfo(event).registrationLink;
+    const timeText = calTimeLabel(event) === 'ganztägig' ? 'ganztägig' : `${event.Zeit} Uhr`;
+    return `<div class="cal-detail cal-type-${calTypeSlug(event.Typ)}" id="${id}" role="group" aria-label="Details: ${calEscape(event.Titel)}" hidden>
+        <button type="button" class="cal-detail__close" data-cal-close aria-label="Details schließen">×</button>
+        <p class="cal-detail__meta">${date.getDate()}. ${CAL_MONTHS_LONG[date.getMonth()]} ${date.getFullYear()} · ${calEscape(timeText)} · ${calEscape(event.Typ)}</p>
+        <h4 class="cal-detail__title">${calEscape(event.Titel)}</h4>
+        <p class="cal-detail__text">${calEscape(event.Beschreibung)}</p>
+        ${cta ? `<div class="cal-detail__cta">${cta}</div>` : ''}
+    </div>`;
+}
+
+function renderEventCalendar(data, filter) {
+    const container = document.getElementById('events-calendar');
+    if (!container) return;
+
+    const todayDate = calParse(calIso(new Date()));
+    const today = calIso(todayDate);
+    const startDate = calMonday(todayDate);
+    const start = calIso(startDate);
+
+    const shown = data
+        .map((event, index) => ({ event, index }))
+        .filter(({ event }) => /^\d{4}-\d{2}-\d{2}$/.test(event.Datum) && event.Datum >= start)
+        .filter(({ event }) => !filter || filter === 'all' || event.Typ === filter)
+        .sort((a, b) => a.event.Datum.localeCompare(b.event.Datum));
+
+    if (!shown.length) {
+        container.innerHTML = '';
+        return;
+    }
+
+    const lastWeek = calMonday(calParse(shown[shown.length - 1].event.Datum));
+    const byDay = new Map();
+    shown.forEach(item => byDay.set(item.event.Datum, [...(byDay.get(item.event.Datum) || []), item]));
+    const types = [...CAL_TYPE_ORDER.filter(t => shown.some(({ event }) => event.Typ === t)),
+        ...new Set(shown.map(({ event }) => event.Typ).filter(t => !CAL_TYPE_ORDER.includes(t)))];
+
+    let weeks = '';
+    for (let monday = startDate; monday <= lastWeek; monday = calAddDays(monday, 7)) {
+        const sunday = calAddDays(monday, 6);
+        let days = '';
+        let weekHasEvents = false;
+        for (let offset = 0; offset < 7; offset += 1) {
+            const date = calAddDays(monday, offset);
+            const iso = calIso(date);
+            const items = (byDay.get(iso) || []).sort((a, b) => {
+                const allDayA = calTimeLabel(a.event) === 'ganztägig';
+                const allDayB = calTimeLabel(b.event) === 'ganztägig';
+                return Number(allDayB) - Number(allDayA) || a.event.Zeit.localeCompare(b.event.Zeit);
+            });
+            if (items.length) weekHasEvents = true;
+            const classes = ['cal-day', offset >= 4 ? 'is-weekend' : '', iso === today ? 'is-today' : '', iso < today ? 'is-past' : '',
+                items.length ? 'has-events' : '', date.getDate() === 1 || iso === start ? 'show-month' : ''].filter(Boolean).join(' ');
+            const chips = items.map(({ event, index }) => {
+                const id = `cal-ev-${index}`;
+                const label = `${CAL_WEEKDAYS_LONG[offset]}, ${date.getDate()}. ${CAL_MONTHS_LONG[date.getMonth()]}, ${calTimeLabel(event)}: ${event.Titel} (${event.Typ})`;
+                return `<button type="button" class="cal-chip cal-type-${calTypeSlug(event.Typ)}" data-cal-chip aria-expanded="false" aria-controls="${id}" aria-label="${calEscape(label)}"><span class="cal-chip__time">${calEscape(calTimeLabel(event))}</span><span class="cal-chip__title">${calEscape(event.Titel)}</span></button>${calendarDetailHtml(event, id)}`;
+            }).join('');
+            days += `<li class="${classes}"${iso === today ? ' aria-current="date"' : ''}><div class="cal-day__head"><time class="cal-day__label" datetime="${iso}"><span class="cal-day__wd">${CAL_WEEKDAYS_SHORT[offset]}</span> <span class="cal-day__num">${date.getDate()}.</span><span class="cal-day__mon"> ${CAL_MONTHS_SHORT[date.getMonth()]}</span></time>${iso === today ? '<span class="cal-day__today">Heute</span>' : ''}</div>${chips ? `<div class="cal-day__events">${chips}</div>` : ''}</li>`;
+        }
+        const weekLabel = `${monday.getDate()}. ${CAL_MONTHS_SHORT[monday.getMonth()]} – ${sunday.getDate()}. ${CAL_MONTHS_SHORT[sunday.getMonth()]}`;
+        const weekId = `cal-week-${calIso(monday)}`;
+        weeks += `<section class="cal-week${weekHasEvents ? ' has-events' : ''}" aria-labelledby="${weekId}"><h3 class="cal-week__label" id="${weekId}">${weekLabel}</h3><ol class="cal-days">${days}</ol></section>`;
+    }
+
+    container.innerHTML = `<ul class="cal-legend" aria-label="Farben nach Art der Veranstaltung">${types.map(t => `<li><i class="cal-type-${calTypeSlug(t)}" aria-hidden="true"></i>${calEscape(t)}</li>`).join('')}</ul>
+        <div class="cal"><div class="cal-head" aria-hidden="true">${CAL_WEEKDAYS_SHORT.map((d, i) => `<span${i >= 4 ? ' class="is-weekend"' : ''}>${d}</span>`).join('')}</div>${weeks}</div>`;
+}
+
+function closeCalendarDetails(restoreFocus) {
+    document.querySelectorAll('.cal-detail:not([hidden])').forEach(detail => {
+        detail.hidden = true;
+        const chip = document.querySelector(`[aria-controls="${detail.id}"]`);
+        if (chip) {
+            chip.setAttribute('aria-expanded', 'false');
+            if (restoreFocus) chip.focus();
+        }
+    });
+}
+
+function initEventViews(data) {
+    const toggle = document.getElementById('events-view-toggle');
+    const list = document.getElementById('events-container');
+    const calendar = document.getElementById('events-calendar');
+    if (!toggle || !list || !calendar) return;
+
+    const activeFilter = () => {
+        const active = document.querySelector('.filter-btn.active');
+        return active ? active.getAttribute('data-filter') : 'all';
+    };
+    renderEventCalendar(data, activeFilter());
+    toggle.hidden = false;
+
+    toggle.addEventListener('click', event => {
+        const button = event.target.closest('[data-view]');
+        if (!button) return;
+        const showCalendar = button.dataset.view === 'calendar';
+        closeCalendarDetails(false);
+        list.hidden = showCalendar;
+        calendar.hidden = !showCalendar;
+        toggle.querySelectorAll('[data-view]').forEach(b => {
+            b.classList.toggle('active', b === button);
+            b.setAttribute('aria-pressed', String(b === button));
+        });
+    });
+
+    calendar.addEventListener('click', event => {
+        if (event.target.closest('[data-cal-close]')) {
+            closeCalendarDetails(true);
+            return;
+        }
+        const chip = event.target.closest('[data-cal-chip]');
+        if (chip) {
+            const detail = document.getElementById(chip.getAttribute('aria-controls'));
+            const wasOpen = chip.getAttribute('aria-expanded') === 'true';
+            closeCalendarDetails(false);
+            if (detail && !wasOpen) {
+                detail.hidden = false;
+                chip.setAttribute('aria-expanded', 'true');
+            }
+            return;
+        }
+        if (!event.target.closest('.cal-detail')) closeCalendarDetails(false);
+    });
+
+    document.addEventListener('click', event => {
+        if (!calendar.contains(event.target)) closeCalendarDetails(false);
+    });
+    document.addEventListener('keydown', event => {
+        if (event.key === 'Escape' && document.querySelector('.cal-detail:not([hidden])')) closeCalendarDetails(true);
     });
 }
 
