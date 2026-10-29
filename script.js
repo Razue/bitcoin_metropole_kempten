@@ -137,7 +137,7 @@ function renderEvents(data, filter) {
         const day = date.getDate();
         const month = months[date.getMonth()];
         const weekday = weekdays[date.getDay()];
-        const timeDisplay = event.Zeit.toLowerCase() === 'ganztägig' ? 'ganztägig' : `${event.Zeit} Uhr`;
+        const timeDisplay = event.Zeit.toLowerCase() === 'ganztägig' ? 'ganztägig' : /^\d/.test(event.Zeit) ? `${event.Zeit} Uhr` : event.Zeit;
         const { contactModalEvent, isPokerNight, isHalloweenGhostNight, isBitcoinHerbst, isProofOfRace, registrationLink } = eventLinkInfo(event);
         const isQuizNightContact = contactModalEvent === 'quiz' || contactModalEvent === 'quiz2';
         const isSchachContact = contactModalEvent === 'schach' || contactModalEvent === 'schach2';
@@ -268,7 +268,7 @@ function calTypeSlug(type) {
 function calendarDetailHtml(event, id) {
     const date = calParse(event.Datum);
     const cta = eventLinkInfo(event).registrationLink;
-    const timeText = calTimeLabel(event) === 'ganztägig' ? 'ganztägig' : `${event.Zeit} Uhr`;
+    const timeText = calTimeLabel(event) === 'ganztägig' ? 'ganztägig' : /^\d/.test(event.Zeit) ? `${event.Zeit} Uhr` : event.Zeit;
     return `<div class="cal-detail cal-type-${calTypeSlug(event.Typ)}" id="${id}" role="group" aria-label="Details: ${calEscape(event.Titel)}" hidden>
         <button type="button" class="cal-detail__close" data-cal-close aria-label="Details schließen">×</button>
         <p class="cal-detail__meta">${date.getDate()}. ${CAL_MONTHS_LONG[date.getMonth()]} ${date.getFullYear()} · ${calEscape(timeText)} · ${calEscape(event.Typ)}</p>
