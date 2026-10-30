@@ -95,6 +95,8 @@ function eventLinkInfo(event) {
                     ? 'schach2'
                 : event.Link === 'vortrag-contact'
                     ? 'vortrag'
+                : event.Link === 'wallet-vortrag-contact'
+                    ? 'wallet'
                     : null;
     const isPokerNight = event.Link === 'club-members-only';
     const isHalloweenGhostNight = event.Link === 'halloween-ghost-night';

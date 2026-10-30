@@ -41,6 +41,13 @@
             whatsappMessage: 'Hallo, ich möchte mich für den Vortrag „Copyright-Sicherung & Ewige ID auf Bitcoin“ mit Gabriele Peters am 30.10.2026 anmelden.',
             emailSubject: 'Anmeldung Vortrag 30.10.2026'
         },
+        wallet: {
+            kicker: 'VORTRAG · MI 25.11.2026 · 20:00',
+            title: 'Zum Wallet-Vortrag anmelden',
+            intro: 'Schreib uns kurz deinen Namen und dass du beim Vortrag „Wie sichere ich meine Bitcoin?“ mit Markus Turm am Mi 25.11.2026 um 20:00 Uhr dabei bist. Die Plätze sind begrenzt.',
+            whatsappMessage: 'Hallo, ich möchte mich für den Vortrag „Wie sichere ich meine Bitcoin?“ mit Markus Turm am 25.11.2026 um 20:00 Uhr anmelden.',
+            emailSubject: 'Anmeldung Wallet-Vortrag 25.11.2026'
+        },
         fc: {
             kicker: '',
             title: 'Zur 21 eSports FC – Season 2 anmelden',
@@ -105,4 +112,12 @@
     dialog.addEventListener('click', (event) => {
         if (event.target === dialog) closeDialog();
     });
+    // Direktlink aus Posts, z. B. bitcoinmetropole.de/#anmeldung-wallet
+    const hashModal = { '#anmeldung-wallet': 'wallet' };
+    const openFromHash = () => {
+        const eventType = hashModal[window.location.hash];
+        if (eventType) openDialog(eventType);
+    };
+    window.addEventListener('hashchange', openFromHash);
+    openFromHash();
 })();
