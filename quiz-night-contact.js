@@ -44,7 +44,7 @@
         wallet: {
             kicker: 'VORTRAG · MI 25.11.2026 · 20:00',
             title: 'Zum Wallet-Vortrag anmelden',
-            intro: 'Schreib uns kurz deinen Namen und dass du beim Vortrag „Wie sichere ich meine Bitcoin?“ mit Markus Turm am Mi 25.11.2026 um 20:00 Uhr dabei bist. Die Plätze sind begrenzt.',
+            intro: 'Schreib uns kurz deinen Namen und dass du beim Vortrag „Wie sichere ich meine Bitcoin?“ mit Markus Turm am Mi 25.11.2026 um 20:00 Uhr dabei bist. So können wir dich erreichen, falls sich etwas ändert.',
             whatsappMessage: 'Hallo, ich möchte mich für den Vortrag „Wie sichere ich meine Bitcoin?“ mit Markus Turm am 25.11.2026 um 20:00 Uhr anmelden.',
             emailSubject: 'Anmeldung Wallet-Vortrag 25.11.2026'
         },
