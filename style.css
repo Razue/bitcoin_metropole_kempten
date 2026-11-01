@@ -1274,7 +1274,14 @@ button {
         grid-template-columns: 1fr;
     }
 
-    .club-contacts {
+    .price-tax-note {
+    display: block;
+    font-size: 0.75rem;
+    color: var(--color-text-muted);
+    margin-top: 4px;
+}
+
+.club-contacts {
         flex-direction: column;
         align-items: center;
     }
