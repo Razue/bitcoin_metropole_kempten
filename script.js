@@ -108,6 +108,8 @@ function eventLinkInfo(event) {
         ? '<a href="#bitcoin-herbst" class="event-registration-link">TICKET SICHERN</a>'
         : contactModalEvent
         ? `<button type="button" class="event-registration-link" data-contact-modal-event="${contactModalEvent}" aria-haspopup="dialog">JETZT ANMELDEN</button>`
+        : /^https:\/\/(www\.)?lumierevisage\.com\//.test(event.Link || '')
+        ? `<a href="${event.Link}" class="event-registration-link event-registration-link--silver" target="_blank" rel="noopener">JETZT ANMELDEN</a>`
         : event.Link && !isHalloweenGhostNight && !isProofOfRace
             ? `<a href="${event.Link}" class="event-registration-link">JETZT ANMELDEN</a>`
             : '';
