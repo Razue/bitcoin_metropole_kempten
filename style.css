@@ -3615,3 +3615,13 @@ html {
         font-size: 1.1rem;
     }
 }
+
+/* Malblätter */
+.malblaetter-section { background: var(--color-bg-secondary); }
+.malblaetter-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 2rem; max-width: 820px; margin: 0 auto; }
+.malblatt-card { background: var(--color-bg-card); border: 1px solid var(--color-border); border-radius: var(--border-radius-lg); padding: 1.5rem; text-align: center; display: flex; flex-direction: column; align-items: center; gap: .75rem; transition: var(--transition); }
+.malblatt-card:hover { border-color: var(--color-accent); box-shadow: 0 0 30px var(--color-accent-glow); }
+.malblatt-preview img { width: 100%; max-width: 240px; height: auto; border-radius: var(--border-radius); background: #fff; display: block; }
+.malblatt-card h3 { color: var(--color-text); font-size: 1.2rem; margin: .5rem 0 0; }
+.malblatt-card p { color: var(--color-text-secondary); margin: 0; }
+.malblatt-card .btn { margin-top: auto; }
