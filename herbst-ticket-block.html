@@ -1,67 +1,42 @@
-<!-- Bitcoin Herbst 2026 Ticket-Block -->
-<section id="bitcoin-herbst" class="bitcoin-herbst-section">
-  <div class="container">
-    <div class="bitcoin-herbst-card">
-      <div class="herbst-header">
-        <span class="herbst-badge">🔥 Event</span>
-        <h2 class="herbst-title">Bitcoin Herbst 2026</h2>
-        <p class="herbst-date">20.–21. November 2026 · Kempten</p>
-      </div>
-
-      <div class="herbst-availability" id="herbst-availability">
-        <span class="herbst-available" id="herbst-available-count">50</span>
-        <span class="herbst-available-label">Plätze verfügbar</span>
-        <span class="herbst-total">von 50</span>
-      </div>
-
-      <div class="herbst-price">
-        <span class="herbst-price-amount">100.000</span>
-        <span class="herbst-price-unit">sats</span>
-        <span class="herbst-price-div">/ Ticket</span>
-      </div>
-
-      <form id="herbst-ticket-form" class="herbst-form" novalidate>
-        <div class="herbst-form-group">
-          <label for="herbst-name">Name</label>
-          <input type="text" id="herbst-name" name="name" required
-                 placeholder="Max Mustermann" autocomplete="name" maxlength="100">
-          <span class="herbst-error" id="herbst-error-name" role="alert"></span>
-        </div>
-
-        <div class="herbst-form-group">
-          <label for="herbst-email">E-Mail</label>
-          <input type="email" id="herbst-email" name="email" required
-                 placeholder="max@example.com" autocomplete="email" maxlength="200">
-          <span class="herbst-error" id="herbst-error-email" role="alert"></span>
-        </div>
-
-        <div class="herbst-form-group">
-          <label for="herbst-quantity">Anzahl Tickets</label>
-          <select id="herbst-quantity" name="quantity">
-            <option value="1">1 Ticket</option>
-            <option value="2">2 Tickets</option>
-            <option value="3">3 Tickets</option>
-            <option value="4">4 Tickets</option>
-            <option value="5">5 Tickets</option>
-          </select>
-          <span class="herbst-error" id="herbst-error-quantity" role="alert"></span>
-        </div>
-
-        <div class="herbst-total" id="herbst-total">
-          Gesamt: <strong>100.000 sats</strong>
-        </div>
-
-        <button type="submit" class="btn btn-primary btn-herst" id="herbst-cta">
-          Ticket sichern
-        </button>
-
-        <div class="herbst-status" id="herbst-status" role="status" aria-live="polite"></div>
-      </form>
-
-      <div class="herbst-footer">
-        <p>Bezahlung via BTCPay · Bitcoin & Lightning</p>
-        <p>Keine Daten werden öffentlich angezeigt</p>
-      </div>
-    </div>
-  </div>
-</section>
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="refresh" content="0; url=https://bitcoinmetropole.com/herbst/">
+  <link rel="canonical" href="https://bitcoinmetropole.com/herbst/">
+  <title>Bitcoin Metropole Kempten ist umgezogen</title>
+  <style>
+    :root { color-scheme: dark; }
+    html, body {
+      margin: 0;
+      min-height: 100%;
+      background: #0b0b0c;
+      color: #e8dcc8;
+      font-family: Georgia, "Times New Roman", serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    main { text-align: center; padding: 2.5rem 1.5rem; }
+    p {
+      margin: 0;
+      font-size: 1.08rem;
+      letter-spacing: 0.03em;
+      line-height: 1.7;
+    }
+    a {
+      color: #d4af37;
+      text-decoration: none;
+      border-bottom: 1px solid rgba(212, 175, 55, 0.45);
+    }
+    a:hover { color: #f0d78c; }
+  </style>
+  <script>location.replace('https://bitcoinmetropole.com/herbst/');</script>
+</head>
+<body>
+  <main>
+    <p>Bitcoin Metropole Kempten ist umgezogen → <a href="https://bitcoinmetropole.com/herbst/">bitcoinmetropole.com</a></p>
+  </main>
+</body>
+</html>
